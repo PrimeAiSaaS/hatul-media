@@ -1,3 +1,22 @@
 {
-  "items": []
+  "items": [
+    {
+      "episode": 3,
+      "publish_on": "2026-10-11",
+      "approved": true,
+      "video_url": "https://cdn.jsdelivr.net/gh/PrimeAiSaaS/hatul-media@c2b08375a613df1443adb0a825a9e1bef994a1dc/episodes/ep3_branch_v2_wm.mp4",
+      "caption": "מי עוד הגיע סוף סוף לחלון\nושמע ״שנייה, מותק״?\n\nהחתול חיכה שעתיים.\nשרית יצאה להפסקה של 5 דקות.\n\nכמה זמן נמשכה ההפסקה הכי ארוכה שחיכיתם לה? 👇",
+      "yt_title": "״שנייה, מותק״ בסניף הבנק | חתול בהמתנה פרק 3 #shorts",
+      "yt_description": "מי עוד הגיע סוף סוף לחלון\nושמע ״שנייה, מותק״?\n\nהחתול חיכה שעתיים.\nשרית יצאה להפסקה של 5 דקות.\n\nכמה זמן נמשכה ההפסקה הכי ארוכה שחיכיתם לה? 👇\n\nפרק חדש בימים א׳ ג׳ ה׳ · @hatul.bahamtana"
+    },
+    {
+      "episode": 4,
+      "publish_on": "2026-10-13",
+      "approved": true,
+      "video_url": "https://cdn.jsdelivr.net/gh/PrimeAiSaaS/hatul-media@c2b08375a613df1443adb0a825a9e1bef994a1dc/episodes/ep4_fax_v2_wm.mp4",
+      "caption": "למי עוד ביקשו לשלוח טופס בפקס\nבשנת 2026?\n\nניסיון 1. ניסיון 2. ניסיון 3.\nואז החתול הפסיק להתרגש.\n\nמה הדבר הכי מיושן שביקשו מכם? 👇",
+      "yt_title": "ביקשו מהחתול לשלוח פקס | חתול בהמתנה פרק 4 #shorts",
+      "yt_description": "למי עוד ביקשו לשלוח טופס בפקס\nבשנת 2026?\n\nניסיון 1. ניסיון 2. ניסיון 3.\nואז החתול הפסיק להתרגש.\n\nמה הדבר הכי מיושן שביקשו מכם? 👇\n\nפרק חדש בימים א׳ ג׳ ה׳ · @hatul.bahamtana"
+    }
+  ]
 }
