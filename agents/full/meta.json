@@ -1,0 +1,26 @@
+{
+ "weekly": {
+  "trigger_id": "trig_01C1LQMstEw3rfURCFvJi7yM",
+  "name": "חתול בהמתנה: סיכום שבועי ושיפור",
+  "cron": "CRON_TZ=Asia/Jerusalem 57 18 * * 6",
+  "updated_at": "2026-10-10T15:45:01.294142Z"
+ },
+ "data": {
+  "trigger_id": "trig_01YHZQp6p1QPxZirXtkAZ5hw",
+  "name": "חתול בהמתנה: סוכן נתונים",
+  "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
+  "updated_at": "2026-10-12T06:40:50.149756Z"
+ },
+ "sync": {
+  "trigger_id": "trig_01AnctU5d7pN4UAFnCgk7gjX",
+  "name": "חתול בהמתנה: סנכרון תור הפרסום",
+  "cron": "CRON_TZ=Asia/Jerusalem 52 18 * * *",
+  "updated_at": "2026-10-12T07:14:38.988697Z"
+ },
+ "production": {
+  "trigger_id": "trig_01WTkwFNwrRswy1mdVxqLnss",
+  "name": "חתול בהמתנה: הפקת פרק",
+  "cron": "CRON_TZ=Asia/Jerusalem 53 9 * * 1,3,5",
+  "updated_at": "2026-10-10T15:47:11.945713Z"
+ }
+}
