@@ -1,0 +1,107 @@
+{
+ "ep1": {
+  "file": "episodes/ep1_national_insurance_wm.mp4",
+  "job_id": "21e3b781-4bfb-4e4a-90a6-811c9d2a172d",
+  "duration": 13.0,
+  "scores": {
+   "overall_score": 44,
+   "brain_engagement": 37,
+   "hook_score": 27,
+   "viral_potential": 44,
+   "sustain": 92,
+   "peak_second": 6,
+   "peak_score": 0.430747
+  },
+  "curve": [
+   0.338968,
+   0.329479,
+   0.331956,
+   0.337665,
+   0.348264,
+   0.36149,
+   0.430747,
+   0.384989,
+   0.387878,
+   0.379393,
+   0.369985,
+   0.399502,
+   0.419346
+  ]
+ },
+ "ep4": {
+  "file": "episodes/ep4_fax_v3_clean.mp4",
+  "job_id": "cce4dba7",
+  "duration": 12.1,
+  "scores": {
+   "overall_score": 43,
+   "brain_engagement": 33,
+   "hook_score": 26,
+   "viral_potential": 44,
+   "sustain": 100,
+   "peak_second": 12
+  }
+ },
+ "ep5": {
+  "file": "episodes/ep5_finale_clean.mp4",
+  "job_id": "acc80a71-d2f3-422a-a4a0-6bab316f14a9",
+  "duration": 12.1,
+  "scores": {
+   "overall_score": 42,
+   "brain_engagement": 31,
+   "hook_score": 24,
+   "viral_potential": 43,
+   "sustain": 100,
+   "peak_second": 12,
+   "peak_score": 0.382121
+  },
+  "curve": [
+   0.278835,
+   0.279883,
+   0.283225,
+   0.29355,
+   0.30309,
+   0.318022,
+   0.318987,
+   0.318074,
+   0.323234,
+   0.316245,
+   0.330291,
+   0.31992,
+   0.382121
+  ]
+ },
+ "ep6": {
+  "file": "episodes/ep6_voter_notice_clean.mp4",
+  "job_id": "8e5982bb-f55f-47bf-b721-ebf2a45a0f00",
+  "duration": 12.1,
+  "scores": {
+   "overall_score": 47,
+   "brain_engagement": 34,
+   "hook_score": 33,
+   "viral_potential": 48,
+   "sustain": 100,
+   "peak_second": 12,
+   "peak_score": 0.411679
+  },
+  "curve": [
+   0.330182,
+   0.327458,
+   0.319072,
+   0.386177,
+   0.344342,
+   0.343803,
+   0.309806,
+   0.301467,
+   0.326836,
+   0.324452,
+   0.316769,
+   0.32343,
+   0.411679
+  ]
+ },
+ "ep2": {
+  "file": "episodes/ep2_bank_sms_wm.mp4",
+  "status": "failed",
+  "note": "the predictor failed 3 times (original twice, a 720p/14.9 s re-encode once)"
+ }
+}
