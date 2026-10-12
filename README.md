@@ -7,7 +7,7 @@ Finished episodes of "חתול בהמתנה" (@hatul.bahamtana), hosted here so 
 
 ## Publishing queue
 
-The Make scenario runs Sun / Tue / Thu at 20:30 Israel time. It reads
+The Make scenario runs every day at 20:30 Israel time. It reads
 `https://raw.githubusercontent.com/PrimeAiSaaS/hatul-media/main/queue.json`
 and publishes every item whose `publish_on` is today and `approved` is true,
 to Instagram Reels, the Facebook page (Reel) and YouTube (Shorts).
@@ -22,7 +22,8 @@ Only add an item after Gabi has approved the episode.
       "publish_on": "2026-10-11",
       "approved": true,
       "video_url": "https://cdn.jsdelivr.net/gh/PrimeAiSaaS/hatul-media@<commit>/episodes/ep3_branch_wm.mp4",
-      "caption": "post caption for Instagram + Facebook, with hashtags",
+      "caption": "Instagram caption",
+      "caption_fb": "Facebook caption (Make falls back to caption when empty)",
       "yt_title": "YouTube title (max 100 chars, no < or >) #shorts",
       "yt_description": "YouTube description"
     }
