@@ -27,9 +27,10 @@ list_triggers (recurring true, ודפדף עם cursor עד שמצאת את אר�
 - נתונים: אם last_run.status FAILED, או שלא רץ היום, או שאין runs/*-data מהיום ו-meta/data_sync.at ישן מ-3 שעות: fire_trigger לסוכן הנתונים. הוא אידמפוטנטי.
 - סנכרון: אם last_run.status FAILED או שלא רץ היום: fire_trigger, רק אם השעה עכשיו אינה בין 20:00 ל-20:45 (כדי לא לשנות את התור באמצע פרסום).
 - הפקה: אם last_run.status FAILED (לא warn) ואין פרק חדש שעבר היום ל-status "review": fire_trigger פעם אחת, רק לפני 23:00.
+- פרק תקוע ב-"production": אם יש לו video_url ו-repo_file, ואין היום run של הפקה שעובד עליו (returned.episode), הוא כבר מוכן ונגרר בטעות: update עם if_version ל-status "review" ו-status_note "<תאריך>: הוחזר ל-review על ידי בקר התפעול". אל תיגע בפרק approved / posted, ואל תסמן approved.
 - warn או checks שנכשלו: לא מריצים שוב. מדווחים.
 - כל דבר אחר (חיבור Make, הרשאות, חשבון טיקטוק, תקלה ברינדור): לא נוגעים. מדווחים לגבי מה צריך ממנו.
-כתוב כל תיקון ל-actions: [{agent, action: "fire_trigger", reason}].
+כתוב כל תיקון ל-actions: [{agent, action: "fire_trigger" או "restore_review", episode אם רלוונטי, reason}].
 
 ## 3. צנרת התוכן
 קרא את כל episodes (limit 200) ואת queue.json מהמאגר.
