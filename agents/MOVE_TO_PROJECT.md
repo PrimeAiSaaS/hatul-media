@@ -7,7 +7,7 @@
    - "חתול בהמתנה: סנכרון תור הפרסום" · CRON_TZ=Asia/Jerusalem 52 18 * * * · https://raw.githubusercontent.com/PrimeAiSaaS/hatul-media/main/agents/full/sync_v2.md
    - "חתול בהמתנה: סוכן נתונים" · CRON_TZ=Asia/Jerusalem 12 21 * * * · https://raw.githubusercontent.com/PrimeAiSaaS/hatul-media/main/agents/full/data_v2.md
    - "חתול בהמתנה: סיכום שבועי ושיפור" · CRON_TZ=Asia/Jerusalem 57 18 * * 6 · https://raw.githubusercontent.com/PrimeAiSaaS/hatul-media/main/agents/full/weekly_v2.md
-   המשימות רצות בענן (לא צריכות את המחשב). הן צריכות את החיבורים Higgsfield, Make, Google Drive ו-Claude Docs.
+   המשימות רצות בענן (לא צריכות את המחשב). הן צריכות את החיבורים Higgsfield, Make, Google Drive, Claude Docs ו-Metricool (סוכן הסנכרון מתזמן טיקטוק דרך Metricool).
 
 3. רק אחרי שכל 4 החדשות נוצרו והן מופיעות ב-list_triggers עם התזמון הנכון, מחק את 4 הישנות: trig_01WTkwFNwrRswy1mdVxqLnss, trig_01AnctU5d7pN4UAFnCgk7gjX, trig_01YHZQp6p1QPxZirXtkAZ5hw, trig_01C1LQMstEw3rfURCFvJi7yM. אם משהו נכשל ביצירה, אל תמחק את הישנה של אותה משימה.
 
