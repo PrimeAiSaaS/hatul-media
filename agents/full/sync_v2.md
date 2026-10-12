@@ -37,3 +37,12 @@
 2. tasks/sync: get ואז update עם if_version (אם לא קיים: set) עם {name: "סוכן סנכרון", when: "כל יום 18:52", lastRunAt, lastStatus, lastNote, nextRun: "<ISO UTC>"}.
 3. אם באחד מ-3 הימים הקרובים אין פרק מאושר בתור, כתוב לגבי שורה אחת: איזה יום ריק ואיזה פרק מחכה לאישור שלו.
 אל תמציא מספרים ב-returned: רק מה שבאמת עשית.
+
+## 6. טיקטוק דרך Metricool (מ-12.10)
+לכל פרק שנכנס לתור בריצה הזאת (approved, עם publish_on עתידי) ועוד לא תוזמן בטיקטוק (platforms.tiktok אינו "scheduled" / "live"):
+- טען את כלי Metricool (ToolSearch "Metricool"). brand / blogId = 7376863 (טיקטוק hatul.bahamtana).
+- createScheduledPost: date = publish_on בשעה 20:30 (Asia/Jerusalem), autoPublish true, providers [{"network":"tiktok"}], media = אותו video_url של jsDelivr מהתור, text = caption_tiktok, tiktokData {privacyOption "PUBLIC_TO_EVERYONE", title = yt_title בלי "#shorts" (עד 90 תווים), isAigc true, autoAddMusic false}.
+- אחרי הצלחה: update למסמך הפרק platforms.tiktok = "scheduled" ו-tiktok_post_id = ה-id שחזר.
+- לפני שמתזמנים: getScheduledPosts לטווח של אותו יום, כדי לא לתזמן פעמיים.
+- התוכנית החינמית של Metricool מוגבלת ל-20 פוסטים בחודש. אם התקבלה שגיאת מכסה, כתוב לגבי שורה אחת והמשך בלי טיקטוק.
+- returned של היומן כולל tiktok_scheduled: [מספרי פרקים].
