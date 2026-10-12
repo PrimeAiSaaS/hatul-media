@@ -15,7 +15,8 @@ Usage:
 
 Output docs
   analysis/ep<N>   one per episode that has any metrics (n >= 100 for specials: doc id = ep<n>)
-  analysis/summary totals, platform mix, leaderboards, funnel, data gaps, diagnosis of the channel
+  analysis/summary totals, platform mix, leaderboards, funnel, data gaps, diagnosis of the channel,
+                   last_7d (views gained per platform from history, account/follower change from accounts)
 Every number carries its source metrics doc + measured_at. Nothing is invented: a missing field stays missing.
 """
 import argparse, glob, json, os, statistics
@@ -126,11 +127,67 @@ def diagnose(platform, m):
     return {"step": "topic_ceiling", "text": "החזקה ושיתוף טובים: להגדיל את הנושא (כאב גדול יותר)"}
 
 
+def flat_nums(d, prefix=""):
+    """numeric leaves of a nested dict as {"instagram.followers": 12, ...}"""
+    out = {}
+    for k, v in (d or {}).items():
+        key = f"{prefix}{k}"
+        if isinstance(v, dict):
+            out.update(flat_nums(v, key + "."))
+        elif num(v) is not None and not isinstance(v, bool):
+            out[key] = num(v)
+    return out
+
+
+def window(history, accounts, now, days=7):
+    """What happened in the last `days` days: views gained per platform/episode (history snapshots)
+    and account changes (first vs last accounts doc in the window). Weekly agent reads this."""
+    end = now.astimezone(IL).date()
+    start = end - timedelta(days=days)
+    s_iso, e_iso = start.isoformat(), end.isoformat()
+    # latest snapshot per (episode, platform) at or before a date
+    def snap(upto):
+        out = {}
+        for date in sorted(history):
+            if date > upto:
+                break
+            for row in history[date].get("rows", []):
+                v = num(row.get("views"))
+                if v is not None and row.get("episode") is not None and row.get("platform") in PLATFORMS:
+                    out[(int(row["episode"]), row["platform"])] = v
+        return out
+    a, b = snap(s_iso), snap(e_iso)
+    gained, by_plat = [], {p: 0 for p in PLATFORMS}
+    for key, v_end in b.items():
+        g = v_end - a.get(key, 0)
+        if g > 0:
+            by_plat[key[1]] += g
+            gained.append({"episode": key[0], "platform": key[1], "views_gained": int(g), "views_end": int(v_end)})
+    gained.sort(key=lambda x: -x["views_gained"])
+    out = {"from": s_iso, "to": e_iso, "views_gained": {p: int(v) for p, v in by_plat.items()},
+           "views_gained_total": int(sum(by_plat.values())), "top_gainers": gained[:5],
+           "history_days": len([d for d in history if s_iso < d <= e_iso])}
+    acc = sorted(d for d in accounts if s_iso <= d <= e_iso)
+    if acc:
+        f, l = flat_nums(accounts[acc[0]]), flat_nums(accounts[acc[-1]])
+        out["accounts"] = {"first": acc[0], "last": acc[-1], "days": len(acc),
+                           "change": {k: r(l[k] - f[k], 1) for k in l if k in f and l[k] != f[k]},
+                           "last_values": l}
+    fol = [(d, history[d].get("followers")) for d in sorted(history) if s_iso <= d <= e_iso and history[d].get("followers")]
+    if fol:
+        f, l = flat_nums(fol[0][1]), flat_nums(fol[-1][1])
+        out["followers"] = {"first": fol[0][0], "last": fol[-1][0], "start": f, "end": l,
+                            "change": {k: r(l[k] - f[k], 0) for k in l if k in f}}
+    return out
+
+
 def analyze(export, now):
     episodes = load_dir(export, "episodes")
     metrics = load_dir(export, "metrics")
     history = load_dir(export, "history")
-    preds = load_dir(export, "predictions")
+    preds_raw = load_dir(export, "predictions")
+    # predictions are keyed ep<N> / sp1 / sp2 / react1: index them by their n field
+    preds = {f"ep{int(d['n'])}": d for d in preds_raw.values() if num(d.get("n")) is not None}
     accounts = load_dir(export, "accounts")
 
     by_ep = {}
@@ -254,6 +311,7 @@ def analyze(export, now):
         "channel_diagnosis": {"step": channel_step, "counts": {s: steps.count(s) for s in set(steps)}},
         "data_gaps": gaps,
         "accounts_latest": acc_latest or None,
+        "last_7d": window(history, accounts, now, 7),
         "computed_at": now.isoformat(), "tool": "tools/analyze.py",
     }
     return docs, summary
@@ -283,6 +341,11 @@ def report(docs, summary):
                     bits.append(f"{lab} {r(e[key])}%")
             parts.append(f"{p} " + " ".join(bits) + f" → {STEP_HE.get(e['diagnosis']['step'], '')}")
         L.append(f"פרק {d['episode']} ({d.get('title') or ''}, {d.get('age_hours')} ש׳): " + " | ".join(parts))
+    w = summary.get("last_7d") or {}
+    if w:
+        L.append(f"7 ימים ({w['from']}–{w['to']}): +{w['views_gained_total']} צפיות · "
+                 + " · ".join(f"{p} +{w['views_gained'][p]}" for p in PLATFORMS)
+                 + (" · עוקבים: " + ", ".join(f"{k} {'+' if v >= 0 else ''}{int(v)}" for k, v in w["followers"]["change"].items()) if w.get("followers") else ""))
     if summary["data_gaps"]:
         L.append("חסר: " + "; ".join(f"פרק {g['episode']} {g['platform']}: {', '.join(g['missing'])}" for g in summary["data_gaps"]))
     return "\n".join(L)

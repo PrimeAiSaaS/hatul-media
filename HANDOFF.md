@@ -3,12 +3,12 @@
 ## קודם כל, קרא
 - ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים)
 - ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–M = החוקים)
-- ההנחיות של הסוכנים: agents/*_v2.md
+- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v2, sync_v2, data_v3, ops_v1, weekly_v3)
 
 ## איפה הכול
 - לוח הבקרה (מסד הנתונים החי): https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB
-  - אוספים: episodes, metrics, predictions, runs, tasks, ideas, comments
-  - מסמכים: meta/data_sync, meta/metricool, insights/latest, audit/latest
+  - אוספים: episodes, metrics, history, accounts, analysis, predictions, runs, tasks, ideas, comments, audit
+  - מסמכים: meta/data_sync, meta/metricool, insights/latest, analysis/summary (כולל last_7d), audit/latest (בקר התפעול, כל ערב)
 - HQ ומנוע ההפקה: https://claude.ai/artifact/LTd1as8v4rzTnxCN6bj6sJ
 - מאגר: GitHub PrimeAiSaaS/hatul-media (episodes/, queue.json, stories/, long/, agents/, tools/)
 - Metricool, מותג 7376863: ארבע הרשתות מחוברות. משמש גם לנתונים וגם לתזמון טיקטוק.
@@ -20,22 +20,24 @@
 | הפקת פרק | trig_01K8PoHKFoWtvxxmeHUeChKY | כל יום 09:53 |
 | סנכרון: תור + טיקטוק | trig_01EiuozAjMDScB9wKzowH1X6 | כל יום 18:52 |
 | נתונים מ-Metricool | trig_0185MKRJiubwpf47eBuh6JAY | כל יום 21:12 |
+| בקר תפעול | trig_01HzqZ5KVJ2DiwFrnH6KyStA | כל יום 21:47 |
 | שבועי: מחקר, כיול, בקרה | trig_01HFxZSy1EJW5T8mzHeVsJud | שבת 18:57 |
 
-כל סוכן כותב יומן ל-runs/* ול-tasks/* בלוח.
+כל סוכן כותב יומן ל-runs/* ול-tasks/* בלוח. כל מספר נגזר (אחוזים, השוואה לחציון, נקודות 1/3/7 ימים, 7 ימים אחרונים, אבחון §G) מחושב ב-tools/analyze.py.
 
 ## הזרימה
 1. סוכן ההפקה בונה פרק, מריץ חיזוי ויראליות ומכין סטוריז. הפרק מגיע ללוח בסטטוס review.
 2. אני מאשר בלוח (approved).
 3. הסנכרון מכניס את הפרק ל-queue.json ומתזמן אותו בטיקטוק דרך Metricool.
 4. Make מפרסם ב-20:30.
-5. סוכן הנתונים מודד.
+5. סוכן הנתונים מודד ומריץ analyze.py.
+6. בקר התפעול בודק שהכול רץ ומודיע לי רק כשצריך פעולה.
 
 ## מה לתפעל כשאני פותח שיחה
-1. לבדוק בלוח את runs/* ואת audit/latest: האם כל הסוכנים רצו, ואם משהו נכשל, למה.
+1. לקרוא את audit/latest (בקר התפעול כותב אותו כל ערב ב-21:47) ואת runs/*: האם כל הסוכנים רצו, ואם משהו נכשל, למה.
 2. להציג מה ממתין לאישור שלי ואיזה יום ב-3 הימים הקרובים ריק בלי פרק.
-3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים מופיעים ב-agents/data_v2.md) ולא להסתמך רק על הלוח.
-4. לשנות התנהגות של סוכן: לעדכן את agents/*_v2.md במאגר ובפרויקט, ואז update_trigger עם הטקסט המלא. לא למחוק משימה וליצור מחדש.
+3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים ב-agents/full/data_v3.md), ולחשב עם tools/analyze.py ולא להסתמך רק על הלוח.
+4. לשנות התנהגות של סוכן: לעדכן את agents/full/<agent>_vN.md במאגר ובפרויקט ואת meta.json, ואז update_trigger עם הטקסט המלא. לא למחוק משימה וליצור מחדש.
 5. אחרי כל שינוי מהותי: לעדכן את PROJECT_CONTEXT.md, גם במאגר וגם בפרויקט.
 
 ## חוקים קבועים
@@ -56,6 +58,7 @@
 - **אחרי שדרוג:** לעדכן בלוח את meta/metricool ל-{plan: "starter", stories_auto: true}. אז הסנכרון יתזמן גם סטוריז (סרטון טיזר ב-12:00, באינסטגרם ובפייסבוק).
 
 ## פתוח אצלי
+0. להעביר את טיקטוק לחשבון Business (בלי זה אין זמן צפייה ומקורות תנועה בטיקטוק).
 1. לאשר בלוח את מגיב 1 (14.10), מיוחד 1 (16.10), מיוחד 2 (17.10) ופרק 6 (18.10).
 2. באינסטגרם ובטיקטוק: לעדכן שם, ביו ("כל יום ב-20:30") וקישורים. בפייסבוק: לשנות את שם הדף ל"חתול בהמתנה".
 3. ב-18.10: להעלות את הסרטון הארוך ליוטיוב (Videos\hatul_youtube_long).
