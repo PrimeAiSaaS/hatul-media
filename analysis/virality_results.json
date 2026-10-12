@@ -13,19 +13,19 @@
    "peak_score": 0.430747
   },
   "curve": [
-   0.338968,
-   0.329479,
-   0.331956,
-   0.337665,
-   0.348264,
-   0.36149,
-   0.430747,
-   0.384989,
-   0.387878,
-   0.379393,
-   0.369985,
-   0.399502,
-   0.419346
+   0.339,
+   0.3295,
+   0.332,
+   0.3377,
+   0.3483,
+   0.3615,
+   0.4307,
+   0.385,
+   0.3879,
+   0.3794,
+   0.37,
+   0.3995,
+   0.4193
   ]
  },
  "ep4": {
@@ -100,8 +100,144 @@
   ]
  },
  "ep2": {
-  "file": "episodes/ep2_bank_sms_wm.mp4",
-  "status": "failed",
-  "note": "the predictor failed 3 times (original twice, a 720p/14.9 s re-encode once)"
+  "file": "analysis/ep2_first12.mp4 (first 12 s of ep2_bank_sms_wm.mp4, 15 s)",
+  "job_id": "5974929f-df09-4857-9376-a583c5d1c5dc",
+  "duration": 12.0,
+  "scores": {
+   "overall_score": 45,
+   "brain_engagement": 37,
+   "hook_score": 25,
+   "viral_potential": 47,
+   "sustain": 100,
+   "peak_second": 10,
+   "peak_score": 0.435332
+  },
+  "curve": [
+   0.3144,
+   0.297,
+   0.2992,
+   0.3232,
+   0.3955,
+   0.3473,
+   0.3963,
+   0.3865,
+   0.3863,
+   0.3964,
+   0.4353,
+   0.4314
+  ],
+  "note": "the full 15 s file failed 3 times; 12 s cut"
+ },
+ "ep3": {
+  "file": "episodes/ep3_branch_v3_clean.mp4",
+  "job_id": "cc274d7c-e93a-41e8-9fe2-57be71ea384a",
+  "duration": 11.7,
+  "scores": {
+   "overall_score": 43,
+   "brain_engagement": 32,
+   "hook_score": 33,
+   "viral_potential": 44,
+   "sustain": 84,
+   "peak_second": 2,
+   "peak_score": 0.388457
+  },
+  "curve": [
+   0.291,
+   0.2803,
+   0.3885,
+   0.2677,
+   0.2964,
+   0.3047,
+   0.3185,
+   0.3221,
+   0.3325,
+   0.3079,
+   0.3419,
+   0.3711
+  ]
+ },
+ "sp1": {
+  "file": "analysis/sp1_first12.mp4 (first 12 s of sp1_id_card_v2_wm.mp4, 35.6 s)",
+  "job_id": "5d82f12d-6143-474f-8db0-2a7597634b9c",
+  "duration": 12.0,
+  "scores": {
+   "overall_score": 46,
+   "brain_engagement": 38,
+   "hook_score": 28,
+   "viral_potential": 48,
+   "sustain": 100,
+   "peak_second": 11,
+   "peak_score": 0.44292
+  },
+  "curve": [
+   0.3821,
+   0.3294,
+   0.3582,
+   0.3222,
+   0.3161,
+   0.3534,
+   0.3673,
+   0.4041,
+   0.4117,
+   0.4126,
+   0.4305,
+   0.4429
+  ]
+ },
+ "sp2": {
+  "file": "analysis/sp2_first12.mp4 (first 12 s of sp2_internet_wm.mp4, 52.7 s, Kling + 4 voices)",
+  "job_id": "60619780-32e5-4553-b434-fd855ae7c408",
+  "duration": 12.0,
+  "scores": {
+   "overall_score": 50,
+   "brain_engagement": 45,
+   "hook_score": 31,
+   "viral_potential": 54,
+   "sustain": 94,
+   "peak_second": 10,
+   "peak_score": 0.562587
+  },
+  "curve": [
+   0.412,
+   0.3781,
+   0.3603,
+   0.3629,
+   0.3776,
+   0.4116,
+   0.4726,
+   0.5123,
+   0.5328,
+   0.5396,
+   0.5626,
+   0.5003
+  ]
+ },
+ "react1": {
+  "file": "analysis/react1_first12.mp4 (first 12 s of react1_messages_wm.mp4, 23.9 s)",
+  "job_id": "afb3be6c-db12-4fa7-80aa-d46f94348edc",
+  "duration": 12.0,
+  "scores": {
+   "overall_score": 46,
+   "brain_engagement": 39,
+   "hook_score": 28,
+   "viral_potential": 48,
+   "sustain": 99,
+   "peak_second": 10,
+   "peak_score": 0.454273
+  },
+  "curve": [
+   0.3631,
+   0.321,
+   0.3357,
+   0.3411,
+   0.3562,
+   0.3885,
+   0.409,
+   0.431,
+   0.4418,
+   0.4372,
+   0.4543,
+   0.4427
+  ]
  }
 }
