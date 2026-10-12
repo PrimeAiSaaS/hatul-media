@@ -1,3 +1,5 @@
+> **בוצע ב-12.10:** ארבע המשימות נוצרו מחדש עם הנחיות v2 והישנות נמחקו. המזהים החדשים ב-PROJECT_CONTEXT.md. המסמך הזה נשאר לתיעוד בלבד.
+
 זו שיחה בפרויקט "חתול בהמתנה". ענה בעברית.
 
 1. קרא את מסמך ידע הפרויקט: https://raw.githubusercontent.com/PrimeAiSaaS/hatul-media/main/PROJECT_CONTEXT.md
