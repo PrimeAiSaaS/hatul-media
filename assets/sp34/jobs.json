@@ -1,0 +1,58 @@
+{
+ "frames": {
+  "sp3_a1": "d5299bba-b642-49b9-bfdd-c3fbc630de2b",
+  "sp3_a2": "7ea16d0e-a949-48b9-b0ca-9a1af3806af3",
+  "sp3_a3": "7a5ce510-200f-470f-a76e-0cf0b9c74bf7",
+  "sp3_a4": "f02d83d2-d312-4e53-bb35-dd07692549ee",
+  "sp3_a7": "26a2abd7-ac1c-47f4-bce0-dc2b727ddd8c",
+  "sp4_b1": "00b205ca-b83d-423a-9276-26c4fb953c70",
+  "sp4_b7": "15f77016-f1dd-4686-90ad-7205b6984108",
+  "sp4_b8": "9294f334-2c4a-490d-ad91-d0609ec26689",
+  "ref_cat_window": "bc05d8bc-10af-4c89-aff9-91535b549054",
+  "ref_sharit_window": "58a04c2f-0885-4619-8324-a82bdfa7313f"
+ },
+ "seedance": {
+  "sp3_k01_note": "508380e4-106b-42b1-a63a-202cb0853177",
+  "sp3_k02_couch": "60e79aef-e926-489c-87b8-fe2021ca5b1b",
+  "sp3_k03_door": "c7be8693-22d6-4450-be3d-e1d6784a0692",
+  "sp3_k04_sleep": "8984520f-4532-4161-a0be-f18381a26d22",
+  "sp3_k05_sharit": "69fdb0a1-59b6-4a41-8959-bae9a3c1f3e7",
+  "sp3_k07_deadpan": "eba1d5a6-0bd2-4fef-86ca-a0e28a665a81",
+  "sp4_k01_dizzy": "7a1eb8b4-570a-4580-9e42-850a37507f17",
+  "sp4_k06_run": "666ac19f-1b91-4044-8b59-587a0e1e9e85",
+  "sp4_k03_sharit": "f5ca939e-2f89-4527-ae3c-4abed11c76d9",
+  "sp4_k07_collapsed": "1fbdcf70-1633-477f-b7f7-c06b7564c9ba",
+  "sp4_k08_phone": "8f0a5d41-07a2-4042-a7ab-58967c0c6ae2"
+ },
+ "voices_sp3": [
+  "33db9acd-bfe8-4eec-9ef2-881d1eacb7e9",
+  "bc810cca-5f58-4211-92ab-e2ac07eb223e",
+  "8aadf36f-6502-4968-ad5f-459d57b6dccd",
+  "56e0f8ee-e661-4e00-9bbe-f6e7203e7c4a",
+  "0d9f802c-c9df-4dd3-bd1f-33591e0a3ad5",
+  "e3deeb54-5e46-43c7-b25d-33a03f58fdc2",
+  "dbd8bbcc-eca9-440c-9902-95037ae70869",
+  "69c6f13e-34a6-4075-a5dd-34f320dbaff7",
+  "ccc46027-0e7e-4b51-a205-2183011bd535",
+  "7e4c1637-7585-4c9e-8e1e-dbc204ad86ad",
+  "9d97281a-2830-4ddd-a01c-49d870d76a93"
+ ],
+ "voices_sp4": [
+  "d9ef749e-b4cc-4883-9968-2529e7db477c",
+  "7c230f92-8442-4c3f-aef1-1441bd504260",
+  "0a5caf53-8ab8-4dfb-a555-d3d90609242f",
+  "3814e5f0-22d4-4054-96b7-7a2b4cbc1f4e",
+  "a9e2f64f-0aa6-4fa7-9f8d-580e97b9e9b3",
+  "dba9a077-c447-4721-9520-da97eb91cff0",
+  "d0dfde2d-e73c-41a0-a7e9-59087fb42b50",
+  "16600cd0-5211-46b1-9020-df0133a3f43b",
+  "57153fd8-8a4a-4139-b385-cd33bf377b46",
+  "ff5a7a97-61ba-421b-8d4e-cf897ebc7648",
+  "f8441c6b-3515-4d79-9a57-62970f4ec294"
+ ],
+ "kling": {
+  "sp3_k06_catwin_angry": "bbf6a038-e804-4a78-84cd-f61d6eb29078",
+  "sp4_k02_catwin_polite": "cc5f1358-de0d-4459-94ca-13329db074ce",
+  "sp4_k05_catwin_shock": "4a53828a-a6d6-427d-840c-a035f4cadff1"
+ }
+}
