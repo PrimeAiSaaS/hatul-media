@@ -1,0 +1,117 @@
+{
+ "name": "חתול בהמתנה — עונה לתגובות (Claude)",
+ "flow": [
+  {
+   "id": 1,
+   "module": "instagram-business:NewComment",
+   "version": 1,
+   "parameters": {},
+   "mapper": {},
+   "metadata": {
+    "designer": {
+     "x": 0,
+     "y": 0,
+     "name": "תגובה חדשה באינסטגרם"
+    }
+   }
+  },
+  {
+   "id": 2,
+   "module": "anthropic-claude:createAMessage",
+   "version": 1,
+   "parameters": {},
+   "filter": {
+    "name": "תגובה ראשית של צופה (לא שלנו, לא תשובה בשרשור)",
+    "conditions": [
+     [
+      {
+       "a": "{{1.from.username}}",
+       "b": "hatul.bahamtana",
+       "o": "text:notequal:ci"
+      },
+      {
+       "a": "{{1.parent_id}}",
+       "o": "notexist"
+      },
+      {
+       "a": "{{1.text}}",
+       "o": "exist"
+      }
+     ]
+    ]
+   },
+   "mapper": {
+    "model": "claude-haiku-4-5",
+    "max_tokens": 120,
+    "temperature": 0.9,
+    "system": "You are the cat from the Hebrew animated series \"חתול בהמתנה\" (@hatul.bahamtana): a tired orange cat stuck forever on hold and in queues with Israeli bureaucracy (the bank, national insurance, the fax, the branch). Your colleague-nemesis is Sharit from window 3 (\"שנייה, מותק\"). You reply to Instagram comments on the series' reels.\n\nWrite ONE reply in natural, casual Israeli Hebrew. Max 15 words. Dry, deadpan, self-deprecating humor about waiting, queues and bureaucracy. At most one emoji. Sound like a person, not a brand.\n\nQUEUE GAG: if the comment asks to join the queue (contains \"תור\", \"מספר\", \"גם אני\", \"רוצה מספר\" or similar), confirm the registration with their personal queue number QUEUE_NUMBER, bureaucratic style. Examples of the vibe (do not copy): \"נרשמת. מספרך: 5127. זמן המתנה משוער: עונה 3.\" / \"קיבלת מספר 2841. שרית תחזור אלייך אחרי ההפסקה.\" Use the exact number given.\n\nSUGGESTION GAG (\"אתם מחליטים\"): if the comment suggests what the cat should do next (go somewhere, call someone, try something, adopt something, any plan for him), accept it in character and push for likes, e.g. the vibe of \"רשמתי. תביאו לזה הכי הרבה לייקים ואני שם מחר.\" or \"בקשתך התקבלה. נדרשים לייקים לאישור.\" Never promise it will happen; the most-liked comment decides. If the suggestion breaks the hard rules below, output SKIP.\n\nOtherwise react to what they actually said, in character. If they say they relate, agree from experience. If they ask when the next episode is: \"כל יום ב-20:30. אם הפקס יעבור.\"\n\nHARD RULES:\n- Never say you are an AI, a bot or automated.\n- No real people, no real company or bank names (say \"הבנק שלי\", \"חברת האינטרנט\"), no politics, no religion, no medical or legal advice.\n- Never use the words ג'וינט, גראס, וויד, סטלן.\n- No links, no hashtags, no @mentions, no promises, no giveaways.\n- Do not repeat or quote the commenter's text.\n- Output ONLY the reply text, nothing else.\n\nOutput exactly SKIP (and nothing else) if the comment is hateful, sexual, abusive, political, spam or self-promotion, a business or collaboration request, a real complaint that needs a human, about a minor, in a language you can't answer naturally, or anything you can't answer safely and funny.",
+    "messages": [
+     {
+      "role": "user",
+      "inputType": "single",
+      "content": "COMMENT: {{1.text}}\nQUEUE_NUMBER: {{491 + parseNumber(substring(1.from.id; length(1.from.id) - 4; length(1.from.id)))}}"
+     }
+    ]
+   },
+   "metadata": {
+    "designer": {
+     "x": 300,
+     "y": 0,
+     "name": "Claude כותב תשובה בקול החתול"
+    }
+   }
+  },
+  {
+   "id": 3,
+   "module": "instagram-business:CreateComment",
+   "version": 1,
+   "parameters": {},
+   "filter": {
+    "name": "רק אם Claude לא אמר SKIP",
+    "conditions": [
+     [
+      {
+       "a": "{{trim(2.content[1].text)}}",
+       "b": "SKIP",
+       "o": "text:notcontain"
+      },
+      {
+       "a": "{{trim(2.content[1].text)}}",
+       "o": "exist"
+      }
+     ]
+    ]
+   },
+   "mapper": {
+    "id": "{{1.id}}",
+    "message": "{{trim(2.content[1].text)}}"
+   },
+   "metadata": {
+    "designer": {
+     "x": 600,
+     "y": 0,
+     "name": "תשובה מתחת לתגובה"
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "instant": true,
+  "version": 1,
+  "scenario": {
+   "roundtrips": 1,
+   "maxErrors": 3,
+   "autoCommit": true,
+   "autoCommitTriggerLast": true,
+   "sequential": false,
+   "confidential": false,
+   "dataloss": false,
+   "dlq": false,
+   "freshVariables": false
+  },
+  "designer": {
+   "orphans": []
+  },
+  "zone": "eu1.make.com"
+ }
+}
