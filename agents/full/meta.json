@@ -18,15 +18,16 @@
   "trigger_id": "trig_0185MKRJiubwpf47eBuh6JAY",
   "name": "חתול בהמתנה: סוכן נתונים",
   "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
-  "prompt": "data_v3.md",
-  "updated_at": "2026-10-12T18:41:03Z"
+  "prompt": "data_v4.md",
+  "updated_at": "2026-10-15T09:00:00+03:00"
  },
  "ops": {
   "trigger_id": "trig_01HzqZ5KVJ2DiwFrnH6KyStA",
   "name": "חתול בהמתנה: בקר תפעול",
   "cron": "CRON_TZ=Asia/Jerusalem 47 21 * * *",
-  "prompt": "ops_v1.md",
-  "created_at": "2026-10-12T19:14:53Z"
+  "prompt": "ops_v2.md",
+  "created_at": "2026-10-12T19:14:53Z",
+  "updated_at": "2026-10-15T09:00:00+03:00"
  },
  "weekly": {
   "trigger_id": "trig_01HFxZSy1EJW5T8mzHeVsJud",
