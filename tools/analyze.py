@@ -23,7 +23,7 @@ import argparse, glob, json, os, statistics
 from datetime import datetime, timedelta, timezone
 
 IL = timezone(timedelta(hours=3))  # Israel (IDT). Close enough for day buckets; Oct 25 → +02:00 handled by --now/ISO strings.
-PLATFORMS = ["tiktok", "youtube", "instagram", "facebook"]
+PLATFORMS = ["tiktok", "youtube", "instagram", "facebook", "instagram_trial"]  # instagram_trial: Trial Reel copy (non-followers only), from 17.10
 
 # Thresholds (Growth playbook §A/§G). Kept here so every agent uses the same numbers.
 HOOK = {  # "the first seconds hold" per platform
@@ -31,12 +31,14 @@ HOOK = {  # "the first seconds hold" per platform
     "youtube":   ("stayed_to_watch", 50.0),  # YT Studio "stayed to watch" (opposite of swiped away)
     "instagram": ("view_rate_3s", 40.0),     # IGRE28: % of views that lasted > 3 s
     "facebook":  ("retention", 30.0),
+    "instagram_trial": ("view_rate_3s", 40.0),
 }
 REQUIRED = {  # fields each platform's API can give; a missing one is a data gap to fix
     "tiktok": ("views", "avg_watch_sec", "retention", "completion_rate", "shares", "for_you_pct"),
     "youtube": ("views", "avg_watch_sec", "stayed_to_watch", "shares"),
     "instagram": ("views", "avg_watch_sec", "retention", "view_rate_3s", "shares", "saved"),
     "facebook": ("views", "avg_watch_sec", "retention"),
+    "instagram_trial": ("views", "avg_watch_sec", "retention", "view_rate_3s", "shares", "saved"),
 }
 MIN_N = 100          # below this a platform result is "too early / not judgeable"
 RET_GOOD = 50.0      # avg watch % that counts as "people stay"
