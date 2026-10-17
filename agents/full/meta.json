@@ -46,8 +46,8 @@
    "make/telegram_B_replies.blueprint.json"
   ],
   "setup": "make/TELEGRAM_SETUP.md",
-  "send_scenario_id": null,
-  "replies_scenario_id": null,
+  "send_scenario_id": 8017816,
+  "replies_scenario_id": 8017868,
   "enabled": false
  }
 }
