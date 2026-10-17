@@ -18,8 +18,8 @@
   "trigger_id": "trig_0185MKRJiubwpf47eBuh6JAY",
   "name": "חתול בהמתנה: סוכן נתונים",
   "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
-  "prompt": "data_v7.md",
-  "updated_at": "2026-10-17T17:51:00+03:00"
+  "prompt": "data_v8.md",
+  "updated_at": "2026-10-18T01:15:00+03:00"
  },
  "ops": {
   "trigger_id": "trig_01HzqZ5KVJ2DiwFrnH6KyStA",
