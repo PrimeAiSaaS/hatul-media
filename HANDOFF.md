@@ -3,7 +3,7 @@
 ## קודם כל, קרא
 - ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים)
 - ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–M = החוקים)
-- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v3, sync_v4, data_v5, ops_v3, weekly_v3)
+- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v4, sync_v5, data_v6, ops_v3, weekly_v3)
 
 ## איפה הכול
 - לוח הבקרה (מסד הנתונים החי): https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB
@@ -28,7 +28,7 @@
 ## הזרימה
 1. סוכן ההפקה בונה פרק, מריץ חיזוי ויראליות ומכין סטוריז. הפרק מגיע ללוח בסטטוס review.
 2. אני מאשר בלוח (approved).
-3. הסנכרון (18:52) מתזמן את הפרק ב-Metricool לכל 4 הרשתות ב-20:30 + עותק Trial Reel באינסטגרם (לקהל שלא עוקב), וסטוריז ב-12:00.
+3. הסנכרון (18:52) מתזמן את הפרק ב-Metricool לכל 4 הרשתות ב-20:30 + Trial Reel באינסטגרם עם פתיחה B (לקהל שלא עוקב; סוכן ההפקה מרנדר אותה עם tools/hook_variant.py), וסטוריז ב-12:00.
 4. Metricool מפרסם ב-20:30.
 5. סוכן הנתונים מודד ומריץ analyze.py.
 6. בקר התפעול בודק שהכול רץ ומודיע לי רק כשצריך פעולה.
@@ -36,7 +36,7 @@
 ## מה לתפעל כשאני פותח שיחה
 1. לקרוא את audit/latest (בקר התפעול כותב אותו כל ערב ב-21:47) ואת runs/*: האם כל הסוכנים רצו, ואם משהו נכשל, למה.
 2. להציג מה ממתין לאישור שלי ואיזה יום ב-3 הימים הקרובים ריק בלי פרק.
-3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים ב-agents/full/data_v5.md), ולחשב עם tools/analyze.py ולא להסתמך רק על הלוח.
+3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים ב-agents/full/data_v6.md), ולחשב עם tools/analyze.py ולא להסתמך רק על הלוח.
 4. לשנות התנהגות של סוכן: לעדכן את agents/full/<agent>_vN.md במאגר ובפרויקט ואת meta.json, ואז update_trigger עם הטקסט המלא. לא למחוק משימה וליצור מחדש.
 5. אחרי כל שינוי מהותי: לעדכן את PROJECT_CONTEXT.md, גם במאגר וגם בפרויקט.
 
