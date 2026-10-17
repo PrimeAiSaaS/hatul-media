@@ -3,7 +3,7 @@
 ## קודם כל, קרא
 - ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים)
 - ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–M = החוקים)
-- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v4, sync_v5, data_v6, ops_v3, weekly_v3)
+- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v5, sync_v5, data_v6, ops_v3, weekly_v3)
 
 ## איפה הכול
 - לוח הבקרה (מסד הנתונים החי): https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB

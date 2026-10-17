@@ -2,8 +2,9 @@
 """
 "אתם מחליטים" overlays (Series Bible §N) — a fixed game HUD, a viewer-comment card and the vote card.
 
-  from hud import hud, comment_card, vote_card, rules_card
-  hud(frame, 'פרק 1', followers=212, queue=500, pop=None)      # draws in place on an RGBA 1080x1920 frame
+  from hud import hud, comment_card, vote_card, rules_card, stage_of, stage_label, stage_clear_for
+  st = stage_of(arc, counts)                                    # arc = dashboard arc/current, counts = {network: followers}
+  hud(frame, 'פרק 1', followers=212, queue=st['queue'], stage=stage_label(st), pop=None)   # in place, RGBA 1080x1920
   layer = comment_card('someone', 'שילך לבנק', 12, example=True, glow=0.0)   # RGBA layer, paste with make_video.paste_center
   layer = vote_card()                                          # end card: "מה החתול עושה מחר?"
   python3 hud.py demo                                          # → out/hud_demo.png
@@ -55,13 +56,14 @@ def _pill(label, icon=None, fill=(255, 255, 255), ink=INK, scale=1.0):
     return im
 
 
-def hud(frame, ep_label, followers=None, queue=None, pop=None, scale=1.0):
-    """Draw the HUD on an RGBA frame in place.
-    pop = None (all visible) or a dict {'ep': k, 'followers': k, 'queue': k} with 0..1 drop-in progress per pill."""
+def hud(frame, ep_label, followers=None, queue=None, pop=None, scale=1.0, stage=None):
+    """Draw the HUD on an RGBA frame in place. stage = short label from stage_label() (e.g. 'שלב 1 · ביטוח לאומי').
+    pop = None (all visible) or a dict {'ep': k, 'stage': k, 'followers': k, 'queue': k} with 0..1 drop-in progress per pill."""
     def k_of(key):
         if pop is None: return 1.0
         return max(0.0, min(1.0, pop.get(key, 1.0)))
     items = [('ep', _pill(ep_label, None, fill=YELLOW, scale=scale), 'left')]
+    if stage: items.append(('stage', _pill(stage, None, fill=(255, 255, 255), scale=scale * 0.82), 'left'))
     if followers is not None: items.append(('followers', _pill(f'{int(followers):,}', 'person', scale=scale), 'right'))
     if queue is not None: items.append(('queue', _pill(f'{int(queue)}', 'ticket', scale=scale), 'right'))
     x_left, x_right = 40, W - 40
@@ -169,10 +171,80 @@ def rules_card(which):
     return _plain_card(['כל עוקב חדש'], ['= מקום אחד קדימה בתור'])
 
 
+# §N rule 2b — stages (Gabi, 17.10): each office is a level. The ticket starts at the stage's queue_start and every new
+# follower moves the cat one place forward. At number 1 the cat reaches the window: that office is cleared (a stage-clear
+# episode), and the next office hands out a new ticket. Cleared stages stay cleared even if followers later drop.
+DEFAULT_STAGES = [
+    {'key': 'bituach', 'office': 'ביטוח לאומי', 'queue_start': 500},
+    {'key': 'bank', 'office': 'הבנק שלי', 'queue_start': 1000},
+    {'key': 'pnim', 'office': 'משרד הפנים', 'queue_start': 2000},
+    {'key': 'iriya', 'office': 'העירייה', 'queue_start': 5000},
+]
+
+
+def gained_since(arc, counts):
+    """Followers gained since the base. counts = {network: followers now}. arc['followers_base'] is a dict per network
+    (only networks that have a base count) or a legacy int total (then counts may be an int total). Returns None if unknown."""
+    base = arc.get('followers_base')
+    if base is None or counts is None: return None
+    if isinstance(base, dict):
+        if not isinstance(counts, dict): return int(counts) - sum(int(v) for v in base.values() if v is not None)  # legacy total
+        nets = [n for n, b in base.items() if b is not None and counts.get(n) is not None]
+        if not nets: return None
+        return sum(int(counts[n]) - int(base[n]) for n in nets)
+    total = sum(v for v in counts.values() if v is not None) if isinstance(counts, dict) else counts
+    return int(total) - int(base)
+
+
+def stage_of(arc, counts):
+    """Where the cat is now. Returns {index (0-based), total, key, office, queue, queue_start, need, into, left,
+    cleared (list of stage keys incl. newly reached), new_clear (key of a stage reached now but not yet in arc['cleared']),
+    next_office, next_queue_start, gained} or None when followers are unknown."""
+    g = gained_since(arc, counts)
+    if g is None: return None
+    stages = arc.get('stages') or [{'key': 's1', 'office': '', 'queue_start': int(arc.get('queue_start', 500))}]
+    done = [c['stage'] if isinstance(c, dict) else c for c in (arc.get('cleared') or [])]
+    rem, i = g, 0
+    while i < len(stages) - 1:
+        need = int(stages[i]['queue_start']) - 1
+        if rem >= need or stages[i]['key'] in done:
+            rem -= need; i += 1
+        else:
+            break
+    st = stages[i]; start = int(st['queue_start']); need = start - 1
+    queue = max(1, start - rem)
+    cleared = [s['key'] for s in stages[:i]] + ([st['key']] if queue == 1 else [])
+    new_clear = next((k for k in cleared if k not in done), None)
+    nxt = stages[i + 1] if i + 1 < len(stages) else None
+    return {'index': i, 'total': len(stages), 'key': st['key'], 'office': st['office'], 'queue': queue, 'queue_start': start,
+            'need': need, 'into': rem, 'left': max(0, queue - 1), 'cleared': cleared, 'new_clear': new_clear,
+            'next_office': nxt['office'] if nxt else None, 'next_queue_start': int(nxt['queue_start']) if nxt else None, 'gained': g}
+
+
+def stage_label(st):
+    return f"שלב {st['index'] + 1} · {st['office']}" if st and st.get('office') else None
+
+
 def queue_of(arc, followers_now):
-    """§N rule 2: queue_start − (followers_now − followers_base), never below 1."""
-    if followers_now is None or arc.get('followers_base') is None: return None
-    return max(1, int(arc.get('queue_start', 500)) - (int(followers_now) - int(arc['followers_base'])))
+    """§N rule 2 (kept for older episode scripts): the ticket number in the current stage, never below 1."""
+    st = stage_of(arc, followers_now)
+    return st['queue'] if st else None
+
+
+def stage_clear_card(office, next_office=None, next_queue=None):
+    """The stage-clear moment: number 1 at <office>, then the next office's ticket."""
+    small = [f'השלב הבא: {next_office} · מספר {next_queue:,}'] if next_office else ['סיימתם את כל השלבים']
+    return _plain_card(['מספר 1!', f'החתול עבר את {office}'], small)
+
+
+def stage_clear_for(arc, st):
+    """stage_clear_card for the stage that st['new_clear'] names (the one just reached), or None."""
+    if not st or not st.get('new_clear'): return None
+    stages = arc.get('stages') or DEFAULT_STAGES
+    done = next((x for x in stages if x['key'] == st['new_clear']), None)
+    if not done: return None
+    nxt = st if st['key'] != done['key'] else None
+    return stage_clear_card(done['office'], nxt['office'] if nxt else None, nxt['queue_start'] if nxt else None)
 
 
 if __name__ == '__main__' and len(sys.argv) > 1 and sys.argv[1] == 'demo':
@@ -182,11 +254,14 @@ if __name__ == '__main__' and len(sys.argv) > 1 and sys.argv[1] == 'demo':
         bg = Image.open(src).convert('RGB').resize((W, H)).convert('RGBA')
     else:
         bg = Image.new('RGBA', (W, H), (200, 214, 232, 255))
-    a = bg.copy(); hud(a, 'פרק 1', 212, 500)
+    arc = {'stages': DEFAULT_STAGES, 'followers_base': {'tiktok': 5, 'youtube': 3, 'facebook': 0}, 'cleared': []}
+    st = stage_of(arc, {'tiktok': 66, 'youtube': 5, 'facebook': 0})
+    a = bg.copy(); hud(a, 'פרק 1', 71, st['queue'], stage=stage_label(st))
     m.paste_center(a, comment_card('noa.example', 'שילך סוף סוף לסדר את הארנונה', 108, glow=1.0), W / 2, 760)
     m.paste_center(a, comment_card('dudi.example', 'שיתקשר לבנק ויבקש לדבר עם מנהל', 57, example=True), W / 2, 1100)
-    b = bg.copy(); hud(b, 'פרק 1', 212, 499)
-    m.paste_center(b, vote_card(), W / 2, 980)
+    st2 = stage_of(arc, {'tiktok': 504, 'youtube': 3, 'facebook': 0})   # 499 gained: ביטוח לאומי reached number 1
+    b = bg.copy(); hud(b, 'פרק 9', 507, st2['queue'], stage=stage_label(st2))
+    m.paste_center(b, stage_clear_for(arc, st2), W / 2, 980)
     sheet = Image.new('RGB', (W, H // 2))
     sheet.paste(a.convert('RGB').resize((W // 2, H // 2)), (0, 0)); sheet.paste(b.convert('RGB').resize((W // 2, H // 2)), (W // 2, 0))
     out = os.path.join(m.OUTDIR, 'hud_demo.png'); sheet.save(out); print(out)
