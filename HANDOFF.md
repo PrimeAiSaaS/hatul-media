@@ -3,7 +3,7 @@
 ## קודם כל, קרא
 - ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים)
 - ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–M = החוקים)
-- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v5, sync_v5, data_v6, ops_v3, weekly_v3)
+- ההנחיות של הסוכנים: agents/full/meta.json מצביע על ההנחיה החיה של כל משימה (production_v6, sync_v6, data_v7, ops_v3, weekly_v3)
 
 ## איפה הכול
 - לוח הבקרה (מסד הנתונים החי): https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB
@@ -36,7 +36,7 @@
 ## מה לתפעל כשאני פותח שיחה
 1. לקרוא את audit/latest (בקר התפעול כותב אותו כל ערב ב-21:47) ואת runs/*: האם כל הסוכנים רצו, ואם משהו נכשל, למה.
 2. להציג מה ממתין לאישור שלי ואיזה יום ב-3 הימים הקרובים ריק בלי פרק.
-3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים ב-agents/full/data_v6.md), ולחשב עם tools/analyze.py ולא להסתמך רק על הלוח.
+3. כשאני שואל על ביצועים, לשלוף עכשיו מ-Metricool (getAnalyticsDataByMetrics; מזהי המדדים ב-agents/full/data_v7.md), ולחשב עם tools/analyze.py ולא להסתמך רק על הלוח.
 4. לשנות התנהגות של סוכן: לעדכן את agents/full/<agent>_vN.md במאגר ובפרויקט ואת meta.json, ואז update_trigger עם הטקסט המלא. לא למחוק משימה וליצור מחדש.
 5. אחרי כל שינוי מהותי: לעדכן את PROJECT_CONTEXT.md, גם במאגר וגם בפרויקט.
 
