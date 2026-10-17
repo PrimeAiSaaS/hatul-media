@@ -1,0 +1,555 @@
+{
+ "name": "חתול בהמתנה · תשובות מטלגרם",
+ "flow": [
+  {
+   "id": 1,
+   "module": "telegram:WatchUpdates",
+   "version": 1,
+   "parameters": {},
+   "mapper": {},
+   "metadata": {
+    "designer": {
+     "x": 0,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": 2,
+   "module": "datastore:GetRecord",
+   "version": 1,
+   "parameters": {
+    "datastore": 222569
+   },
+   "mapper": {
+    "key": "settings",
+    "returnWrapped": false
+   },
+   "metadata": {
+    "designer": {
+     "x": 300,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": 3,
+   "module": "builtin:BasicRouter",
+   "version": 1,
+   "mapper": null,
+   "metadata": {
+    "designer": {
+     "x": 600,
+     "y": 0
+    }
+   },
+   "routes": [
+    {
+     "flow": [
+      {
+       "id": 10,
+       "module": "datastore:AddRecord",
+       "version": 1,
+       "parameters": {
+        "datastore": 222569
+       },
+       "mapper": {
+        "key": "settings",
+        "overwrite": true,
+        "data": {
+         "kind": "settings",
+         "chat_id": "{{1.message.chat.id}}",
+         "awaiting_note": "-"
+        }
+       },
+       "metadata": {
+        "designer": {
+         "x": 900,
+         "y": -300
+        }
+       },
+       "filter": {
+        "name": "/start ראשון",
+        "conditions": [
+         [
+          {
+           "a": "{{1.message.text}}",
+           "o": "text:startwith",
+           "b": "/start"
+          },
+          {
+           "a": "{{ifempty(2.chat_id; 2.data.chat_id)}}",
+           "o": "notexist"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "id": 11,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "sendMessage",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "chat_id",
+          "value": "{{1.message.chat.id}}"
+         },
+         {
+          "key": "text",
+          "value": "✅ מחובר! מעכשיו כל פרק חדש של חתול בהמתנה יגיע לכאן עם כפתור אישור."
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1200,
+         "y": -300
+        }
+       }
+      }
+     ]
+    },
+    {
+     "flow": [
+      {
+       "id": 20,
+       "module": "google-docs:replaceATextInADocument",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "destination": "drive",
+        "document": "1tFt5xso0ITRdnIq83KiBMD23vgP0xOvDlwRWiiR6qTE",
+        "replaceText": [
+         {
+          "oldText": "<<NEW>>",
+          "newText": "<<NEW>>\nTG|APPROVE|{{replace(1.callback_query.data; \"ap|\"; \"\")}}|{{formatDate(now; \"YYYY-MM-DDTHH:mm:ssZ\"; \"Asia/Jerusalem\")}}|{{1.update_id}}"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 900,
+         "y": -100
+        }
+       },
+       "filter": {
+        "name": "אישור",
+        "conditions": [
+         [
+          {
+           "a": "{{1.callback_query.data}}",
+           "o": "text:startwith",
+           "b": "ap|"
+          },
+          {
+           "a": "{{1.callback_query.from.id}}",
+           "o": "text:equal",
+           "b": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "id": 21,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "answerCallbackQuery",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "callback_query_id",
+          "value": "{{1.callback_query.id}}"
+         },
+         {
+          "key": "text",
+          "value": "✅ אושר"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1200,
+         "y": -100
+        }
+       }
+      },
+      {
+       "id": 22,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "sendMessage",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "chat_id",
+          "value": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+         },
+         {
+          "key": "text",
+          "value": "✅ {{replace(1.callback_query.data; \"ap|\"; \"\")}} אושר. הסוכן יסמן אותו בלוח ויתזמן אותו בריצה הבאה (09:53, 18:52 או 21:47). פרק שעולה היום צריך אישור עד 18:52."
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1500,
+         "y": -100
+        }
+       }
+      }
+     ]
+    },
+    {
+     "flow": [
+      {
+       "id": 30,
+       "module": "datastore:UpdateRecord",
+       "version": 1,
+       "parameters": {
+        "datastore": 222569
+       },
+       "mapper": {
+        "key": "settings",
+        "insert": false,
+        "data": {
+         "awaiting_note": "{{replace(1.callback_query.data; \"nt|\"; \"\")}}"
+        }
+       },
+       "metadata": {
+        "designer": {
+         "x": 900,
+         "y": 100
+        }
+       },
+       "filter": {
+        "name": "בקשת הערה",
+        "conditions": [
+         [
+          {
+           "a": "{{1.callback_query.data}}",
+           "o": "text:startwith",
+           "b": "nt|"
+          },
+          {
+           "a": "{{1.callback_query.from.id}}",
+           "o": "text:equal",
+           "b": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "id": 31,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "answerCallbackQuery",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "callback_query_id",
+          "value": "{{1.callback_query.id}}"
+         },
+         {
+          "key": "text",
+          "value": "✏️ כתוב את ההערה"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1200,
+         "y": 100
+        }
+       }
+      },
+      {
+       "id": 32,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "sendMessage",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "chat_id",
+          "value": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+         },
+         {
+          "key": "text",
+          "value": "✏️ כתוב עכשיו בהודעה אחת מה לשנות ב-{{replace(1.callback_query.data; \"nt|\"; \"\")}}. סוכן ההפקה יקבל את זה."
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1500,
+         "y": 100
+        }
+       }
+      }
+     ]
+    },
+    {
+     "flow": [
+      {
+       "id": 40,
+       "module": "datastore:GetRecord",
+       "version": 1,
+       "parameters": {
+        "datastore": 222569
+       },
+       "mapper": {
+        "key": "{{replace(1.callback_query.data; \"b|\"; \"\")}}",
+        "returnWrapped": false
+       },
+       "metadata": {
+        "designer": {
+         "x": 900,
+         "y": 300
+        }
+       },
+       "filter": {
+        "name": "פתיחה B",
+        "conditions": [
+         [
+          {
+           "a": "{{1.callback_query.data}}",
+           "o": "text:startwith",
+           "b": "b|"
+          },
+          {
+           "a": "{{1.callback_query.from.id}}",
+           "o": "text:equal",
+           "b": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "id": 41,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "answerCallbackQuery",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "callback_query_id",
+          "value": "{{1.callback_query.id}}"
+         },
+         {
+          "key": "text",
+          "value": "▶ שולח את פתיחה B"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1200,
+         "y": 300
+        }
+       }
+      },
+      {
+       "id": 42,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "sendVideo",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "chat_id",
+          "value": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+         },
+         {
+          "key": "video",
+          "value": "{{ifempty(ifempty(40.trial_url; 40.data.trial_url); ifempty(40.video_url; 40.data.video_url))}}"
+         },
+         {
+          "key": "caption",
+          "value": "פתיחה B (Trial Reel) · {{replace(1.callback_query.data; \"b|\"; \"\")}}"
+         },
+         {
+          "key": "supports_streaming",
+          "value": "true"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1500,
+         "y": 300
+        }
+       }
+      }
+     ]
+    },
+    {
+     "flow": [
+      {
+       "id": 50,
+       "module": "google-docs:replaceATextInADocument",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "destination": "drive",
+        "document": "1tFt5xso0ITRdnIq83KiBMD23vgP0xOvDlwRWiiR6qTE",
+        "replaceText": [
+         {
+          "oldText": "<<NEW>>",
+          "newText": "<<NEW>>\nTG|NOTE|{{ifempty(2.awaiting_note; 2.data.awaiting_note)}}|{{formatDate(now; \"YYYY-MM-DDTHH:mm:ssZ\"; \"Asia/Jerusalem\")}}|{{1.update_id}}|{{replace(1.message.text; newline; \" \")}}"
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 900,
+         "y": 500
+        }
+       },
+       "filter": {
+        "name": "טקסט של הערה",
+        "conditions": [
+         [
+          {
+           "a": "{{1.message.text}}",
+           "o": "exist"
+          },
+          {
+           "a": "{{1.message.text}}",
+           "o": "text:notstartwith",
+           "b": "/"
+          },
+          {
+           "a": "{{1.message.from.id}}",
+           "o": "text:equal",
+           "b": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+          },
+          {
+           "a": "{{ifempty(2.awaiting_note; 2.data.awaiting_note)}}",
+           "o": "exist"
+          },
+          {
+           "a": "{{ifempty(2.awaiting_note; 2.data.awaiting_note)}}",
+           "o": "text:notequal",
+           "b": "-"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "id": 51,
+       "module": "datastore:AddRecord",
+       "version": 1,
+       "parameters": {
+        "datastore": 222569
+       },
+       "mapper": {
+        "key": "settings",
+        "overwrite": true,
+        "data": {
+         "kind": "settings",
+         "chat_id": "{{ifempty(2.chat_id; 2.data.chat_id)}}",
+         "awaiting_note": "-"
+        }
+       },
+       "metadata": {
+        "designer": {
+         "x": 1200,
+         "y": 500
+        }
+       }
+      },
+      {
+       "id": 52,
+       "module": "telegram:UniversalAPICall",
+       "version": 1,
+       "parameters": {},
+       "mapper": {
+        "urlMethod": "sendMessage",
+        "method": "POST",
+        "headers": [],
+        "qs": [],
+        "bodyType": "assembled_body",
+        "body_spec": [
+         {
+          "key": "chat_id",
+          "value": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+         },
+         {
+          "key": "text",
+          "value": "📝 ההערה נשמרה. סוכן ההפקה יקרא אותה בריצה הבאה."
+         }
+        ]
+       },
+       "metadata": {
+        "designer": {
+         "x": 1500,
+         "y": 500
+        }
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "instant": true,
+  "version": 1,
+  "scenario": {
+   "roundtrips": 1,
+   "maxErrors": 3,
+   "autoCommit": true,
+   "autoCommitTriggerLast": true,
+   "sequential": false,
+   "confidential": false,
+   "dataloss": false,
+   "dlq": false,
+   "freshVariables": false
+  },
+  "designer": {
+   "orphans": []
+  },
+  "zone": "eu1.make.com"
+ }
+}

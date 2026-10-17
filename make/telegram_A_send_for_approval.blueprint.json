@@ -1,0 +1,147 @@
+{
+ "name": "חתול בהמתנה · שליחת פרק לאישור בטלגרם",
+ "flow": [
+  {
+   "id": 1,
+   "module": "datastore:SearchRecord",
+   "version": 1,
+   "parameters": {
+    "datastore": 222569,
+    "limit": 10
+   },
+   "mapper": {
+    "filter": [
+     [
+      {
+       "a": "kind",
+       "o": "text:equal",
+       "b": "episode"
+      },
+      {
+       "a": "sent",
+       "o": "boolean:isfalse"
+      }
+     ]
+    ],
+    "sort": []
+   },
+   "metadata": {
+    "designer": {
+     "x": 0,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": 2,
+   "module": "datastore:GetRecord",
+   "version": 1,
+   "parameters": {
+    "datastore": 222569
+   },
+   "mapper": {
+    "key": "settings",
+    "returnWrapped": false
+   },
+   "metadata": {
+    "designer": {
+     "x": 300,
+     "y": 0
+    }
+   }
+  },
+  {
+   "id": 3,
+   "module": "telegram:UniversalAPICall",
+   "version": 1,
+   "parameters": {},
+   "mapper": {
+    "urlMethod": "sendVideo",
+    "method": "POST",
+    "headers": [],
+    "qs": [],
+    "bodyType": "assembled_body",
+    "body_spec": [
+     {
+      "key": "chat_id",
+      "value": "{{ifempty(2.chat_id; 2.data.chat_id)}}"
+     },
+     {
+      "key": "video",
+      "value": "{{ifempty(1.data.video_url; 1.video_url)}}"
+     },
+     {
+      "key": "caption",
+      "value": "{{ifempty(1.data.caption; 1.caption)}}"
+     },
+     {
+      "key": "supports_streaming",
+      "value": "true"
+     },
+     {
+      "key": "reply_markup",
+      "value": "{\"inline_keyboard\": [[{\"text\": \"✅ אשר לפרסום\", \"callback_data\": \"ap|{{ifempty(1.data.doc; 1.doc)}}\"}, {\"text\": \"✏️ הערה\", \"callback_data\": \"nt|{{ifempty(1.data.doc; 1.doc)}}\"}], [{\"text\": \"▶ פתיחה B\", \"callback_data\": \"b|{{ifempty(1.data.doc; 1.doc)}}\"}]]}"
+     }
+    ]
+   },
+   "metadata": {
+    "designer": {
+     "x": 600,
+     "y": 0
+    }
+   },
+   "filter": {
+    "name": "יש צ'אט מחובר",
+    "conditions": [
+     [
+      {
+       "a": "{{ifempty(2.chat_id; 2.data.chat_id)}}",
+       "o": "exist"
+      }
+     ]
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "module": "datastore:UpdateRecord",
+   "version": 1,
+   "parameters": {
+    "datastore": 222569
+   },
+   "mapper": {
+    "key": "{{1.key}}",
+    "insert": false,
+    "data": {
+     "sent": true,
+     "sent_at": "{{now}}"
+    }
+   },
+   "metadata": {
+    "designer": {
+     "x": 900,
+     "y": 0
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "instant": false,
+  "version": 1,
+  "scenario": {
+   "roundtrips": 1,
+   "maxErrors": 3,
+   "autoCommit": true,
+   "autoCommitTriggerLast": true,
+   "sequential": false,
+   "confidential": false,
+   "dataloss": false,
+   "dlq": false,
+   "freshVariables": false
+  },
+  "designer": {
+   "orphans": []
+  },
+  "zone": "eu1.make.com"
+ }
+}
