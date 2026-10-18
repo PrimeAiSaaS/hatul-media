@@ -4,8 +4,8 @@
   "trigger_id": "trig_01K8PoHKFoWtvxxmeHUeChKY",
   "name": "חתול בהמתנה: הפקת פרק",
   "cron": "CRON_TZ=Asia/Jerusalem 53 9 * * *",
-  "prompt": "production_v7.md",
-  "updated_at": "2026-10-17T19:34:00+03:00"
+  "prompt": "production_v8.md",
+  "updated_at": "2026-10-18T23:45:00+03:00"
  },
  "sync": {
   "trigger_id": "trig_01EiuozAjMDScB9wKzowH1X6",
