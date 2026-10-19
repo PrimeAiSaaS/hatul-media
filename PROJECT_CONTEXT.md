@@ -70,6 +70,7 @@
 - הזרימה: סוכן ההפקה מסיים פרק → כותב רשומה ל-data store 222569 "חתול בהמתנה · טלגרם" (מבנה 643171; מפתח = מזהה מסמך הפרק) → מריץ את תרחיש A (On demand) → הבוט שולח לגבי את הסרטון עם ✅ אשר / ✏️ הערה / ▶ פתיחה B.
 - תרחיש B (instant, Watch Updates): לחיצה של גבי → שורה במסמך Google 1tFt5xso0ITRdnIq83KiBMD23vgP0xOvDlwRWiiR6qTE ("חתול בהמתנה — אישורים מטלגרם") מתחת ל-<<NEW>>: TG|APPROVE|<doc>|<at>|<update_id> או TG|NOTE|<doc>|<at>|<update_id>|<טקסט>. רק הודעות מה-chat_id ששמור ברשומה settings (נקבע ב-/start הראשון).
 - סוכן ההפקה (סעיף 11, 09:53) וסוכן הסנכרון (סעיף 1א, 18:52) מיישמים: approved רק אם הפרק ב-review ו-updated_at שלו לפני הלחיצה; approved_via "telegram". זה החריג היחיד ל"רק גבי מסמן approved". meta/telegram.applied מונע יישום כפול.
+- 19.10 12:40: **פעיל.** גבי חיבר את הבוט (חיבור HATUL.BAHAMTANA), יצר את ה-webhook, הדליק את A ו-B ושלח /start. Google Docs ב-B מחובר דרך gabzihaskaha@gmail.com, והמסמך שותף איתו כעורך. בדיקה הלוך-חזור עברה (arc1 אושר בטלגרם 12:30 ויושם). meta/telegram.enabled = true. נשלחו לאישור arc1, ep103, ep104, ep11, ep12. תוקנה כותרת המסמך: היא הכילה את הסימן <<NEW>>, ולכן Make הכפיל כל שורה.
 - 17.10 19:50: Claude ייבא את התרחישים: A = 8017816 (On demand), B = 8017868 (instant), שניהם כבויים. חסרים רק חיבור Telegram Bot (טוקן, גבי) וחיבור Google ל-Google Docs (התחברות, גבי). המתג: meta/telegram.enabled בלוח. Blueprints והוראות: make/telegram_*.blueprint.json, make/TELEGRAM_SETUP.md. הטוקן של הבוט אצל גבי בלבד.
 
 ## תיבת השראה (19.10, גבי: "כן")
