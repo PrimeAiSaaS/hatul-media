@@ -45,6 +45,8 @@ EP_LABEL = 'פרק 23'
 TAG_OUT = os.environ.get('OUTNAME', 'ep23_sms')
 T0_CLOCK = 23 * 3600 + 59 * 60 + 46          # the wall clock at frame 0 (real time from there)
 BIGP = os.environ.get('BIGP', '0') == '1'    # probe: phone bigger next to the face
+BIGF = os.environ.get('BIGF', '0') == '1'    # probe: bigger cat head, already in frame at 0 (short slide)
+NOSPLIT = os.environ.get('NOSPLIT', '0') == '1'   # probe: full-frame cuts between grandma and the cat instead of the split screen
 
 SHOTS = [('cat', 0.0, 1.9), ('split', 1.9, 6.2), ('cat', 6.2, 7.4), ('split', 7.4, 9.2), ('cat', 9.2, DUR + 1)]
 SLIDE = (0.0, 0.3)       # he slides into frame
@@ -254,7 +256,7 @@ def cat_state_split(t, i):
     return st, rot, dy
 
 # ------------------------------------------------------------------ scenes
-HX, HY, F = 690, 900, 1.8
+HX, HY, F = 690, 900, (2.05 if BIGF else 1.8)
 QUEUE_BEHIND = [('c0', 150, 760, 0.55, 0.0), ('h1', 1000, 700, 0.45, 1.1), ('c3', 1010, 1150, 0.55, 2.0)]
 CLOCK_C = (330, 640)
 
@@ -288,8 +290,8 @@ def scene_cat(t, i):
     d = ImageDraw.Draw(img)
     st, rot, dy = cat_state_close(t, i)
     sx = 0.0
-    if t < SLIDE[1]: sx = lerp(280, 0, ease_out(clamp(t / SLIDE[1])))          # sliding in from the right
-    hx = HX + sx + (80 if t >= 9.2 else 0)
+    if t < SLIDE[1]: sx = lerp(110 if BIGF else 280, 0, ease_out(clamp(t / SLIDE[1])))          # sliding in from the right
+    hx = HX + sx + ((130 if BIGF else 80) if t >= 9.2 else 0)
     E(d, hx, 1640, 450, 470, fill=FUR, outline=OUT, width=7)
     E(d, hx, 1700, 210, 320, fill=CREAM)
     if t < SLIDE[1] + 0.1:                                 # speed lines behind him
@@ -373,7 +375,25 @@ def scene_gran(t, i):
     burst(img, (hand[0] - 10, hand[1] - 210), t - PICK, (255, 236, 120), 160, 10, 0.35)
     return img
 
+def gran_talking(t):
+    return (RING[0] <= t < GHI[1]) or (DIG[0] - 0.25 <= t < 5.7) or (FAST[0] <= t < YES[0])
+
+def full_frame(t, i):
+    if gran_talking(t):
+        fr = scene_gran(t, i).resize((W, H), Image.LANCZOS)
+        if GHI[0] <= t < GHI[1]: SH.bubble_scr(fr, 'חמוד!', t - GHI[0], (330, 330, 300, 120), (420, 470))
+        if DIG[0] - 0.25 <= t < 5.7:
+            k = max(0, min(2, sum(1 for d in DIG[:3] if t >= d - 0.2) - 1))
+            SH.bubble_scr(fr, SLOW_WORDS[k], 0.8, (330, 330, 360, 120), (420, 470))
+        if FAST[0] <= t < YES[0]: SH.bubble_scr(fr, 'שבע! אחת! שש!', t - FAST[0], (360, 330, 520, 120), (440, 470))
+        return fr
+    fr = scene_split_cat(t, i).resize((W, H), Image.LANCZOS)
+    if CASK[0] <= t < CASK[1]: SH.bubble_scr(fr, 'סבתא! הקוד! מהר!', t - CASK[0], (600, 1560, 640, 120), (640, 1420), side=1)
+    if YES[0] <= t < YES[1]: SH.bubble_scr(fr, 'יש!!!', t - YES[0], (640, 1560, 300, 120), (660, 1420), side=1)
+    return fr
+
 def split_frame(t, i):
+    if NOSPLIT: return full_frame(t, i)
     g = scene_gran(t, i)
     c = scene_split_cat(t, i)
     top = g.crop((0, S(830 - 560), W * K, S(830 + 400))).resize((W, 960), Image.LANCZOS)
@@ -496,7 +516,7 @@ def draw_frame(i):
             if abs(sc - 1) > 0.004:
                 cap = cap.resize((max(1, int(cap.width * sc)), max(1, int(cap.height * sc))), Image.BICUBIC)
             m.paste_center(frame, cap, W / 2, yc)
-    if name == 'split': meter(frame, t, 960)
+    if name == 'split': meter(frame, t, (1560 if gran_talking(t) else 470) if NOSPLIT else 960)
     elif not (WELCOME[0] <= t < BREAK): meter(frame, t, 470)
     if t < 1.9:
         frame.alpha_composite(PILL_EP, (40, 70)); frame.alpha_composite(PILL_Q, (W - 40 - PILL_Q.width, 70))

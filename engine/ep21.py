@@ -43,6 +43,7 @@ BEAT = 60 / 80
 QUEUE = int(os.environ.get('QUEUE', '476'))
 EP_LABEL = 'פרק 21'
 TAG_OUT = os.environ.get('OUTNAME', 'ep21_frozen_v2')
+TIGHT2 = os.environ.get('TIGHT2', '0') == '1'   # probe: two-shots framed tight on both faces
 
 SHOTS = [('kiosk', 0.0, 1.9), ('two', 1.9, 5.0), ('cat', 5.0, 6.3), ('two', 6.3, 8.4), ('kiosk', 8.4, DUR + 1)]
 DECL1, DECL2 = 0.1, 0.8
@@ -399,6 +400,7 @@ def camera(t):
                 if us < 0.35: sh_ = 3 + 18 * math.exp(-us * 9)
     elif name == 'two':
         if t - a < 0.3: z = lerp(1.18, 1.0, ease_out((t - a) / 0.3))
+        if TIGHT2: z, cx, cy = max(z, 1.0) * 1.25, 520.0, 1080.0
         u = t - IDSLAP
         if 0 <= u < 0.4: z = max(z, 1.0 + 0.07 * math.exp(-u * 9)); cy = 1100
         us = t - STAMP
