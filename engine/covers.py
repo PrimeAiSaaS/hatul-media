@@ -29,8 +29,9 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep18_v2_norm.mp4', 3.65, 18, 'דוח חניה'),   # v2 (§P, 28.10): two-shot, the stamp in the air, no caption
     ('ep19.mp4', 6.4, 19, 'התמונה לרישיון'),   # two-shot before the punchline (no caption there)   # built from ep18.draw_frame(210) with CAPTIONS=[] (every cat frame has a caption)
     ('ep20_v2_norm.mp4', 11.0, 20, 'הגרר'),   # v2 (§P, 29.10): peak in the car, eyes closed, the clock at 15:59 (no caption 9.8–)
-    ('ep21_norm.mp4', 7.95, 21, 'החשבון הוקפא'),
-    ('ep22_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # §P peak: eyes closed, the bag with the code on the counter (no caption 11.15–12.0)   # two-shot before "וואלה." (no caption 7.8–8.15)   # Eilat, the new notice just slapped on (no caption 10.3–11.2)
+    ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
+    ('ep22_norm.mp4', 11.4, 22, 'הפרטים דלפו'),
+    ('ep23_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # §P peak: paw over "כניסה", 23:59:57 (no caption 11.05–)   # §P peak: eyes closed, the bag with the code on the counter (no caption 11.15–12.0)   # two-shot before "וואלה." (no caption 7.8–8.15)   # Eilat, the new notice just slapped on (no caption 10.3–11.2)
 ]
 
 def grab(mp4, t):
