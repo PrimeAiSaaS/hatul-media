@@ -269,6 +269,11 @@ Rules on top of §A and §O6:
 | F25 | Someone else's result | "There was one <person> who <impossible outcome>." | "היה חתול שקיבל תור באותו יום." | It must be an in-world character, never a real person. |
 | F26 | The superlative | "The fastest way to <goal> is <absurd answer>." | "הדרך הכי מהירה לתור: סבתא." | A soft answer. The answer is the joke. |
 
+### S. Hidden like counts on Instagram (Gabi, 1.11: "להסתיר לייקים... אין לנו הרבה לייקים ותגובות")
+- From the next episodes, every Instagram reel hides its like count (public display only; the owner, the insights and Metricool still see the numbers, so data agents are unaffected). All reels, not alternating: with our view counts an on/off split would drown in noise.
+- Comments stay ON: they are our main signal and carry the "תור" CTA, the first_comment and the comment bot. Never turn comments off.
+- Manual only: Metricool and the Instagram API have no parameter for it. Gabi does it in the app after the reel goes live (⋯ → הסתר ספירת לייקים); production reminds him in every episode message. TikTok and YouTube have no per-video option for this.
+
 ### R. Audience: when they watch, where they leave (Gabi, 31.10: "שינתחו את הצופים, מתי הם צופים, מתי הם עוזבים, ולפי זה לשפר את הפרקים"). The data agent refreshes analysis/audience_dropoff every night (tools/audience.py) and the weekly agent writes analysis/best_times; these rules use the 31.10 snapshot and the weekly agent updates them
 Snapshot 31.10 (Instagram = the only network with full retention; judged = ≥ 100 views and ≥ 72 h):
 - The first 3 seconds decide reach. Instagram 3-s hold vs views: Spearman 0.79 (n=16). Episodes holding ≥ 55% (ep10, 11, 13, sp1, sp3, sp4) have a median of 1,657 views; the rest (ep3, 5, 6, 7, 8, 9, 16, react1, sp2, arc1) have 144.
