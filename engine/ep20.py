@@ -32,7 +32,7 @@ import ep13 as E13
 import ep15 as E15
 import ep18 as E18
 import ep20_v1 as V1
-import ep21 as E21
+import ep21_v1 as E21   # note_layer lives in v1 since ep21 was rebuilt (30.10)
 import hud as HUD
 from make_video import (W, H, K, FPS, S, iw, E, poly, line, capsule, xform, epoly, lerp, lerp2, clamp,
                         ease_io, ease_out, ease_in, font, FUR, FUR_D, OUT, CREAM, WHITE, INK)
@@ -45,6 +45,7 @@ BEAT = 60 / 80
 QUEUE = int(os.environ.get('QUEUE', '477'))
 EP_LABEL = 'פרק 20'
 TAG_OUT = os.environ.get('OUTNAME', 'ep20_tow_v2')
+TIGHT = os.environ.get('TIGHT', '0') == '1'   # probe: frame 0 tight on his face, no scale-in
 CARZ = float(os.environ.get('CARZ', '1.18')); CARY = float(os.environ.get('CARY', '1000'))
 
 SHOTS = [('win', 0.0, 2.3), ('two', 2.3, 4.1), ('lot', 4.1, 6.0), ('booth', 6.0, 7.4), ('car', 7.4, DUR + 1)]
@@ -242,7 +243,7 @@ def scene_win(t, i):
         E13.paste_sprite(img, name, mood, x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph), sc, flip=x > 540)
     d = ImageDraw.Draw(img)
     st, rot, dy = cat_state_win(t, i)
-    sc_in = lerp(0.82, 1.0, ease_out(t / RUN)) if t < RUN else 1.0
+    sc_in = lerp(0.82, 1.0, ease_out(t / RUN)) if (t < RUN and not TIGHT) else 1.0
     hx, hy = HX + (1 - sc_in) * 180, HY + (1 - sc_in) * 300
     E(d, hx, 1640, 450 * sc_in, 470, fill=FUR, outline=OUT, width=7)
     E(d, hx, 1700, 210 * sc_in, 320, fill=CREAM)
@@ -506,6 +507,7 @@ def camera(t):
     rng = random.Random(int(t * FPS)); sh_ = 0.0
     if name == 'win':
         if t < RUN: z = lerp(1.12, 1.0, ease_out(t / RUN))
+        if TIGHT and t < 0.6: z, cy = lerp(1.38, 1.0, ease_out(t / 0.6)), lerp(880, 980, ease_out(t / 0.6))
         us = t - PAY
         if 0 <= us < 0.4: z = max(z, 1.0 + 0.08 * math.exp(-us * 8)); sh_ = 10 * math.exp(-us * 8)
     elif name == 'two':
