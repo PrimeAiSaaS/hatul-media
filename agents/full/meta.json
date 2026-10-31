@@ -18,8 +18,8 @@
     "trigger_id": "trig_0185MKRJiubwpf47eBuh6JAY",
     "name": "חתול בהמתנה: סוכן נתונים",
     "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
-    "prompt": "data_v8.md",
-    "updated_at": "2026-10-18T01:15:00+03:00"
+    "prompt": "data_v9.md",
+    "updated_at": "2026-10-31T23:10:00+02:00"
   },
   "ops": {
     "trigger_id": "trig_01HzqZ5KVJ2DiwFrnH6KyStA",
@@ -33,8 +33,8 @@
     "trigger_id": "trig_01HFxZSy1EJW5T8mzHeVsJud",
     "name": "חתול בהמתנה: סיכום שבועי ושיפור",
     "cron": "CRON_TZ=Asia/Jerusalem 57 18 * * 6",
-    "prompt": "weekly_v4.md",
-    "updated_at": "2026-10-19T06:30:00Z"
+    "prompt": "weekly_v5.md",
+    "updated_at": "2026-10-31T23:10:00+02:00"
   },
   "telegram": {
     "_note": "Approval loop (17.10, Gabi: 'אני רוצה לעשות את זה'). Production pushes a record to the Make data store and runs scenario A; Gabi taps in Telegram; scenario B writes TG| lines to the Google Doc; production/sync apply them (only exception to 'only Gabi sets approved'). Dashboard switch: meta/telegram.enabled + send_scenario_id.",
