@@ -219,6 +219,37 @@ P5 · Measure it (data and weekly agents). Tag §P episodes story_v2: true. Comp
 
 P6 · Example (ep22, season 5 "החשבון"): want: keep his account safe after ep21. Plant (frame 0, again at 5 s): his orange snack bag with "קוד: 4821" scribbled in marker. Climb: the scam SMS → he deletes it ✓ ("לא עובדים עליי"); he calls the bank's real number himself ✓; Sharit asks for his code and he refuses ✓✓ — she applauds "כל הכבוד, מותק! ככה שומרים על חשבון", meter "אבטחה 3/3 ✓", gold sticker "לקוח זהיר", the queue behind him claps. Peak: he leans back, beaming, snack bag on the counter. Break (plant_payoff): Sharit takes his bag, munching, turns it, reads "...4821. תודה, מותק." STAMP "אומת". Freeze 0.4 s → cut to frame 0.
 
+### Q. Hook formulas (Gabi, 31.10: "רוצה את נוסחאות ההוק") — use when writing hook_a (the opening caption) and hook_b
+Source: the 26 formulas of the open-source "instagram-agent-skill" (MIT, © 2026 Jake Schincariol, github.com/Jakeschincariol/instagram-agent-skill, skills/ig-reel/hooks.json). We copied the list, not the skill pack: nothing was installed. Below are the 17 that fit a comedy series, rewritten for ours. The rest (tool replacement, real-numbers receipt, insider leak, "steal this", reveal, sourced statistic) are for advice or creator accounts. Statistics are banned for us, because we never present numbers as real-world facts.
+Rules on top of §A and §O6:
+- Two hooks, never the same sentence: the on-screen line (≤ 6 words, read in under a second, always with the office keyword) and the caption's first line.
+- No setup: start at the sentence you would normally reach at second six.
+- A concrete number beats "a lot" (50 ₪, 47 minutes, 3 weeks).
+- The hook promises something, and the episode pays it off. Under §P that payoff is the break.
+- Default, our proven form (sp1 62% 3-s hold): F16, the pain question asked the way people ask it. Use another formula when it fits the story better.
+- Do not use the same formula two episodes in a row (§O2). Write hook_formula: "F<n>" in the episode doc so the data agent can compare by formula.
+- Our Trial styles map to these formulas: question_vs_statement ≈ F16, number_first ≈ F1/F5, pov ≈ F10, payoff_first ≈ F13/F21, coldopen ≈ F18.
+
+| # | Formula | Our template | Example (on screen) | Trap |
+|---|---|---|---|---|
+| F1 | Cost confession | "<amount> is what <one small thing> cost me." | "50 ₪. על כניסה לאפליקציה." | A cost that is not a number. |
+| F3 | Nobody tells you | "Nobody tells you that <ugly truth about the office>." | "הקוד מהבנק? הולך לסבתא." | A truth everybody already says. |
+| F5 | Time collapse (inverted for comedy) | "It used to take <short>. Now it takes <long>." | "5 דקות → 3 שבועות" | A ratio so absurd it reads as a lie: keep it recognisable. |
+| F7 | Wrong way, not your fault | "You're waiting in the wrong queue, and it's not your fault." | "התור הלא נכון. לא באשמתך." | Dropping "not your fault" makes it an insult. |
+| F10 | If this, then watch | "If <specific situation>, watch to the end." | "הקוד הגיע לסבתא?" | A situation so broad it fits nobody. |
+| F12 | The objection | "'<what people actually say>.' Sure. Press 9." | "״רק נציג אנושי.״ הקש 9." | Inventing the line: take it from our comments. |
+| F13 | Before / after | "<08:00 state> / <16:00 state>" — the cut is the hook | "08:00 · מספר 3 / 16:00 · מספר 3" | More than one lever. |
+| F14 | The callout | "<specific group>: this one's for you." | "מי שמחכה לביטוח לאומי:" | A group too big ("כולם"). Drives tags and sends. |
+| F15 | The flop record | "<N> tries did nothing. Number <N+1>..." | "47 ניסיונות לקבוע תור." | Making it sound like luck. It fits the §P climb well. |
+| F16 | Verbatim question (default) | "'<the question exactly as people ask it>?'" | "תעודת זהות בלי תור?" | Tidying the question up: keep their words. |
+| F17 | Head to head | "<office A> vs <office B>: who keeps you on hold longer?" | "הבנק מול ביטוח לאומי" | Refusing to pick a winner. |
+| F18 | Cold-open demo | "Watch what happens when <action>." | "תראו מה קורה כשלוחצים 9." | A payoff that arrives late. |
+| F19 | The deadline | "<thing> locks at <time>. <seconds left>." | "החשבון ננעל בחצות." | A fake deadline. It must be the episode's real clock. |
+| F20 | Permission | "You don't need <the thing>. You need <the absurd thing>." | "לא צריך תור. צריך סבתא." | Removing the blocker with nothing in its place. |
+| F21 | Mid-sentence start | "...and that's when <the turn>." | "...ואז שרית אמרה ״שנייה, מותק״." | ep4's vague "...ואז זה קרה" got 10%: the office and the turn must be concrete. |
+| F25 | Someone else's result | "There was one <person> who <impossible outcome>." | "היה חתול שקיבל תור באותו יום." | It must be an in-world character, never a real person. |
+| F26 | The superlative | "The fastest way to <goal> is <absurd answer>." | "הדרך הכי מהירה לתור: סבתא." | A soft answer. The answer is the joke. |
+
 ### K. Control & logging (EVERY agent, EVERY run — since 12.10; binding even if your task prompt does not mention it yet)
 - Each scheduled agent ends EVERY run (also when something failed or there was nothing to do) with two dashboard writes:
   1. `set` runs/<YYYYMMDD-HHMM>-<agent> (Israel time) {task: <agent id>, name, at: ISO +03:00, status: "ok" | "warn" | "failed", summary: one Hebrew line, returned: {the counts it produced, e.g. metrics_written, docs_updated, items_queued, ideas_added}, checks: [{name, ok, note}]}.
