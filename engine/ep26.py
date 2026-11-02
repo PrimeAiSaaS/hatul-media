@@ -39,7 +39,9 @@ EP_LABEL = 'פרק 26'
 OUTNAME = os.environ.get('OUTNAME', 'ep26_passport')
 WINZ = float(os.environ.get('WINZ', '0'))      # predictor probe: window shot zoom (0 = as built)
 SHZ = float(os.environ.get('SHZ', '0'))        # predictor probe: Sharit shot zoom (0 = 1.16)
-LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
+LIMIT = float(os.environ.get('LIMIT', '0'))
+OTS = os.environ.get('OTS', '0') == '1'
+FRONTV = os.environ.get('FRONT', '0') == '1'   # predictor probe: front row of big faces in the lobby shots        # predictor probe: the cat's face in the foreground of Sharit's shots    # render only the first LIMIT seconds (predictor cuts)
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'sh', 7: 'cat', 8: 'sh', 9: 'cat', 10: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -354,6 +356,13 @@ def scene_lobby(t, i, mode=None):
             d.text((S(c_[0]), S(c_[1])), str(QUEUE), font=font(S(40), 900), fill=INK, anchor='mm')
         E12.big_paw(d, lp, -10 if lp[1] > 1100 else -170, 0.9)
     # right paw (viewer's left): the boarding pass, always
+    if FRONTV:   # probe: a front row of big faces pressing in from the edges (ep13 shove = 49, ep19 FRONT probe)
+        k = (1.0 - 0.7 * ease_out(clamp(t / 0.6))) if t < COLD_END else 0.3
+        fm = 1 if mood == 1 else 0
+        for name, x, y, sc, ph, side in E13.FRONT:
+            hop = -20 * abs(math.sin(t * 6 + ph)) if (mood == 1 and not hush and mode != 'reveal') else 0
+            E13.paste_sprite(img, name, fm, x - side * 150 * k + 6 * math.sin(t * 5 + ph), y + hop + 10 * math.sin(t * 6 + ph), sc, flip=side > 0)
+        d = ImageDraw.Draw(img)
     pc, pa, ps = pass_pose_lobby(t, mode, dy)
     rp = (pc[0] + 30, pc[1] + 110) if mode not in ('peak', 'reveal') else (pc[0] + 50, pc[1] + 128)   # grip the bottom edge: the small print stays clear
     capsule(d, (hx - 230, 1440 + 0.5 * dy), rp, 110, FUR, OUT, 4)
@@ -459,6 +468,20 @@ def scene_sh(t, i):
     ov = Image.new('RGBA', img.size, (0, 0, 0, 0)); E3.glass_tint(ImageDraw.Draw(ov)); img.alpha_composite(ov)
     img.alpha_composite(E3.GLASS_FG)
     E3.clock_hands(ImageDraw.Draw(img), 900, 420, 66, 11 * 3600 + 6 * 60 + t * 20)
+    if OTS and t < L[10] - 0.1:   # probe: his face in the foreground, reacting to every line of hers
+        st = E3.base_state(); st.update(red=0.9, cobweb=1.0, blush=0.4)
+        if t < L[2]:
+            u = t - CAL
+            st.update(lid=0.0, pupil='big', brow='up', mouth='smile_small', ear_dy=-10, look=(-16, -8))
+            if u >= 0: st.update(pupil='tiny', mouth='w', ear_dy=-24 * math.exp(-u * 3), sweat=1.0, look=(-10, -6))
+        elif t < L[4]:
+            u = t - CHK1
+            st.update(lid=0.0, pupil='big', brow='sad', mouth='flat', ear_droop=0.3, look=(-16, -8))
+            if u >= 0: st.update(brow='up', mouth='smile', ear_dy=-20, blush=0.9, look=(-12, -10))
+        else:
+            st.update(lid=0.0, pupil='big', brow='up', mouth='smile_small' if t < at(6, 1) else 'w', ear_dy=-14, look=(-16, -8), blush=0.8)
+        E(ImageDraw.Draw(img), 860, 1900, 400, 330, fill=FUR, outline=OUT, width=7)
+        E12.paste_head(img, st, i, 840, 1500 + 6 * math.sin(t * 3), 1.3, -6)
     if L[3] - 0.1 <= t < L[4] and t >= CHK1:   # the urgent stamp on the form
         u = t - CHK1
         d.rectangle([S(320), S(1150), S(760), S(1370)], fill=(252, 252, 246), outline=(150, 150, 150), width=iw(3))
