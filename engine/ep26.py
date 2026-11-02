@@ -37,6 +37,9 @@ YELLOW = (255, 221, 51); PINKSUB = (255, 182, 210); GOLD = (255, 196, 40); GREEN
 QUEUE = int(os.environ.get('QUEUE', '468'))
 EP_LABEL = 'פרק 26'
 OUTNAME = os.environ.get('OUTNAME', 'ep26_passport')
+WINZ = float(os.environ.get('WINZ', '0'))      # predictor probe: window shot zoom (0 = as built)
+SHZ = float(os.environ.get('SHZ', '0'))        # predictor probe: Sharit shot zoom (0 = 1.16)
+LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'sh', 7: 'cat', 8: 'sh', 9: 'cat', 10: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -636,11 +639,12 @@ def camera(t):
     elif name == 'runin':
         cy = 900; z = 1.05 + 0.03 * pu
     elif name == 'sh':
-        z = 1.16 + 0.03 * pu; cy = 880
+        z = (SHZ or 1.16) + 0.03 * pu; cy = 880
         if t >= CHK1 and L[3] <= t < L[4]: z, cy = 1.08, 1000                          # show the stamp on the form
         if L[10] - 0.1 <= t: z, cy = 1.28 + 0.04 * pu, 860                            # the flat break line, tighter
     elif name == 'win':
         z = 1.18 + 0.04 * pu; cy = 930
+        if WINZ: z, cy = WINZ + 0.04 * pu, 900                                        # probe: his face bigger in the frame
     elif name == 'booth':
         cy = 940; z = 1.04 + 0.05 * pu
         if t >= FLASH: z = lerp(1.16, 1.04, ease_out(clamp((t - FLASH) / 0.3)))
@@ -816,7 +820,7 @@ def main():
            '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', mp4]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     with Pool(os.cpu_count() or 2, initializer=_init_worker) as pool:
-        for k, b in enumerate(pool.imap(_render, range(NF), chunksize=4)):
+        for k, b in enumerate(pool.imap(_render, range(int(LIMIT * FPS) if LIMIT else NF), chunksize=4)):
             proc.stdin.write(b)
             if k % 150 == 0: print('frame', k, '/', NF, flush=True)
     proc.stdin.close(); proc.wait(); print('done', mp4, DUR)
