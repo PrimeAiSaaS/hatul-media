@@ -39,10 +39,10 @@ EP_LABEL = 'פרק 26'
 OUTNAME = os.environ.get('OUTNAME', 'ep26_passport')
 WINZ = float(os.environ.get('WINZ', '0'))      # predictor probe: window shot zoom (0 = as built)
 SHZ = float(os.environ.get('SHZ', '0'))        # predictor probe: Sharit shot zoom (0 = 1.16)
-LIMIT = float(os.environ.get('LIMIT', '0'))
-OTS = os.environ.get('OTS', '0') == '1'
-FRONTV = os.environ.get('FRONT', '0') == '1'
-WINTWO = os.environ.get('WINTWO', '0') == '1'  # predictor probe: L02 as a two-shot with his big face   # predictor probe: front row of big faces in the lobby shots        # predictor probe: the cat's face in the foreground of Sharit's shots    # render only the first LIMIT seconds (predictor cuts)
+LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
+OTS = os.environ.get('OTS', '0') == '1'        # predictor probe (42): his face in the foreground of Sharit's shots
+FRONTV = os.environ.get('FRONT', '0') == '1'   # predictor probe (42): front row of big faces in the lobby shots
+WINTWO = os.environ.get('WINTWO', '1') == '1'  # 6א round 4 (43 vs 42): L02 as a two-shot with his big face — kept in the shipped version
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'sh', 7: 'cat', 8: 'sh', 9: 'cat', 10: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -443,7 +443,7 @@ def scene_win2(t, i):
     pc = lerp2((700, 1300), (500, 1600), e)
     paste_rot(img, PASS, pc, lerp(-20, -6, e), lerp(1.1, 1.5, e))
     d = ImageDraw.Draw(img)
-    E12.big_paw(d, (pc[0] + 225, pc[1] + 40), -100, 0.85)
+    E12.big_paw(d, (pc[0] + 262, pc[1] + 80), -100, 0.8)
     if t >= SLAP: burst(img, pc, t - SLAP, (255, 255, 255), 200, 10, 0.3)
     return img
 
