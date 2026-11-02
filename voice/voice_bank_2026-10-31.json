@@ -5,7 +5,7 @@
  "model": "text2speech_v2 / elevenlabs / preset",
  "credits_spent": 8.55,
  "balance_after": 162.9,
- "download": "NOT DOWNLOADED YET: cloud workspace cannot reach the cloudfront URLs (proxy 403). Use the browser-pane bridge (bible, Voices) when Gabi's computer is linked, save each to its \"file\" path, commit.",
+ "download": "Downloaded 2.11 22:31 UTC via the built-in browser pane on Gabi's computer (matched by SHA-256), files in voice/<ep>/ and voice/stock/.",
  "lines": [
   {
    "index": 2500,
@@ -18,7 +18,8 @@
    "job_id": "9f0b9507-aaa4-44af-8b3b-ef02709af118",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_9f0b9507-aaa4-44af-8b3b-ef02709af118.mp3",
    "dur_sec": 2,
-   "file": "voice/ep25/line00.mp3"
+   "file": "voice/ep25/line00.mp3",
+   "dur_file": 2.04
   },
   {
    "index": 2501,
@@ -31,7 +32,8 @@
    "job_id": "d13b1c0a-7bc6-448d-aae4-5c7f75e1b2cb",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_d13b1c0a-7bc6-448d-aae4-5c7f75e1b2cb.mp3",
    "dur_sec": 3.44,
-   "file": "voice/ep25/line01.mp3"
+   "file": "voice/ep25/line01.mp3",
+   "dur_file": 3.47
   },
   {
    "index": 2502,
@@ -44,7 +46,8 @@
    "job_id": "18d1c80e-48d6-4b01-8698-712855eaaeec",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_18d1c80e-48d6-4b01-8698-712855eaaeec.mp3",
    "dur_sec": 5.84,
-   "file": "voice/ep25/line02.mp3"
+   "file": "voice/ep25/line02.mp3",
+   "dur_file": 5.88
   },
   {
    "index": 2503,
@@ -57,7 +60,8 @@
    "job_id": "11472d4d-9b9a-45bc-9c7a-d3b65803ec0a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_11472d4d-9b9a-45bc-9c7a-d3b65803ec0a.mp3",
    "dur_sec": 1.84,
-   "file": "voice/ep25/line03.mp3"
+   "file": "voice/ep25/line03.mp3",
+   "dur_file": 1.88
   },
   {
    "index": 2504,
@@ -70,7 +74,8 @@
    "job_id": "5dfc33e7-6dc9-4329-bc4b-79409deb539b",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_5dfc33e7-6dc9-4329-bc4b-79409deb539b.mp3",
    "dur_sec": 1.12,
-   "file": "voice/ep25/line04.mp3"
+   "file": "voice/ep25/line04.mp3",
+   "dur_file": 1.15
   },
   {
    "index": 2505,
@@ -83,7 +88,8 @@
    "job_id": "6d336326-f49c-4556-9b91-8c31260e2a64",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_6d336326-f49c-4556-9b91-8c31260e2a64.mp3",
    "dur_sec": 2.48,
-   "file": "voice/ep25/line05.mp3"
+   "file": "voice/ep25/line05.mp3",
+   "dur_file": 2.51
   },
   {
    "index": 2506,
@@ -96,7 +102,8 @@
    "job_id": "20cc2a5c-d6fd-44fa-a41c-d36134e625c9",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_20cc2a5c-d6fd-44fa-a41c-d36134e625c9.mp3",
    "dur_sec": 2.64,
-   "file": "voice/ep25/line06.mp3"
+   "file": "voice/ep25/line06.mp3",
+   "dur_file": 2.69
   },
   {
    "index": 2507,
@@ -109,7 +116,8 @@
    "job_id": "22b72875-5f15-4d24-bcf8-25100b9c36c2",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_22b72875-5f15-4d24-bcf8-25100b9c36c2.mp3",
    "dur_sec": 6.64,
-   "file": "voice/ep25/line07.mp3"
+   "file": "voice/ep25/line07.mp3",
+   "dur_file": 6.69
   },
   {
    "index": 2508,
@@ -122,7 +130,8 @@
    "job_id": "fd55f948-3798-455c-b939-a82245d768cc",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_fd55f948-3798-455c-b939-a82245d768cc.mp3",
    "dur_sec": 2.4,
-   "file": "voice/ep25/line08.mp3"
+   "file": "voice/ep25/line08.mp3",
+   "dur_file": 2.43
   },
   {
    "index": 2509,
@@ -135,7 +144,8 @@
    "job_id": "361c3fa9-6914-4e52-9f9e-4ec097fb24d2",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_361c3fa9-6914-4e52-9f9e-4ec097fb24d2.mp3",
    "dur_sec": 2.96,
-   "file": "voice/ep25/line09.mp3"
+   "file": "voice/ep25/line09.mp3",
+   "dur_file": 3.0
   },
   {
    "index": 2510,
@@ -148,7 +158,8 @@
    "job_id": "4c35f3bb-046f-446c-bbd0-c117ca5b8f3e",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210138_4c35f3bb-046f-446c-bbd0-c117ca5b8f3e.mp3",
    "dur_sec": 2.48,
-   "file": "voice/ep25/line10.mp3"
+   "file": "voice/ep25/line10.mp3",
+   "dur_file": 2.51
   },
   {
    "index": 2600,
@@ -161,7 +172,8 @@
    "job_id": "22e1adff-1bee-4e12-a163-f449705c0c7a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_22e1adff-1bee-4e12-a163-f449705c0c7a.mp3",
    "dur_sec": 2.64,
-   "file": "voice/ep26/line00.mp3"
+   "file": "voice/ep26/line00.mp3",
+   "dur_file": 2.69
   },
   {
    "index": 2601,
@@ -174,7 +186,8 @@
    "job_id": "6741d5f5-dfb7-4c9a-bca9-4801d5ac122a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_6741d5f5-dfb7-4c9a-bca9-4801d5ac122a.mp3",
    "dur_sec": 3.2,
-   "file": "voice/ep26/line01.mp3"
+   "file": "voice/ep26/line01.mp3",
+   "dur_file": 3.24
   },
   {
    "index": 2602,
@@ -187,7 +200,8 @@
    "job_id": "9bdfbddf-e802-4967-ba2a-8dade6df99f9",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_9bdfbddf-e802-4967-ba2a-8dade6df99f9.mp3",
    "dur_sec": 2.72,
-   "file": "voice/ep26/line02.mp3"
+   "file": "voice/ep26/line02.mp3",
+   "dur_file": 2.77
   },
   {
    "index": 2603,
@@ -200,7 +214,8 @@
    "job_id": "81068878-c34c-4fea-b2d0-a33f7bc54ee5",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_81068878-c34c-4fea-b2d0-a33f7bc54ee5.mp3",
    "dur_sec": 4.24,
-   "file": "voice/ep26/line03.mp3"
+   "file": "voice/ep26/line03.mp3",
+   "dur_file": 4.28
   },
   {
    "index": 2604,
@@ -213,7 +228,8 @@
    "job_id": "86369872-b370-4382-bd3c-e293a6365f73",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210215_86369872-b370-4382-bd3c-e293a6365f73.mp3",
    "dur_sec": 3.52,
-   "file": "voice/ep26/line04.mp3"
+   "file": "voice/ep26/line04.mp3",
+   "dur_file": 3.55
   },
   {
    "index": 2605,
@@ -226,7 +242,8 @@
    "job_id": "66fd614b-7ccb-4d59-9bb4-aeec1b546595",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_66fd614b-7ccb-4d59-9bb4-aeec1b546595.mp3",
    "dur_sec": 2.48,
-   "file": "voice/ep26/line05.mp3"
+   "file": "voice/ep26/line05.mp3",
+   "dur_file": 2.51
   },
   {
    "index": 2606,
@@ -239,7 +256,8 @@
    "job_id": "897c6eaa-f661-42d8-ba96-d0c6482cff2b",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210233_897c6eaa-f661-42d8-ba96-d0c6482cff2b.mp3",
    "dur_sec": 3.84,
-   "file": "voice/ep26/line06.mp3"
+   "file": "voice/ep26/line06.mp3",
+   "dur_file": 3.87
   },
   {
    "index": 2607,
@@ -252,7 +270,8 @@
    "job_id": "741dab26-41ab-4b30-9b8e-193151726a26",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_741dab26-41ab-4b30-9b8e-193151726a26.mp3",
    "dur_sec": 2.16,
-   "file": "voice/ep26/line07.mp3"
+   "file": "voice/ep26/line07.mp3",
+   "dur_file": 2.19
   },
   {
    "index": 2608,
@@ -265,7 +284,8 @@
    "job_id": "0360c154-7a30-45db-95d1-a9df38697c10",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_0360c154-7a30-45db-95d1-a9df38697c10.mp3",
    "dur_sec": 2,
-   "file": "voice/ep26/line08.mp3"
+   "file": "voice/ep26/line08.mp3",
+   "dur_file": 2.04
   },
   {
    "index": 2609,
@@ -278,7 +298,8 @@
    "job_id": "225251f9-5fb7-40bb-90e8-fb7f4655ee4a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_225251f9-5fb7-40bb-90e8-fb7f4655ee4a.mp3",
    "dur_sec": 1.36,
-   "file": "voice/ep26/line09.mp3"
+   "file": "voice/ep26/line09.mp3",
+   "dur_file": 1.41
   },
   {
    "index": 2610,
@@ -291,7 +312,8 @@
    "job_id": "057d4703-ff36-4526-8cab-1653487abda0",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_057d4703-ff36-4526-8cab-1653487abda0.mp3",
    "dur_sec": 2.56,
-   "file": "voice/ep26/line10.mp3"
+   "file": "voice/ep26/line10.mp3",
+   "dur_file": 2.59
   },
   {
    "index": 2700,
@@ -304,7 +326,8 @@
    "job_id": "d87a50f5-5070-44db-93ee-83a7e06577bf",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_d87a50f5-5070-44db-93ee-83a7e06577bf.mp3",
    "dur_sec": 1.76,
-   "file": "voice/ep27/line00.mp3"
+   "file": "voice/ep27/line00.mp3",
+   "dur_file": 1.8
   },
   {
    "index": 2701,
@@ -317,7 +340,8 @@
    "job_id": "7e20260c-333b-4e14-a9d4-36a63c799aae",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210232_7e20260c-333b-4e14-a9d4-36a63c799aae.mp3",
    "dur_sec": 3.44,
-   "file": "voice/ep27/line01.mp3"
+   "file": "voice/ep27/line01.mp3",
+   "dur_file": 3.47
   },
   {
    "index": 2702,
@@ -330,7 +354,8 @@
    "job_id": "1d4a7a71-89d0-432d-adfb-636564e23956",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_1d4a7a71-89d0-432d-adfb-636564e23956.mp3",
    "dur_sec": 2.24,
-   "file": "voice/ep27/line02.mp3"
+   "file": "voice/ep27/line02.mp3",
+   "dur_file": 2.27
   },
   {
    "index": 2703,
@@ -343,7 +368,8 @@
    "job_id": "34b36ecd-53ea-46d1-af51-b08729adb223",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_34b36ecd-53ea-46d1-af51-b08729adb223.mp3",
    "dur_sec": 1.44,
-   "file": "voice/ep27/line03.mp3"
+   "file": "voice/ep27/line03.mp3",
+   "dur_file": 1.49
   },
   {
    "index": 2704,
@@ -356,7 +382,8 @@
    "job_id": "1d515234-88c0-4b61-a9e5-3d730d498a1a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_1d515234-88c0-4b61-a9e5-3d730d498a1a.mp3",
    "dur_sec": 1.6,
-   "file": "voice/ep27/line04.mp3"
+   "file": "voice/ep27/line04.mp3",
+   "dur_file": 1.65
   },
   {
    "index": 2705,
@@ -369,7 +396,8 @@
    "job_id": "e43784e8-863c-4e3d-8f3a-b7ba64354c70",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210250_e43784e8-863c-4e3d-8f3a-b7ba64354c70.mp3",
    "dur_sec": 2.88,
-   "file": "voice/ep27/line05.mp3"
+   "file": "voice/ep27/line05.mp3",
+   "dur_file": 2.93
   },
   {
    "index": 2706,
@@ -382,7 +410,8 @@
    "job_id": "603f9ded-77a0-483e-b66f-c26bdc0e4eba",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_603f9ded-77a0-483e-b66f-c26bdc0e4eba.mp3",
    "dur_sec": 2.64,
-   "file": "voice/ep27/line06.mp3"
+   "file": "voice/ep27/line06.mp3",
+   "dur_file": 2.69
   },
   {
    "index": 2707,
@@ -395,7 +424,8 @@
    "job_id": "e8d759aa-e57e-48d4-89b3-2d64c7cdbfb0",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_e8d759aa-e57e-48d4-89b3-2d64c7cdbfb0.mp3",
    "dur_sec": 2,
-   "file": "voice/ep27/line07.mp3"
+   "file": "voice/ep27/line07.mp3",
+   "dur_file": 2.04
   },
   {
    "index": 2708,
@@ -408,7 +438,8 @@
    "job_id": "19df89ee-3595-4b71-a874-4163fef041d5",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210249_19df89ee-3595-4b71-a874-4163fef041d5.mp3",
    "dur_sec": 1.2,
-   "file": "voice/ep27/line08.mp3"
+   "file": "voice/ep27/line08.mp3",
+   "dur_file": 1.23
   },
   {
    "index": 2709,
@@ -421,7 +452,8 @@
    "job_id": "d1502a3e-e4e6-46be-9326-84ca764f4293",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210250_d1502a3e-e4e6-46be-9326-84ca764f4293.mp3",
    "dur_sec": 3.04,
-   "file": "voice/ep27/line09.mp3"
+   "file": "voice/ep27/line09.mp3",
+   "dur_file": 3.08
   },
   {
    "index": 2710,
@@ -434,7 +466,8 @@
    "job_id": "d4a7a0e3-ef90-4c3c-8332-78e53ae2f80e",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_d4a7a0e3-ef90-4c3c-8332-78e53ae2f80e.mp3",
    "dur_sec": 2.08,
-   "file": "voice/ep27/line10.mp3"
+   "file": "voice/ep27/line10.mp3",
+   "dur_file": 2.12
   },
   {
    "index": 2800,
@@ -447,7 +480,8 @@
    "job_id": "a2ab77dc-b9dd-4a62-880b-286916e62913",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_a2ab77dc-b9dd-4a62-880b-286916e62913.mp3",
    "dur_sec": 2.72,
-   "file": "voice/ep28/line00.mp3"
+   "file": "voice/ep28/line00.mp3",
+   "dur_file": 2.77
   },
   {
    "index": 2801,
@@ -460,7 +494,8 @@
    "job_id": "27eb0551-bf3b-45ca-92e6-eb3902d459e9",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_27eb0551-bf3b-45ca-92e6-eb3902d459e9.mp3",
    "dur_sec": 2.96,
-   "file": "voice/ep28/line01.mp3"
+   "file": "voice/ep28/line01.mp3",
+   "dur_file": 3.0
   },
   {
    "index": 2802,
@@ -473,7 +508,8 @@
    "job_id": "c29a8d7e-3a07-4fb3-b88c-e6418f54b050",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_c29a8d7e-3a07-4fb3-b88c-e6418f54b050.mp3",
    "dur_sec": 2.4,
-   "file": "voice/ep28/line02.mp3"
+   "file": "voice/ep28/line02.mp3",
+   "dur_file": 2.43
   },
   {
    "index": 2803,
@@ -486,7 +522,8 @@
    "job_id": "f35fc3aa-07d0-4969-b579-4ea717dd1206",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_f35fc3aa-07d0-4969-b579-4ea717dd1206.mp3",
    "dur_sec": 1.44,
-   "file": "voice/ep28/line03.mp3"
+   "file": "voice/ep28/line03.mp3",
+   "dur_file": 1.49
   },
   {
    "index": 2804,
@@ -499,7 +536,8 @@
    "job_id": "7f8fe7ab-0d74-4efa-82e1-dad1a2089299",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210304_7f8fe7ab-0d74-4efa-82e1-dad1a2089299.mp3",
    "dur_sec": 1.2,
-   "file": "voice/ep28/line04.mp3"
+   "file": "voice/ep28/line04.mp3",
+   "dur_file": 1.23
   },
   {
    "index": 2805,
@@ -512,7 +550,8 @@
    "job_id": "2a818639-1528-4b4e-b5d9-eef5f511e5f9",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_2a818639-1528-4b4e-b5d9-eef5f511e5f9.mp3",
    "dur_sec": 1.36,
-   "file": "voice/ep28/line05.mp3"
+   "file": "voice/ep28/line05.mp3",
+   "dur_file": 1.41
   },
   {
    "index": 2806,
@@ -525,7 +564,8 @@
    "job_id": "519154e7-6794-41d2-b046-266970238dc7",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_519154e7-6794-41d2-b046-266970238dc7.mp3",
    "dur_sec": 1.92,
-   "file": "voice/ep28/line06.mp3"
+   "file": "voice/ep28/line06.mp3",
+   "dur_file": 1.96
   },
   {
    "index": 2807,
@@ -538,7 +578,8 @@
    "job_id": "63f7e80a-e885-457e-9e6a-8bd6d4e4afd2",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_63f7e80a-e885-457e-9e6a-8bd6d4e4afd2.mp3",
    "dur_sec": 3.68,
-   "file": "voice/ep28/line07.mp3"
+   "file": "voice/ep28/line07.mp3",
+   "dur_file": 3.71
   },
   {
    "index": 2808,
@@ -551,7 +592,8 @@
    "job_id": "63928ce6-4771-4a11-a7b3-72942f895d56",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_63928ce6-4771-4a11-a7b3-72942f895d56.mp3",
    "dur_sec": 2.72,
-   "file": "voice/ep28/line08.mp3"
+   "file": "voice/ep28/line08.mp3",
+   "dur_file": 2.77
   },
   {
    "index": 2809,
@@ -564,7 +606,8 @@
    "job_id": "9b0afc54-6443-4871-a468-bf6b5a4cb47e",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_9b0afc54-6443-4871-a468-bf6b5a4cb47e.mp3",
    "dur_sec": 2,
-   "file": "voice/ep28/line09.mp3"
+   "file": "voice/ep28/line09.mp3",
+   "dur_file": 2.04
   },
   {
    "index": 2810,
@@ -577,7 +620,8 @@
    "job_id": "23e96363-e7b5-49b6-b933-ef714498a043",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210318_23e96363-e7b5-49b6-b933-ef714498a043.mp3",
    "dur_sec": 2,
-   "file": "voice/ep28/line10.mp3"
+   "file": "voice/ep28/line10.mp3",
+   "dur_file": 2.04
   },
   {
    "index": 9000,
@@ -590,7 +634,8 @@
    "job_id": "8027e3f6-95f0-48f3-bed9-a4b4280e583d",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_8027e3f6-95f0-48f3-bed9-a4b4280e583d.mp3",
    "dur_sec": 1.04,
-   "file": "voice/stock/line00.mp3"
+   "file": "voice/stock/sharit_9000.mp3",
+   "dur_file": 1.07
   },
   {
    "index": 9001,
@@ -603,7 +648,8 @@
    "job_id": "c8a0ab66-0f30-4687-a8e3-8ccc5e7cf19e",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_c8a0ab66-0f30-4687-a8e3-8ccc5e7cf19e.mp3",
    "dur_sec": 1.2,
-   "file": "voice/stock/line01.mp3"
+   "file": "voice/stock/sharit_9001.mp3",
+   "dur_file": 1.23
   },
   {
    "index": 9002,
@@ -616,7 +662,8 @@
    "job_id": "70ce9a2e-e44b-42b1-8e6c-c542af8b06b4",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_70ce9a2e-e44b-42b1-8e6c-c542af8b06b4.mp3",
    "dur_sec": 1.12,
-   "file": "voice/stock/line02.mp3"
+   "file": "voice/stock/sharit_9002.mp3",
+   "dur_file": 1.15
   },
   {
    "index": 9003,
@@ -629,7 +676,8 @@
    "job_id": "f0c3a931-0eb6-42be-8d4b-ac38be1ec2f3",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_f0c3a931-0eb6-42be-8d4b-ac38be1ec2f3.mp3",
    "dur_sec": 1.44,
-   "file": "voice/stock/line03.mp3"
+   "file": "voice/stock/sharit_9003.mp3",
+   "dur_file": 1.49
   },
   {
    "index": 9004,
@@ -642,7 +690,8 @@
    "job_id": "01300faf-7f10-4d34-923f-c974a73b5e6b",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_01300faf-7f10-4d34-923f-c974a73b5e6b.mp3",
    "dur_sec": 1.04,
-   "file": "voice/stock/line04.mp3"
+   "file": "voice/stock/sharit_9004.mp3",
+   "dur_file": 1.07
   },
   {
    "index": 9005,
@@ -655,7 +704,8 @@
    "job_id": "d05f3d1f-3ab8-4c2e-8b95-7f627a258e12",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210330_d05f3d1f-3ab8-4c2e-8b95-7f627a258e12.mp3",
    "dur_sec": 2.32,
-   "file": "voice/stock/line05.mp3"
+   "file": "voice/stock/sharit_9005.mp3",
+   "dur_file": 2.35
   },
   {
    "index": 9100,
@@ -668,7 +718,8 @@
    "job_id": "813dcdfe-1581-4208-9bee-3a780b3dd4d2",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210342_813dcdfe-1581-4208-9bee-3a780b3dd4d2.mp3",
    "dur_sec": 1.36,
-   "file": "voice/stock/line00.mp3"
+   "file": "voice/stock/cat_9100.mp3",
+   "dur_file": 1.41
   },
   {
    "index": 9101,
@@ -681,7 +732,8 @@
    "job_id": "9fe0bafc-8457-467f-a347-44800aa1f3ee",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210343_9fe0bafc-8457-467f-a347-44800aa1f3ee.mp3",
    "dur_sec": 1.04,
-   "file": "voice/stock/line01.mp3"
+   "file": "voice/stock/cat_9101.mp3",
+   "dur_file": 1.07
   },
   {
    "index": 9102,
@@ -694,7 +746,8 @@
    "job_id": "194c3308-e509-413d-b21a-b40bc88b0cc7",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210343_194c3308-e509-413d-b21a-b40bc88b0cc7.mp3",
    "dur_sec": 1.6,
-   "file": "voice/stock/line02.mp3"
+   "file": "voice/stock/cat_9102.mp3",
+   "dur_file": 1.65
   },
   {
    "index": 9103,
@@ -707,7 +760,8 @@
    "job_id": "592ca217-7aed-4624-be13-875ecaf5b299",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210342_592ca217-7aed-4624-be13-875ecaf5b299.mp3",
    "dur_sec": 0.96,
-   "file": "voice/stock/line03.mp3"
+   "file": "voice/stock/cat_9103.mp3",
+   "dur_file": 0.99
   },
   {
    "index": 9104,
@@ -720,7 +774,8 @@
    "job_id": "3b4549de-6787-4fbf-b15b-964307df8ee1",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210342_3b4549de-6787-4fbf-b15b-964307df8ee1.mp3",
    "dur_sec": 1.52,
-   "file": "voice/stock/line04.mp3"
+   "file": "voice/stock/cat_9104.mp3",
+   "dur_file": 1.57
   },
   {
    "index": 9105,
@@ -733,7 +788,9 @@
    "job_id": "c8e112e5-d48a-41a8-b80a-1401e1353980",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261031_210342_c8e112e5-d48a-41a8-b80a-1401e1353980.mp3",
    "dur_sec": 2.64,
-   "file": "voice/stock/line05.mp3"
+   "file": "voice/stock/cat_9105.mp3",
+   "dur_file": 2.69
   }
- ]
+ ],
+ "downloaded_at": "2026-11-03T00:35:00+02:00"
 }
