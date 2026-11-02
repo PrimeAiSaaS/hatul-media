@@ -41,7 +41,8 @@ WINZ = float(os.environ.get('WINZ', '0'))      # predictor probe: window shot zo
 SHZ = float(os.environ.get('SHZ', '0'))        # predictor probe: Sharit shot zoom (0 = 1.16)
 LIMIT = float(os.environ.get('LIMIT', '0'))
 OTS = os.environ.get('OTS', '0') == '1'
-FRONTV = os.environ.get('FRONT', '0') == '1'   # predictor probe: front row of big faces in the lobby shots        # predictor probe: the cat's face in the foreground of Sharit's shots    # render only the first LIMIT seconds (predictor cuts)
+FRONTV = os.environ.get('FRONT', '0') == '1'
+WINTWO = os.environ.get('WINTWO', '0') == '1'  # predictor probe: L02 as a two-shot with his big face   # predictor probe: front row of big faces in the lobby shots        # predictor probe: the cat's face in the foreground of Sharit's shots    # render only the first LIMIT seconds (predictor cuts)
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'sh', 7: 'cat', 8: 'sh', 9: 'cat', 10: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -420,6 +421,32 @@ def scene_win(t, i):
     if t >= SLAP: burst(img, (pc[0], pc[1]), t - SLAP, (255, 255, 255), 170, 10, 0.3)
     return img
 
+def scene_win2(t, i):
+    """probe WINTWO: L02 as a two-shot — Sharit munching on the left, his big face on the right, the pass slapped on the counter"""
+    img = SH_BG.copy()
+    st_s = SH.base(); st_s.update(hand_l=(170, 760), hand_r=(530, 760), lid=0.6, red=0.8, look=(18, 6), snack=True, mouth='munch')
+    Ls = SH.draw(st_s, i)
+    Ls = Ls.resize((int(Ls.width * TS), int(Ls.height * TS)), Image.BICUBIC)
+    img.alpha_composite(Ls, dest=(int(S(T_HEAD[0] - 350 * TS)), int(S(T_HEAD[1] - 300 * TS))))
+    d = ImageDraw.Draw(img)
+    u = t - L[2]
+    st = E3.base_state(); st.update(red=0.9, cobweb=1.0, blush=0.3)
+    if u < CS[2][1]: st.update(lid=0.0, pupil='tiny', brow='up', ear_dy=-22, mouth=cat_mouth(t, rest='w', loud='w'), sweat=1.0, look=(-16, 0))
+    else: st.update(lid=0.0, pupil='big', brow='sad', ear_dy=-8, mouth=cat_mouth(t, rest='w', loud='smile'), look=(-18, 4), blush=0.6)
+    shake = 12 * math.sin(t * 70) * math.exp(-(t - SLAP) * 7) if t >= SLAP else 0
+    E(d, HX2, 1720, 380, 420, fill=FUR, outline=OUT, width=7)
+    E(d, HX2, 1770, 170, 280, fill=CREAM)
+    E12.paste_head(img, st, i, HX2 + shake, HY2 - 10 * cat_v(t), F2, 3 * math.sin(t * 4))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([S(-20), S(1580), S(1100), S(1700)], radius=S(16), fill=(200, 204, 212), outline=(130, 136, 148), width=iw(5))
+    e = ease_in(clamp((t - (SLAP - 0.2)) / 0.2))
+    pc = lerp2((700, 1300), (500, 1600), e)
+    paste_rot(img, PASS, pc, lerp(-20, -6, e), lerp(1.1, 1.5, e))
+    d = ImageDraw.Draw(img)
+    E12.big_paw(d, (pc[0] + 225, pc[1] + 40), -100, 0.85)
+    if t >= SLAP: burst(img, pc, t - SLAP, (255, 255, 255), 200, 10, 0.3)
+    return img
+
 # ------------------------------------------------------------------ Sharit at window 3 (customer POV)
 def calendar(img, t):
     """wall calendar: 5 → flips three weeks → 26 on "עוד שלושה שבועות"""
@@ -667,6 +694,7 @@ def camera(t):
         if L[10] - 0.1 <= t: z, cy = 1.28 + 0.04 * pu, 860                            # the flat break line, tighter
     elif name == 'win':
         z = 1.18 + 0.04 * pu; cy = 930
+        if WINTWO: z, cy = 1.0 + 0.03 * pu, 960
         if WINZ: z, cy = WINZ + 0.04 * pu, 900                                        # probe: his face bigger in the frame
     elif name == 'booth':
         cy = 940; z = 1.04 + 0.05 * pu
@@ -692,7 +720,7 @@ def draw_frame(i):
         u = (t - a) / (b - a)
         img = scene_lobby_rewind(lerp(C(1) - 0.2, T0 + 0.3, ease_in(u)), i)
     elif name == 'sh': img = scene_sh(t, i)
-    elif name == 'win': img = scene_win(t, i)
+    elif name == 'win': img = scene_win2(t, i) if WINTWO else scene_win(t, i)
     elif name == 'booth': img = scene_booth(t, i)
     else: img = scene_two(t, i)
     z, ccx, ccy = camera(t)
