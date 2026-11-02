@@ -40,6 +40,7 @@ QUEUE = int(os.environ.get('QUEUE', '468'))
 EP_LABEL = 'פרק 28'
 OUTNAME = os.environ.get('OUTNAME', 'ep28_arnona')
 LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
+TWO1 = os.environ.get('TWO1', '0') == '1'      # predictor probe: L01 (she types for him) as a two-shot with his face
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'cat', 7: 'sh', 8: 'cat', 9: 'sh', 10: 'sh'}
 ORDER = [0, 1, 3, 4, 7, 8, 9, 10]   # short_21: L02 lives in the cold open only, L05+L06 dropped (no want/plant/win/peak/break)
 
@@ -121,7 +122,7 @@ for li, s0, off in OCC:
         SUB_TIMES.append((a, b, c, li))
 
 C = lambda i: L[i] - 0.06
-SHOTS = [('two', 0.0, COLD_END), ('rewind', COLD_END, T0), ('cat', T0, C(1)), ('sh', C(1), C(3)), ('two', C(3), C(4)),
+SHOTS = [('two', 0.0, COLD_END), ('rewind', COLD_END, T0), ('cat', T0, C(1)), ('two' if TWO1 else 'sh', C(1), C(3)), ('two', C(3), C(4)),
          ('cat', C(4), C(7)), ('sh', C(7), C(8)), ('cat', C(8), C(9)), ('sh', C(9), FREEZE), ('frozen', FREEZE, DUR + 1)]
 TOPCAPS = [(0.0, C(1), ['מי שקיבל חשבון ארנונה:'], 92, 222, WHITE)]   # hook F14 (callout; ep26 was F16), keyword ארנונה, from frame 1
 
@@ -374,11 +375,14 @@ def scene_two(t, i):
     img = SH_BG.copy(); d = ImageDraw.Draw(img)
     wall_clock(d, 560, 525, 70, t); break_sign_sign(d, 250, 470, 0.85)
     cold = t < COLD_END
+    typing = cold or (C(1) <= t < C(3))
     st_s = SH.base(); st_s.update(hand_l=(170, 760), hand_r=(530, 760), lid=0.45, red=0.8, blush=0.8, look=(18, 6))
     st_s['mouth'] = 'talk' if v_of(t, 'sh') > 0.12 else 'grin'
-    if cold:
+    if typing:
         k = (i // 2) % 2
-        st_s.update(hand_r=(540, 700 + (16 if k else 0)), hand_l=(180, 700 + (0 if k else 16)), look=(10, 16), mouth='grin', rot=3 * math.sin(t * 22))
+        st_s.update(hand_r=(540, 700 + (16 if k else 0)), hand_l=(180, 700 + (0 if k else 16)), look=(10, 16), rot=3 * math.sin(t * 22))
+        if cold: st_s['mouth'] = 'grin'
+        if any(a_ <= t < b_ for a_, b_ in GLANCE): st_s.update(look=(24, -22))
     Ls = SH.draw(st_s, i)
     Ls = Ls.resize((int(Ls.width * TS), int(Ls.height * TS)), Image.BICUBIC)
     img.alpha_composite(Ls, dest=(int(S(T_HEAD[0] - 350 * TS)), int(S(T_HEAD[1] - 300 * TS))))
@@ -388,6 +392,9 @@ def scene_two(t, i):
     if cold:   # jaw drop at the two-handed typing
         st.update(lid=0.0, pupil='tiny', brow='up', mouth=cat_mouth(t, rest='w', loud='w'), ear_dy=-24, sweat=1.0, look=(-18, 4))
         rot = 4 * math.sin(t * 18) * math.exp(-t * 1.5); dy = -10 * v_of(t, 'cat')
+    elif typing:   # she fills it in for him: delighted, then the ✓
+        st.update(lid=0.0, pupil='big', brow='up', mouth='smile', ear_dy=-14, blush=0.8, look=(-18, 2))
+        if t >= CHK1: dy = -24 * abs(math.sin((t - CHK1) * 7)) * math.exp(-(t - CHK1) * 2); st['ear_dy'] = -22
     else:      # "גר לבד, נכון?" — caught, shy
         st.update(lid=0.3, pupil='normal', brow='sad', mouth='goofy', blush=1.0, ear_droop=0.3, look=(-18, 6))
     E(d, HX2, 1720, 380, 420, fill=FUR, outline=OUT, width=7)
@@ -395,7 +402,7 @@ def scene_two(t, i):
     E12.paste_head(img, st, i, HX2, HY2 + dy, F2, rot)
     d = ImageDraw.Draw(img)
     d.rounded_rectangle([S(-20), S(1580), S(1100), S(1700)], radius=S(16), fill=(200, 204, 212), outline=(130, 136, 148), width=iw(5))
-    if cold:   # keyboard blur + flying papers
+    if typing:   # keyboard blur + flying papers
         d.rounded_rectangle([S(60), S(1480), S(520), S(1580)], radius=S(12), fill=(60, 62, 70), outline=(30, 30, 36), width=iw(4))
         ov = Image.new('RGBA', img.size, (0, 0, 0, 0)); od = ImageDraw.Draw(ov)
         for k in range(5):
