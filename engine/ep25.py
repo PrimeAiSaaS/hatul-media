@@ -42,6 +42,9 @@ OUTNAME = os.environ.get('OUTNAME', 'ep25_close')
 LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
 NOSUB = os.environ.get('NOSUB', '0') == '1'     # cover frames: no subtitles
 CROWDJ = os.environ.get('CROWDJ', '0') == '1'   # predictor probe: waiting customers' faces behind him in the jar two-shot
+BIGO = os.environ.get('BIGO', '0') == '1'       # predictor probe: cold open tight on his shouting face, pull back to the two-shot after the slam
+RECAPZ = os.environ.get('RECAPZ', '0') == '1'   # predictor probe: L02 recap framed tight on his face (icons around it)
+TWO1 = os.environ.get('TWO1', '0') == '1'       # predictor probe: L01 (Sharit's 'למה?') as a two-shot with his big face instead of Sharit alone
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'cat', 7: 'sh', 8: 'sh', 9: 'cat', 10: 'sh'}
 
 def segments(i, gap_frames=4, thr=0.08):
@@ -482,6 +485,26 @@ def scene_recap(t, i):
         img.alpha_composite(ov)
     return img
 
+def scene_two1(t, i):
+    """probe TWO1: L01 as a two-shot — Sharit's puppy eyes on the left, his big determined face on the right"""
+    img = SH_BG.copy()
+    st_s = SH.base(); st_s.update(hand_l=(170, 760), hand_r=(530, 760), lid=0.62, red=0.8, blush=0.9, look=(18, 6), snack=True,
+                                  rot=-5 * math.sin(t * 2))
+    st_s['mouth'] = 'talk' if sh_v(t) > 0.12 else 'munch'
+    sharit_two(img, i, st_s)
+    d = ImageDraw.Draw(img)
+    st = E3.base_state(); st.update(red=0.9, cobweb=1.0, blush=0.2)
+    u = t - at(1, 1)
+    if u < 0: st.update(lid=0.3, pupil='normal', brow='none', mouth='flat', ear_dy=-6, look=(-18, 4))
+    else: st.update(lid=0.0, pupil='big', brow='up', mouth='w', ear_dy=-18 * math.exp(-u * 3) - 4, look=(-20, 2), sweat=0.6)
+    E(d, HX2, 1720, 380, 420, fill=FUR, outline=OUT, width=7)
+    E(d, HX2, 1770, 170, 280, fill=CREAM)
+    E12.paste_head(img, st, i, HX2, HY2, F2, (-4 if u < 0 else 6 * math.exp(-u * 4) * math.sin(u * 20)))
+    counter(img)
+    stamps_on_counter(img, t)
+    paste_rot(img, JAR, (900, 1560), 0, 0.9)
+    return img
+
 def scene_two(t, i):
     """L03–L04: she slides the closing form over, he signs it with a flourish ✓1"""
     img = SH_BG.copy()
@@ -753,6 +776,9 @@ def camera(t):
         z = 1.04 + 0.02 * pu; cy = 1000
         if t < 0.3: z = 1.22 - 0.18 * ease_out(t / 0.3)                      # frame 0: snap pull-back, already moving
         if 0 <= u < 0.35: z = max(z, 1.04 + 0.10 * math.exp(-u * 9))
+        if BIGO and t < COLD_END:
+            k_ = ease_io(clamp((t - 0.55) / 0.35))
+            z, cx, cy = lerp(1.55, 1.04, k_), lerp(800, 540, k_), lerp(1080, 1000, k_)
     elif name == 'rewind':
         z, cx = 1.06, 540.0 + 30 * math.sin(t * 90)
     elif name == 'march':
@@ -760,6 +786,7 @@ def camera(t):
     elif name == 'recap':
         z = 1.0 + 0.04 * pu; cy = 960
         if t >= at(2, 3): z, cy = 1.12, 900
+        if RECAPZ: z, cx, cy = 1.28 + 0.04 * pu, 600, 880
     elif name == 'two':
         z = 1.0 + 0.03 * pu; cy = 1000
     elif name == 'sh':
@@ -790,6 +817,7 @@ def draw_frame(i):
         u = (t - a) / (b - a)
         img = scene_march(lerp(C(1) - 0.2, T0 + 0.3, ease_in(u)), i)
     elif name == 'march': img = scene_march(t, i)
+    elif name == 'sh' and TWO1 and L[1] - 0.1 <= t < L[2]: img = scene_two1(t, i)
     elif name == 'sh': img = scene_sh(t, i)
     elif name == 'recap': img = scene_recap(t, i)
     elif name == 'two': img = scene_two(t, i)
