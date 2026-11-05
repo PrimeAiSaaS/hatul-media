@@ -295,7 +295,7 @@ def sh_bag_pos(t):
 
 # ------------------------------------------------------------------ scenes
 HX, HY, F = 690, 900, (1.95 if BIGF else 1.8)
-HY0, F0 = 1050, 1.6     # R8 first shot: head a bit lower/smaller so the window board + clock read above it
+HY0, F0 = int(os.environ.get('HY0', '1050')), float(os.environ.get('F0', '1.6'))     # R8 first shot: head a bit lower/smaller so the window board + clock read above it
 QUEUE_CAT0 = [('c0', 95, 880, 0.44, 0.0), ('h1', 1010, 860, 0.40, 1.1), ('c3', 1010, 1180, 0.5, 2.0)]
 QUEUE_CAT = [('c0', 170, 640, 0.48, 0.0), ('h1', 960, 690, 0.42, 1.1), ('c3', 1010, 1130, 0.5, 2.0)]
 QUEUE_CHEER = [('c0', 150, 760, 0.55, 0.0), ('h1', 330, 700, 0.45, 1.1), ('c3', 1000, 1180, 0.55, 2.0), ('h2', 990, 760, 0.45, 0.7)]

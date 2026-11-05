@@ -280,7 +280,7 @@ def phone_pos(t):
     if t < PEAK[0]: return (250, 1070), s * 1.08, -4
     return (250, 1070), s * 1.1, -3
 
-HY0, F0 = 1060, 1.6     # R8 first shot: head lower/smaller so the clock + the queue read above it
+HY0, F0 = int(os.environ.get('HY0', '1060')), float(os.environ.get('F0', '1.6'))     # R8 first shot: head lower/smaller so the clock + the queue read above it
 QUEUE_BEHIND0 = [('c0', 110, 900, 0.48, 0.0), ('h1', 780, 640, 0.40, 1.1), ('h2', 960, 700, 0.42, 0.6), ('c3', 1015, 1170, 0.52, 2.0)]
 
 def scene_cat(t, i):

@@ -31,8 +31,8 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     # ('ep20_v2_norm.mp4', 11.0, 20, 'הגרר'),  # replaced 1.11 by v8   # v2 (§P, 29.10): peak in the car, eyes closed, the clock at 15:59 (no caption 9.8–)
     ('ep20_v8_norm.mp4', 11.0, 20, 'הגרר'),   # v8 (6ג, 1.11): CROWDCAR probe, same story
     ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
-    ('ep22_norm.mp4', 11.4, 22, 'הפרטים דלפו'),
-    ('ep23_norm.mp4', 11.5, 23, 'קוד ה-SMS'),
+    ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 (R8 5.11): new frame 0, same story
+    ('ep23_sms_v3_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # v3 (R8 5.11): new frame 0, same story
     ('ep24_norm.mp4', 11.2, 24, 'נציג אנושי'),
     ('ep26_norm.mp4', 28.45, 26, 'דרכון תוך 3 ימים'),
     ('ep28_norm.mp4', 17.9, 28, 'ארנונה 2027'),
