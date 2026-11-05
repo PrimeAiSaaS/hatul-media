@@ -47,6 +47,9 @@ QUEUE = int(os.environ.get('QUEUE', '466'))
 EP_LABEL = 'פרק 29'
 TAG_OUT = os.environ.get('OUTNAME', 'ep29_kitsba')
 BIGF = os.environ.get('BIGF', '0') == '1'
+EXPR = os.environ.get('EXPR', '0') == '1'       # probe: big expressions 0.8-3.4 s (outrage, not sulk/bored)
+FACES = os.environ.get('FACES', '0') == '1'
+CROWD = os.environ.get('CROWD', '0') == '1'     # probe: the board shot in a packed lobby crowd (ep13's 49)     # probe: front-row queue faces reacting in 0-4 s
 
 SHOTS = [('cat', 0.0, 2.4), ('board', 2.4, 4.0), ('two', 4.0, 8.7), ('cat', 8.7, DUR + 1)]
 SLAM = 0.08            # the "28.11 · שבת" card slams onto the phone
@@ -252,13 +255,16 @@ def cat_state_close(t, i):
             dy = -22 * math.exp(-max(0, u) * 8) * math.cos(max(0, u) * 26); rot = 5 * math.exp(-max(0, u) * 5) * math.sin(max(0, u) * 22)
         elif t < SHAKE[1]:                                 # shakes the empty bag: sad
             st.update(lid=0.35, pupil='normal', brow='sad', mouth='flat', look=(18, 16), ear_droop=0.5, blush=0.0); rot = 3 * math.sin(t * 30)
+            if EXPR: st.update(lid=0.0, pupil='tiny', brow='up', mouth='w', look=(16, 18), ear_droop=0.0, ear_dy=-18); rot = 6 * math.sin(t * 30)
         else:                                              # determined
             v = t - SHAKE[1]
             st.update(lid=0.15, pupil='normal', brow='annoyed', mouth='w' if (i // 4) % 2 == 0 and v < 0.8 else 'flat', look=(-6, 0), ear_dy=-10)
             rot = -5 * math.exp(-v * 4) * math.cos(v * 14)
         return st, rot, dy
     if t < 4.0:                                            # the board
-        if t < CHK1: st.update(lid=0.3, pupil='normal', mouth='flat', look=(-26, -14), brow='sad'); dy = 4 * math.sin(t * 20)
+        if t < CHK1:
+            st.update(lid=0.3, pupil='normal', mouth='flat', look=(-26, -14), brow='sad'); dy = 4 * math.sin(t * 20)
+            if EXPR: st.update(lid=0.0, pupil='big', brow='annoyed', mouth='w' if (i // 3) % 2 else 'flat', look=(-26, -14)); rot = 4 * math.sin(t * 14)
         else:
             v = t - CHK1
             st.update(lid=0.0, pupil='big', brow='up', mouth='smile', look=(-20, -10), ear_dy=-24 * math.exp(-v * 3), blush=0.8)
@@ -325,7 +331,8 @@ QUEUE_PEAK = [('c0', 110, 800, 0.50, 0.0), ('h1', 1010, 900, 0.42, 1.1), ('c3', 
 def scene_cat(t, i):
     img = WIN_BG.copy()
     late = t >= PHONEUP
-    for name, x, y, sc, ph in (QUEUE_PEAK if late else QUEUE_CAT):
+    qc = QUEUE_PEAK if late else (QUEUE_CAT + [('h0', 120, 1700, 0.62, 0.9)] if FACES else QUEUE_CAT)
+    for name, x, y, sc, ph in qc:
         mood = 1 if (t < SLAM + 0.5 or (late and (t < DIP[0] or t >= BREAK))) else (0 if late else 2)
         lean = (-8 * clamp((t - PEAK[0]) / 0.4)) if late and t < BREAK else 0
         E13.paste_sprite(img, name, mood, x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph) + lean, sc, flip=x > 540)
@@ -395,10 +402,17 @@ def scene_cat(t, i):
 
 def scene_board(t, i):
     img = WIN_BG.copy()
-    for name, x, y, sc, ph in QUEUE_CAT:
+    if CROWD:
+        mood = 1 if t >= CHK1 else 0
+        for name, x, y, sc, ph in E13.BACK + E13.MID:
+            E13.paste_sprite(img, name, mood, x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph) - (18 * abs(math.sin(t * 9 + ph)) if t >= CHK1 else 0), sc, flip=x > 540)
+    for name, x, y, sc, ph in ([] if CROWD else QUEUE_CAT):
         mood = 1 if t >= CHK1 else 2
         E13.paste_sprite(img, name, mood, x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph), sc, flip=x > 540)
     board(img, t)
+    if FACES:
+        for name, x, y, sc, ph in (('h2', 1000, 1250, 0.62, 0.3),):
+            E13.paste_sprite(img, name, 1 if t >= CHK1 else 0, x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph), sc, flip=True)
     d = ImageDraw.Draw(img)
     st, rot, dy = cat_state_close(t, i)
     hx = 700
@@ -409,6 +423,9 @@ def scene_board(t, i):
     shadow_paste(img, TICKET.rotate(8, resample=Image.BICUBIC, expand=True), (tp[0], tp[1] - 120), 80, (8, 12), 6)
     cheesy_paw(img, tp, 10, 1.0, 1.0)
     E12.paste_head(img, st, i, hx, 920 + dy, 1.7, rot)
+    if CROWD:
+        for name, x, y, sc, ph, side in E13.FRONT:
+            E13.paste_sprite(img, name, 1 if t >= CHK1 else 0, x - side * 40 + 6 * math.sin(t * 5 + ph), y + 10 * math.sin(t * 6 + ph), sc, flip=side > 0)
     if YES[0] <= t < YES[1]: SH.bubble(img, 'יש!', t - YES[0], (760, 640, 260, 120), (740, 780), side=1)
     burst(img, (330, 695), t - CHK1, (120, 255, 160), 220, 12, 0.4)
     return img
