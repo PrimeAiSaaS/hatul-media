@@ -11,8 +11,8 @@
     "trigger_id": "trig_01EiuozAjMDScB9wKzowH1X6",
     "name": "חתול בהמתנה: סנכרון תור הפרסום",
     "cron": "CRON_TZ=Asia/Jerusalem 52 18 * * *",
-    "prompt": "sync_v9.md",
-    "updated_at": "2026-10-31T23:40:00+02:00"
+    "prompt": "sync_v10.md",
+    "updated_at": "2026-11-05T12:47:00+02:00"
   },
   "data": {
     "trigger_id": "trig_0185MKRJiubwpf47eBuh6JAY",
