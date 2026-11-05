@@ -46,6 +46,7 @@ TAG_OUT = os.environ.get('OUTNAME', 'ep23_sms')
 T0_CLOCK = 23 * 3600 + 59 * 60 + 46          # the wall clock at frame 0 (real time from there)
 BIGP = os.environ.get('BIGP', '0') == '1'    # probe: phone bigger next to the face
 BIGF = os.environ.get('BIGF', '0') == '1'    # probe: bigger cat head, already in frame at 0 (short slide)
+FRAME0 = os.environ.get('FRAME0', '1') == '1'     # R8 (5.11): frame 0 shows the WAITING (big clock + the queue behind), cat sweating, bright light
 NOSPLIT = os.environ.get('NOSPLIT', '0') == '1'   # probe: full-frame cuts between grandma and the cat instead of the split screen
 
 SHOTS = [('cat', 0.0, 1.9), ('split', 1.9, 6.2), ('cat', 6.2, 7.4), ('split', 7.4, 9.2), ('cat', 9.2, DUR + 1)]
@@ -207,6 +208,7 @@ def cat_state_close(t, i):
         u = t - SLIDE[0]
         if t < REAL[0]:                                    # sliding in, determined
             st.update(lid=0.1, pupil='big', brow='annoyed', mouth='w', ear_dy=-22, look=(-22, 6), blush=0.0)
+            if FRAME0: st.update(lid=0.0, pupil='tiny' if t < 0.5 else 'big', brow='up', sweat=1.0, look=(-26, 2) if t < 0.5 else (-22, 6))
             rot = -10 * (1 - ease_out(clamp(t / 0.35))) + 4 * math.exp(-max(0, t - 0.3) * 5) * math.sin(max(0, t - 0.3) * 22)
         else:                                              # "...סבתא!" eyes huge
             v = t - REAL[0]
@@ -278,11 +280,16 @@ def phone_pos(t):
     if t < PEAK[0]: return (250, 1070), s * 1.08, -4
     return (250, 1070), s * 1.1, -3
 
+HY0, F0 = 1060, 1.6     # R8 first shot: head lower/smaller so the clock + the queue read above it
+QUEUE_BEHIND0 = [('c0', 110, 900, 0.48, 0.0), ('h1', 780, 640, 0.40, 1.1), ('h2', 960, 700, 0.42, 0.6), ('c3', 1015, 1170, 0.52, 2.0)]
+
 def scene_cat(t, i):
-    img = KIOSK_BG.copy()
-    led_clock(img, CLOCK_C, t)
+    f0 = FRAME0 and t < 1.9
+    img = (KIOSK0_BG if f0 else KIOSK_BG).copy()
+    if f0: led_clock(img, (345, 625), t, 1.4)
+    else: led_clock(img, CLOCK_C, t)
     cheer = CHEER[0] <= t < CHEER[1]
-    for name, x, y, sc, ph in QUEUE_BEHIND:
+    for name, x, y, sc, ph in (QUEUE_BEHIND0 if f0 else QUEUE_BEHIND):
         jump = (-26 * abs(math.sin(t * 9 + ph))) if cheer else 0
         lean = 30 * math.sin(t * 2 + ph) * 0.2 if 6.2 <= t < 7.4 else 0
         E13.paste_sprite(img, name, crowd_mood(t), x + 6 * math.sin(t * 3 + ph) + lean, y + 10 * math.sin(t * 4.4 + ph) + jump, sc, flip=x > 540)
@@ -324,7 +331,7 @@ def scene_cat(t, i):
     if t >= 9.2 or 6.2 <= t < 7.4 or SEND - 0.25 <= t < SEND + 0.25:
         capsule(d, (hx + 250, 1420), rp, 120, FUR, OUT, 4)
         E12.big_paw(d, rp, -30)
-    E12.paste_head(img, st, i, hx, HY + dy, F, rot)
+    E12.paste_head(img, st, i, hx, (HY0 if f0 else HY) + dy, F0 if f0 else F, rot)
     d = ImageDraw.Draw(img)
     burst(img, (c[0], c[1] + (440 - PH / 2) * ps), t - SEND, (120, 255, 160), 120, 8, 0.3)
     burst(img, btn, t - TAP, (120, 255, 160), 170, 12, 0.35)
@@ -442,9 +449,13 @@ def scene_split_cat(t, i):
 # ------------------------------------------------------------------ frame
 KIOSK_BG = GRAN_BG = PILL_EP = PILL_Q = None
 def init_all():
-    global KIOSK_BG, GRAN_BG, PILL_EP, PILL_Q
+    global KIOSK_BG, KIOSK0_BG, GRAN_BG, PILL_EP, PILL_Q
     m.init_static()
-    kb = E21.build_kiosk_bg().filter(ImageFilter.GaussianBlur(S(3)))
+    kraw = E21.build_kiosk_bg()
+    k0 = kraw.filter(ImageFilter.GaussianBlur(S(1.5)))                     # R6: the kiosk lights on, bright, in the first shot
+    k0.alpha_composite(Image.new('RGBA', k0.size, (255, 250, 236, 30)))
+    KIOSK0_BG = k0
+    kb = kraw.filter(ImageFilter.GaussianBlur(S(3)))
     night = Image.new('RGBA', kb.size, (20, 24, 60, 70))                    # 23:59 — the kiosk at night
     kb.alpha_composite(night)
     KIOSK_BG = kb
@@ -472,7 +483,7 @@ def camera(t):
             z = 1.0
             us = t - SLIDE[1]
             if 0 <= us < 0.35: sh_ = 3 + 18 * math.exp(-us * 8); z = 1.0 + 0.08 * math.exp(-us * 8)
-            if t >= REAL[0]: z = max(z, lerp(1.0, 1.1, ease_out(clamp((t - REAL[0]) / 0.12)))); cx, cy = 660, 900
+            if t >= REAL[0]: z = max(z, lerp(1.0, 1.1, ease_out(clamp((t - REAL[0]) / 0.12)))); cx, cy = (600, 960) if FRAME0 else (660, 900)
         if a == 9.2:
             if t >= 10.0: z = lerp(1.0, 1.12, ease_io(clamp((t - 10.0) / (TAP - 10.0)))); cx = lerp(600, 520, clamp((t - 10.0) / 2)); cy = lerp(980, 1020, clamp((t - 10.0) / 2))
             if t >= BREAK:

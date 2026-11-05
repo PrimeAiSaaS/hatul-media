@@ -43,6 +43,7 @@ EP_LABEL = 'פרק 22'
 TAG_OUT = os.environ.get('OUTNAME', 'ep22_leak')
 CROWDX = os.environ.get('CROWDX', '0') == '1'     # probe: bigger queue faces in the two-shots
 BIGF = os.environ.get('BIGF', '0') == '1'         # probe: bigger cat head in the close-ups
+FRAME0 = os.environ.get('FRAME0', '1') == '1'     # R8 (5.11): frame 0 shows the WAITING (window board + clock + queue), cat sweating, pain-question hook
 
 SHOTS = [('cat', 0.0, 2.3), ('two', 2.3, 4.1), ('cat', 4.1, 5.4), ('two', 5.4, 7.6), ('cat', 7.6, 9.2), ('two', 9.2, DUR + 1)]
 SLAM = 0.08            # scam SMS slams onto the phone
@@ -71,7 +72,7 @@ STAMP = 12.35          # "אומת"
 FREEZE = (12.6, DUR)
 
 CAPTIONS = [  # (t0, t1, lines, size, y, fill)
-    (0.0, 2.3, ['הודעה מהבנק שלי?', 'הפעם לא עובדים עליי.'], 96, 290, WHITE),      # keyword on frame 1
+    (0.0, 2.3, ['הודעה מהבנק שלי', 'שהחשבון ייחסם?'] if FRAME0 else ['הודעה מהבנק שלי?', 'הפעם לא עובדים עליי.'], 96, 290, WHITE),      # keyword on frame 1
     (2.3, 4.1, ['הודעה חשודה? מוחקים.', 'מתקשרים לבנק בעצמך.'], 80, 290, WHITE),
     (6.0, 7.6, ['3 מתוך 3.', 'לקוח זהיר!'], 100, 290, WHITE),
     (9.35, 11.15, ['סוף סוף:', 'חשבון מוגן.'], 100, 290, WHITE),
@@ -210,6 +211,7 @@ def cat_state_close(t, i):
         u = t - SLAM
         if t < SUSP:                                       # SMS slams: huge eyes
             st.update(lid=0.0, pupil='big', brow='up', mouth='w', ear_dy=-24 * math.exp(-max(0, u) * 4), look=(-20, 4), blush=0.0)
+            if FRAME0: st.update(sweat=1.0, pupil='tiny' if t < SLAM + 0.3 else 'big')
             dy = -22 * math.exp(-max(0, u) * 8) * math.cos(max(0, u) * 26); rot = 5 * math.exp(-max(0, u) * 5) * math.sin(max(0, u) * 22)
         elif t < SWIPE:                                    # suspicious squint
             st.update(lid=0.5, pupil='normal', brow='annoyed', mouth='flat', look=(-22, 2), blush=0.0); rot = -4
@@ -293,6 +295,8 @@ def sh_bag_pos(t):
 
 # ------------------------------------------------------------------ scenes
 HX, HY, F = 690, 900, (1.95 if BIGF else 1.8)
+HY0, F0 = 1050, 1.6     # R8 first shot: head a bit lower/smaller so the window board + clock read above it
+QUEUE_CAT0 = [('c0', 95, 880, 0.44, 0.0), ('h1', 1010, 860, 0.40, 1.1), ('c3', 1010, 1180, 0.5, 2.0)]
 QUEUE_CAT = [('c0', 170, 640, 0.48, 0.0), ('h1', 960, 690, 0.42, 1.1), ('c3', 1010, 1130, 0.5, 2.0)]
 QUEUE_CHEER = [('c0', 150, 760, 0.55, 0.0), ('h1', 330, 700, 0.45, 1.1), ('c3', 1000, 1180, 0.55, 2.0), ('h2', 990, 760, 0.45, 0.7)]
 
@@ -301,10 +305,31 @@ def crowd_mood(t):
     if CHK3 <= t < 9.2: return 1                 # impressed, then cheering
     return 2 if t < 2.3 else 0
 
+JUMP0 = [(0.0, '17'), (0.45, '311'), (1.0, '9'), (1.6, '880')]
+def waiting_kit(img, t):
+    """R5: the waiting on screen in the first shot — window board with a jumping number + wall clock, sharp and bright"""
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = 90, 535, 560, 730
+    d.rounded_rectangle([S(x0 + 8), S(y0 + 10), S(x1 + 8), S(y1 + 10)], radius=S(20), fill=(150, 158, 174))
+    d.rounded_rectangle([S(x0), S(y0), S(x1), S(y1)], radius=S(20), fill=(22, 22, 26), outline=(92, 92, 104), width=iw(6))
+    d.line([(S(x1 - 120), S(y0 + 20)), (S(x1 - 120), S(y1 - 20))], fill=(60, 60, 70), width=iw(3))
+    d.text((S(x1 - 60), S(y0 + 66)), 'חלון', font=font(S(36), 800), fill=E3.AMBER, anchor='mm')
+    d.text((S(x1 - 60), S(y0 + 146)), '3', font=font(S(74), 900), fill=E3.AMBER, anchor='mm')
+    txt = JUMP0[0][1]
+    for tj, v in JUMP0:
+        if t >= tj: txt = v
+    blink = any(0 < t - tj < 0.21 and int((t - tj) / 0.07) % 2 == 1 for tj, _ in JUMP0[1:])
+    if not blink: E3.led_text(img, txt, (x0 + x1 - 120) / 2, (y0 + y1) / 2 + 4, 120 if len(txt) < 3 else 92)
+    d = ImageDraw.Draw(img)
+    E3.clock_face(d, 900, 620, 88); E3.clock_hands(d, 900, 620, 88, 15 * 3600 + 58 * 60 + int(t * 40) % 60)
+
 def scene_cat(t, i):
     cheer = t >= CHEER[0]
-    img = WIN_BG.copy()
-    for name, x, y, sc, ph in (QUEUE_CHEER if cheer else QUEUE_CAT):
+    img = (WIN0_BG if (FRAME0 and t < 2.3) else WIN_BG).copy()
+    f0 = FRAME0 and t < 2.3
+    if f0: waiting_kit(img, t)
+    hy, fs, pdy = (HY0, F0, 100) if f0 else (HY, F, 0)
+    for name, x, y, sc, ph in (QUEUE_CHEER if cheer else (QUEUE_CAT0 if f0 else QUEUE_CAT)):
         jump = (-26 * abs(math.sin(t * 9 + ph))) if cheer else 0
         E13.paste_sprite(img, name, crowd_mood(t), x + 6 * math.sin(t * 3 + ph), y + 10 * math.sin(t * 4.4 + ph) + jump, sc, flip=x > 540)
     if cheer: confetti(img, t - CHEER[0], 1.8)
@@ -317,11 +342,11 @@ def scene_cat(t, i):
     capsule(d, (HX + 250, 1420), rp, 120, FUR, OUT, 4)
     shadow_paste(img, BAG.rotate(10 + 3 * math.sin(t * 4), resample=Image.BICUBIC, expand=True), (rp[0] - 40, rp[1] - 130), 80, (10, 14), 8)
     d = ImageDraw.Draw(img); E12.big_paw(d, rp, -10)
-    E12.paste_head(img, st, i, HX, HY + dy, F, rot)
+    E12.paste_head(img, st, i, HX, hy + dy, fs, rot)
     d = ImageDraw.Draw(img)
     if t < 2.3:                                        # phone held up next to his face, the SMS slams on
-        c = (250, 1060 + 6 * math.sin(t * 2.2))
-        if t < SLAM: c = (250, lerp(1300, 1060, ease_out(clamp((t + 0.15) / 0.23))))
+        c = (250, 1060 + pdy + 6 * math.sin(t * 2.2))
+        if t < SLAM: c = (250, lerp(1300 + pdy, 1060 + pdy, ease_out(clamp((t + 0.15) / 0.23))))
         capsule(d, (HX - 260, 1420), (c[0] + 10, c[1] + PH * 0.43), 120, FUR, OUT, 4)
         shadow_paste(img, PHONE_LOCK.rotate(-6, resample=Image.BICUBIC, expand=True), c, 110, (18, 22), 14)
         u = t - SLAM
@@ -428,13 +453,18 @@ def scene_two(t, i):
     return img
 
 # ------------------------------------------------------------------ frame
-WIN_BG = SH_BG = PHONE_LOCK = PHONE_BACK = SMS = BAG = BAG_S = DEL_CHIP = STICKER = PILL_EP = PILL_Q = None
+WIN0_BG = WIN_BG = SH_BG = PHONE_LOCK = PHONE_BACK = SMS = BAG = BAG_S = DEL_CHIP = STICKER = PILL_EP = PILL_Q = None
 def init_all():
-    global WIN_BG, SH_BG, PHONE_LOCK, PHONE_BACK, SMS, BAG, BAG_S, DEL_CHIP, STICKER, PILL_EP, PILL_Q
+    global WIN0_BG, WIN_BG, SH_BG, PHONE_LOCK, PHONE_BACK, SMS, BAG, BAG_S, DEL_CHIP, STICKER, PILL_EP, PILL_Q
     m.init_static()
     wb = E3.build_window_bg()
+    wb0 = wb.copy(); d0 = ImageDraw.Draw(wb0)                              # R8 base: no plaque/amber sign behind the board + clock
+    d0.rectangle([S(440), S(400), S(1080), S(560)], fill=wb0.getpixel((S(300), S(460))))
     E8.plaque(ImageDraw.Draw(wb), 820, 640, 'הבנק שלי', 300)
     WIN_BG = wb.filter(ImageFilter.GaussianBlur(S(3)))
+    w0 = wb0.filter(ImageFilter.GaussianBlur(S(1.2)))                     # R6: brighter, sharper office light in the first shot
+    w0.alpha_composite(Image.new('RGBA', w0.size, (255, 252, 240, 40)))
+    WIN0_BG = w0
     ob = E3.build_office_bg()
     E8.plaque(ImageDraw.Draw(ob), 780, 790, 'הבנק שלי · חלון 3', 440)
     SH_BG = ob.filter(ImageFilter.GaussianBlur(S(3)))
@@ -453,7 +483,8 @@ def camera(t):
     if name == 'cat':
         z = lerp(1.2, 1.0, ease_out(clamp((t - a) / 0.3))); cx, cy = 600.0, 980.0
         if a == 0.0:
-            z = lerp(1.16, 1.0, ease_out(clamp((t - SLAM) / 0.3))) if t >= SLAM else 1.16
+            z0 = 1.06 if FRAME0 else 1.16
+            z = lerp(z0, 1.0, ease_out(clamp((t - SLAM) / 0.3))) if t >= SLAM else z0
             us = t - SLAM
             if 0 <= us < 0.4: sh_ = 3 + 20 * math.exp(-us * 8)
             if t >= SWIPE: z = max(z, 1.0 + 0.06 * math.exp(-(t - SWIPE) * 8))
