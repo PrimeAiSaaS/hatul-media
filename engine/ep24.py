@@ -44,6 +44,7 @@ QUEUE = int(os.environ.get('QUEUE', '475'))
 EP_LABEL = 'פרק 24'
 TAG_OUT = os.environ.get('OUTNAME', 'ep24_human')
 BIGF = os.environ.get('BIGF', '0') == '1'          # probe: bigger face
+FRAME0 = os.environ.get('FRAME0', '1') == '1'      # R8 (6.11): frame 0 shows the WAITING (window board + wall clock), cat sweating, F16 pain-question hook
 
 # ------------------------------------------------------------------ timeline
 TAPS0 = (0.06, 0.42, 0.78)    # 9, 9, 0#  (frame 0: the trick = the plant)
@@ -65,7 +66,7 @@ BUB_TRICK = (1.3, 2.25)
 BUB_CHEER = (7.85, 9.0)
 
 CAPTIONS = [  # (t0, t1, lines, size, y, fill)
-    (0.0, 2.0, ['נציג אנושי בבנק שלי?', 'הפעם אני מגיע אליו.'], 92, 290, WHITE),     # keyword on frame 1
+    (0.0, 2.0, (['איך מגיעים לנציג אנושי', 'בבנק שלי?'] if FRAME0 else ['נציג אנושי בבנק שלי?', 'הפעם אני מגיע אליו.']), 92, 290, WHITE),     # keyword on frame 1
     (5.65, 7.55, ['מיקומך בתור:', '12... 3... 2...'], 96, 290, WHITE),
     (7.6, 9.6, ['מיקומך בתור: 1.', 'נציג אנושי!'], 100, 290, WHITE),
 ]
@@ -231,6 +232,7 @@ def cat_state(t, i):
     st = base_cat(); rot, dy, puff = 0.0, 0.0, 0.0
     if t < CHK1:                                         # the trick: focused, tongue-in-cheek
         st.update(lid=0.25, pupil='normal', brow='annoyed', mouth='squish', look=(-26, 6), blush=0.1)
+        if FRAME0: st.update(lid=0.0, pupil='tiny' if t < 0.5 else 'big', brow='up', mouth='squish', sweat=1.0, look=(-24, 4), blush=0.0)
         rot = -3 + 3 * tap_amt(t)
     elif t < 2.4:                                        # it works!
         u = t - CHK1
@@ -275,7 +277,7 @@ def cat_state(t, i):
 HX, HY, F = 690, 1080, (1.9 if BIGF else 1.75)
 PHONE_C = (310, 1000)
 # waiters on the benches (sprite, x, y, scale, phase, flip, phone dx, phone dy)
-WAIT = [('h1', 120, 800, 0.40, 0.3, False, 95, 40), ('c3', 980, 720, 0.42, 1.4, True, -92, 50),
+WAIT = [('h1', 120, 960 if FRAME0 else 800, 0.40, 0.3, False, 95, 40), ('c3', 980, 720, 0.42, 1.4, True, -92, 50),
         ('c0', 70, 1450, 0.58, 2.2, False, 120, 40), ('h2', 1030, 1420, 0.52, 0.9, True, -110, 60)]
 
 def waiter_mood(t):
@@ -284,8 +286,42 @@ def waiter_mood(t):
     if t < RING[1]: return 1                 # cheering
     return 2 if t < BEEP else 1
 
+SLUMP = 130
+def slump(t):
+    """R8: the cat (head, body, phone, paws) sits lower in frame 0 so the board + clock above him read; he springs up on
+    'it works' (CHK1) and slumps back down after the break, so the loop seam still matches frame 0"""
+    if not FRAME0: return 0.0
+    if t < 1.0: return SLUMP
+    if t < 1.4: return SLUMP * (1 - ease_out((t - 1.0) / 0.4))
+    if t < BEEP + 0.2: return 0.0
+    return SLUMP * ease_io(clamp((t - (BEEP + 0.2)) / (DUR - BEEP - 0.25)))
+
+JUMP0 = [(0.0, '17'), (0.35, '311'), (0.7, '9'), (1.05, '880'), (1.6, '64'), (2.4, '12')]
+def waiting_kit(img, t):
+    """R5: the waiting on screen in frame 0 — window board with a jumping red number + a wall clock, sharp"""
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = 120, 690, 420, 825
+    d.rounded_rectangle([S(x0 + 8), S(y0 + 10), S(x1 + 8), S(y1 + 10)], radius=S(18), fill=(150, 158, 174))
+    d.rounded_rectangle([S(x0), S(y0), S(x1), S(y1)], radius=S(18), fill=(22, 22, 26), outline=(92, 92, 104), width=iw(6))
+    d.line([(S(x1 - 96), S(y0 + 16)), (S(x1 - 96), S(y1 - 16))], fill=(60, 60, 70), width=iw(3))
+    d.text((S(x1 - 48), S(y0 + 44)), 'חלון', font=font(S(30), 800), fill=E3.AMBER, anchor='mm')
+    d.text((S(x1 - 48), S(y0 + 98)), '3', font=font(S(58), 900), fill=E3.AMBER, anchor='mm')
+    seq = [v for _, v in JUMP0]
+    if t < JUMP0[-1][0] + 0.5:
+        txt = JUMP0[0][1]
+        for tj, v in JUMP0:
+            if t >= tj: txt = v
+        blink = any(0 < t - tj < 0.21 and int((t - tj) / 0.07) % 2 == 1 for tj, _ in JUMP0[1:])
+    else:
+        sp = 16 if FF[0] <= t < FF[1] else 1.3
+        txt = seq[int(t * sp) % len(seq)]; blink = False
+    if not blink: E3.led_text(img, txt, (x0 + x1 - 96) / 2, (y0 + y1) / 2 + 4, 92 if len(txt) < 3 else 70)
+    d = ImageDraw.Draw(img)
+    E3.clock_face(d, 478, 752, 50); E3.clock_hands(d, 478, 752, 50, 15 * 3600 + 58 * 60 + int(t * 40) % 60)
+
 def draw_world(t, i):
     img = BG.copy(); d = ImageDraw.Draw(img)
+    if FRAME0: waiting_kit(img, t); d = ImageDraw.Draw(img)
     # branch board: the number being called jumps for no reason (gag #1, §O4)
     seq = [17, 64, 9, 311, 12, 880, 17, 5, 402]
     sp = 16 if FF[0] <= t < FF[1] else 1.3
@@ -313,12 +349,13 @@ def draw_world(t, i):
     d = ImageDraw.Draw(img)
     # the cat
     st, rot, dy, puff = cat_state(t, i)
+    sl = slump(t); dy += sl
     E(d, HX, 1700 - 10 * puff, 450 + 30 * puff, 470 + 20 * puff, fill=FUR, outline=OUT, width=7)
     E(d, HX, 1760, 210 + 20 * puff, 320, fill=CREAM)
     E12.paste_head(img, st, i, HX, HY + dy, F, rot)
     d = ImageDraw.Draw(img)
     # phone held up beside the face (left paw), screen to camera
-    pc = (PHONE_C[0] + 4 * math.sin(t * 2.0), PHONE_C[1] + 6 * math.sin(t * 2.6))
+    pc = (PHONE_C[0] + 4 * math.sin(t * 2.0), PHONE_C[1] + sl + 6 * math.sin(t * 2.6))
     if t < 0.12: pc = (pc[0] - 30 * (1 - t / 0.12), pc[1] + 40 * (1 - t / 0.12))
     capsule(d, (HX - 250, 1500), (pc[0] + 30, pc[1] + PH * 0.42), 120, FUR, OUT, 4)
     lay = phone_layer(t).rotate(-5, resample=Image.BICUBIC, expand=True)

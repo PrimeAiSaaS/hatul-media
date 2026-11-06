@@ -33,11 +33,12 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
     ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 (R8 5.11): new frame 0, same story
     ('ep23_sms_v3_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # v3 (R8 5.11): new frame 0, same story
-    ('ep24_norm.mp4', 11.2, 24, 'נציג אנושי'),
+    ('ep24_human_v2_norm.mp4', 11.2, 24, 'נציג אנושי'),   # v2 (R8 6.11): new frame 0, same story
     ('ep26_norm.mp4', 28.45, 26, 'דרכון תוך 3 ימים'),
     ('ep28_norm.mp4', 17.9, 28, 'ארנונה 2027'),
-    ('ep27_norm.mp4', 18.25, 27, 'יום הרווקים'),
+    ('ep27_singles_v2_norm.mp4', 18.25, 27, 'יום הרווקים'),   # v2 (R8 6.11): new frame 0, same story
     ('ep29_norm.mp4', 6.8, 29, 'הקצבה נופלת בשבת'),   # §P: two-shot, the orange paw print on the form, the stamp in the air (no caption 5.55–7.0)
+    ('ep31_club_v2_norm.mp4', 9.1, 31, 'הוראות קבע'),   # §P: the old card held up, scissors coming in (no caption 8.65–9.9)
     ('ep25_norm.mp4', 29.1, 25, 'סגירת חשבון'),   # §P voiced peak: at the door, eyes closed, sunlight (no subtitle 28.96–29.26)   # §P voiced peak: flaps open, golden light, the hush (frame drawn without the subtitle: ep27.draw_frame with SUB_TIMES=[])   # §P voiced peak: the stamp raised, clock 12:59, the last chip pulsing (no subtitle 17.87–17.95)   # §P voiced peak: eyes closed, passport + pass raised, the hush (no subtitle 28.37–28.67)   # §P peak: Sharit on the call screen, he inhales (no caption 9.6–)   # §P peak: paw over "כניסה", 23:59:57 (no caption 11.05–)   # §P peak: eyes closed, the bag with the code on the counter (no caption 11.15–12.0)   # two-shot before "וואלה." (no caption 7.8–8.15)   # Eilat, the new notice just slapped on (no caption 10.3–11.2)
 ]
 

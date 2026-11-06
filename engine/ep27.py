@@ -40,6 +40,7 @@ PINKSUB = (255, 182, 210); GOLD = (255, 196, 40); GREEN = (40, 170, 80)
 QUEUE = int(os.environ.get('QUEUE', '468'))
 EP_LABEL = 'פרק 27'
 OUTNAME = os.environ.get('OUTNAME', 'ep27_singles')
+FRAME0 = os.environ.get('FRAME0', '1') == '1'   # R8 (6.11): cold open shows the WAITING (pickup-point board + clock), bright light, cat in disbelief + sweat, F16 pain-question hook
 LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
 SPEAKER = {0: 'cat', 1: 'cat', 2: 'sh', 3: 'cat', 4: 'sh', 5: 'cat', 6: 'sh', 7: 'cat', 8: 'sh', 9: 'cat', 10: 'sh'}
 ORDER = [1, 2, 3, 4, 5, 6, 8, 9, 10]   # short_21: L00 dropped (the SMS is already on the phone in L01), L07 only in the cold open
@@ -125,7 +126,7 @@ for li, s0, off in OCC:
 C = lambda i: L[i] - 0.06
 SHOTS = [('box', 0.0, COLD_END), ('rewind', COLD_END, T0), ('street', T0, C(2)), ('sh', C(2), C(3)), ('cat', C(3), C(4)),
          ('two', C(4), C(5)), ('code', C(5), C(6)), ('two', C(6), C(9)), ('box', C(9), FREEZE), ('frozen', FREEZE, DUR + 1)]
-TOPCAPS = [(0.0, C(2), ['תראו מה הגיע', 'ביום הרווקים'], 92, 222, WHITE)]   # hook F18 (cold-open demo; ep28 was F14), keyword יום הרווקים
+TOPCAPS = [(0.0, C(2), (['כמה חיכיתם לחבילה', 'מיום הרווקים?'] if FRAME0 else ['תראו מה הגיע', 'ביום הרווקים']), 92, 222, WHITE)]   # hook F18 (cold-open demo; ep28 was F14), keyword יום הרווקים
 
 def shot(t):
     for name, a, b in SHOTS:
@@ -258,6 +259,9 @@ def cat_box_state(t, i, frozen=False):
     if t < COLD_END:                    # cold open: "וואו... זה כולו שלי?!" — sparkling
         st.update(lid=0.0, pupil='big', brow='up', mouth=cat_mouth(t, rest='w', loud='w'), ear_dy=-24, blush=1.0, look=(-8, 16))
         dy = -16 * abs(math.sin(t * 8)); rot = 3 * math.sin(t * 9)
+        if FRAME0:   # R5: disbelief, sweating (never happy/smug in frame 0)
+            st.update(pupil='tiny' if t < 0.45 else 'big', mouth=cat_mouth(t, rest='squish', loud='w'), sweat=1.0, blush=0.2, ear_dy=-30, look=(-6, 18))
+            dy = -10 * abs(math.sin(t * 11)); rot = 4 * math.sin(t * 13)
         return st, rot, dy
     if t < BREAK:                       # peak: hug, "שלי. סוף סוף... שלי.", eyes closed in bliss, then the flaps
         u = t - L[9]
@@ -271,8 +275,24 @@ def cat_box_state(t, i, frozen=False):
     dy = 30 * abs(math.sin(u * 9)); rot = 4 * math.sin(u * 13)
     return st, rot, dy
 
+JUMP0 = [(0.0, '17'), (0.3, '311'), (0.6, '9'), (0.9, '880')]
+def waiting_kit(img, t):
+    """R5: the pickup point's number board (jumping red LED) + a wall clock, above the queue"""
+    d = ImageDraw.Draw(img)
+    x0, y0, x1, y1 = 102, 470, 328, 655
+    d.rounded_rectangle([S(x0 + 8), S(y0 + 10), S(x1 + 8), S(y1 + 10)], radius=S(18), fill=(120, 126, 140))
+    d.rounded_rectangle([S(x0), S(y0), S(x1), S(y1)], radius=S(18), fill=(22, 22, 26), outline=(92, 92, 104), width=iw(6))
+    d.line([(S(x0 + 14), S(y0 + 58)), (S(x1 - 14), S(y0 + 58))], fill=(60, 60, 70), width=iw(3))
+    d.text((S((x0 + x1) / 2), S(y0 + 31)), 'נקודת איסוף', font=font(S(30), 800), fill=E3.AMBER, anchor='mm')
+    txt = JUMP0[0][1]
+    for tj, v in JUMP0:
+        if t >= tj: txt = v
+    blink = any(0 < t - tj < 0.18 and int((t - tj) / 0.06) % 2 == 1 for tj, _ in JUMP0[1:])
+    if not blink: E3.led_text(img, txt, (x0 + x1) / 2, (y0 + 58 + y1) / 2 + 2, 92 if len(txt) < 3 else 70)
+
 def scene_box(t, i, frozen=False):
-    img = KIOSK_BG.copy()
+    img = (KIOSK0_BG if (FRAME0 and t < COLD_END and not frozen) else KIOSK_BG).copy()
+    if FRAME0 and t < COLD_END and not frozen: waiting_kit(img, t)
     peakish = t >= C(9)
     mood = 2 if (frozen or t >= TINY) else (1 if (t < COLD_END or (peakish and t < BREAK)) else 0)
     for name, x, y, sc, ph in V1.QUEUE_KIOSK:
@@ -529,12 +549,14 @@ def rewind_overlay(frame, t):
     d.text((610, 930), 'רגע קודם', font=font(76, 900), fill=WHITE, anchor='mm', stroke_width=8, stroke_fill=(10, 10, 12))
 
 # ------------------------------------------------------------------ frame
-KIOSK_BG = KSH_BG = STREET = CRATE = CRATE_OPEN = PHONE = PHONE_SMS = PHONE_FLAT = TINY_BAG = PILL_EP = PILL_Q = None
+KIOSK0_BG = KIOSK_BG = KSH_BG = STREET = CRATE = CRATE_OPEN = PHONE = PHONE_SMS = PHONE_FLAT = TINY_BAG = PILL_EP = PILL_Q = None
 PHONE_CODES = []
 def init_all():
-    global KIOSK_BG, KSH_BG, STREET, CRATE, CRATE_OPEN, PHONE, PHONE_SMS, PHONE_FLAT, TINY_BAG, PILL_EP, PILL_Q, PHONE_CODES
+    global KIOSK0_BG, KIOSK_BG, KSH_BG, STREET, CRATE, CRATE_OPEN, PHONE, PHONE_SMS, PHONE_FLAT, TINY_BAG, PILL_EP, PILL_Q, PHONE_CODES
     m.init_static(); E3.init_all()
     kb = V1.build_kiosk_bg()
+    k0 = kb.filter(ImageFilter.GaussianBlur(S(1.2)))                      # R6: bright daylight in the cold open (no evening tint)
+    k0.alpha_composite(Image.new('RGBA', k0.size, (255, 252, 240, 70))); KIOSK0_BG = k0
     ov = Image.new('RGBA', kb.size, (30, 26, 70, 60)); kb.alpha_composite(ov)                 # evening
     KIOSK_BG = kb.filter(ImageFilter.GaussianBlur(S(2)))
     KSH_BG = kb.filter(ImageFilter.GaussianBlur(S(3)))
