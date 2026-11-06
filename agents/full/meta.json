@@ -49,5 +49,13 @@
     "send_scenario_id": 8017816,
     "replies_scenario_id": 8017868,
     "enabled": false
+  },
+  "voices": {
+    "trigger": "trig_01Qd9hKGPHxRCfWEfUr8aNr3",
+    "prompt": "voices_v1.md",
+    "when": "daily 22:23 Asia/Jerusalem",
+    "requires_local_device": true,
+    "created_at": "2026-11-06T21:58:00+02:00",
+    "note": "not yet bound to Gabi computer: Gabi turns on \"Require this computer\" in the desktop app"
   }
 }
