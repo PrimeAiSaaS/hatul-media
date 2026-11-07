@@ -218,7 +218,8 @@ def draw_frame(i):
     name, a, b = B.shot(ts)
     img = {'two': B.scene_two, 'cat': B.scene_cat, 'board': B.scene_board}[name](ts, i)
     z, ccx, ccy = B.camera(ts)
-    if t < C_END: z, ccx, ccy = 1.32 - 0.04 * t, 700.0, 1180.0                      # cold open: tight on him + the ticked form
+    if t < C_END:                                                                # cold open: tight on him + the ticked form
+        z, ccx, ccy = (1.62 - 0.05 * t, 760.0, 1060.0) if os.environ.get('FACEZ', '0') == '1' else (1.32 - 0.04 * t, 700.0, 1180.0)
     for cut in (T0, tb, t2, tP):                                                # snap-zoom on every cut
         if 0 <= t - cut < 0.2: z = max(z, 1.0 + 0.07 * (1 - ease_out((t - cut) / 0.2)))
     if 0 <= t - 0.12 < 0.3:
