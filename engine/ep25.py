@@ -44,6 +44,7 @@ NOSUB = os.environ.get('NOSUB', '0') == '1'     # cover frames: no subtitles
 CROWDJ = os.environ.get('CROWDJ', '0') == '1'   # predictor probe: waiting customers' faces behind him in the jar two-shot
 BIGO = os.environ.get('BIGO', '0') == '1'       # predictor probe: cold open tight on his shouting face, pull back to the two-shot after the slam
 RECAPZ = os.environ.get('RECAPZ', '0') == '1'   # predictor probe: L02 recap framed tight on his face (icons around it)
+R8 = os.environ.get('R8', '1') == '1'           # R8 (7.11): frame 0 = the lobby (board "חלון 3", queue, ticket), he alone in the centre, outraged; v1 = R8=0
 TWO1 = os.environ.get('TWO1', '0') == '1'       # predictor probe: L01 (Sharit's 'למה?') as a two-shot with his big face instead of Sharit alone
 SPEAKER = {0: 'cat', 1: 'sh', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'cat', 7: 'sh', 8: 'sh', 9: 'cat', 10: 'sh'}
 
@@ -449,6 +450,52 @@ def scene_jar(t, i):
     if u >= 0: burst(img, (jc[0], jc[1] - 40), u, (255, 236, 120), 170, 12, 0.35)
     return img
 
+def scene_jar_r8(t, i):
+    """R8 cold open (7.11, R5–R6): the waiting lobby — the window board, the queue behind him, his ticket — he alone in
+    the centre, outraged ("החשבון קפוא?!"), and slams the coin jar onto the window-3 counter edge in front of him, where
+    Sharit's two stamps stand (the plant "חשבון חדש" stays in the cold-open shot). Sharit is off frame."""
+    img = LOBBY.copy()
+    s0 = slam_t(t); u = t - s0
+    txt, on = board_text(t + 3.0)
+    E3.led_text(img, txt, 735, 520, 140 if len(txt) < 3 else 112, on)
+    for name, x, y, sc, ph in BACK:
+        E13.paste_sprite(img, name, 1 if u > 0.05 else 0, x + 6 * math.sin(t * 3 + ph) * 0.4, y + 10 * math.sin(t * 4.4 + ph) * 0.4 - (14 * abs(math.sin(t * 8 + ph)) if u > 0.1 else 0), sc, flip=x > 540)
+    for name, x, y, sc, ph in MID:
+        E13.paste_sprite(img, name, 1 if u > 0.05 else 0, x + 8 * math.sin(t * 3.4 + ph), y + 12 * math.sin(t * 5 + ph) * 0.4, sc, flip=x > 540)
+    d = ImageDraw.Draw(img)
+    st = E3.base_state(); st.update(red=0.9, cobweb=1.0, blush=0.2)
+    if u < 0.45: st.update(lid=0.0, pupil='tiny', brow='up', ear_dy=-28, mouth='w', look=(0, 4), sweat=1.0, blush=0.0)
+    else: st.update(lid=0.0, pupil='big', brow='up', ear_dy=-18, mouth=cat_mouth(t, rest='w', loud='w'), look=(-6, 10), blush=0.6)
+    dy = -30 * (1 - ease_in(clamp((u + 0.25) / 0.25))) if u < 0 else 24 * math.exp(-u * 8) * math.cos(u * 30)
+    rot = -7 if u < 0 else 6 * math.sin(u * 16) * math.exp(-u * 2.5)
+    hx = 540
+    E(d, hx, 1660 + 0.4 * dy, 430, 460, fill=FUR, outline=OUT, width=7)
+    E(d, hx, 1720 + 0.4 * dy, 200, 310, fill=CREAM)
+    # viewer's left: his ticket with the live number (the waiting)
+    lp = (hx - 260, 1330 + 8 * math.sin(t * 2.0) + 0.3 * dy)
+    capsule(d, (hx - 230, 1440), lp, 110, FUR, OUT, 4)
+    tk = xform([(-52, -84), (52, -84), (52, 84), (-52, 84)], lp[0] - 10, lp[1] - 130, -10)
+    poly(d, tk, fill=(252, 250, 242), outline=(150, 150, 140), width=3)
+    c_ = xform([(0, -26)], lp[0] - 10, lp[1] - 130, -10)[0]
+    d.text((S(c_[0]), S(c_[1])), 'מספרך', font=font(S(24), 800), fill=(60, 60, 64), anchor='mm')
+    c_ = xform([(0, 22)], lp[0] - 10, lp[1] - 130, -10)[0]
+    d.text((S(c_[0]), S(c_[1])), str(QUEUE), font=font(S(44), 900), fill=INK, anchor='mm')
+    E12.big_paw(d, lp, 10, 0.9)
+    E12.paste_head(img, st, i, hx, 960 + dy, 1.5, rot)
+    counter(img)
+    stamps_on_counter(img, t)
+    d = ImageDraw.Draw(img)
+    jc = (790, 1580) if u >= 0 else (790, 1580 - 620 * (1 - ease_in(clamp((u + 0.28) / 0.28))))
+    sq = 1.0 + (0.12 * math.exp(-u * 12) if u >= 0 else 0)
+    if u >= 0.0: coin_burst(img, (jc[0], jc[1]), u)
+    lay = JAR if sq < 1.01 else JAR.resize((int(JAR.width * sq), int(JAR.height / sq)), Image.BICUBIC)
+    paste_rot(img, lay, (jc[0], jc[1] + (10 if sq > 1.01 else 0)), 0 if u >= 0 else 6, 1.0)
+    d = ImageDraw.Draw(img)
+    capsule(d, (hx + 230, 1440), (jc[0] + 60, jc[1] - 110), 110, FUR, OUT, 4)
+    E12.big_paw(d, (jc[0] + 70, jc[1] - 120), -60, 0.9)
+    if u >= 0: burst(img, (jc[0], jc[1] - 40), u, (255, 236, 120), 170, 12, 0.35)
+    return img
+
 def scene_recap(t, i):
     """L02 (the send beat): his big face, three callback icons pop beside him"""
     img = SH_BG.copy()
@@ -776,6 +823,7 @@ def camera(t):
         z = 1.04 + 0.02 * pu; cy = 1000
         if t < 0.3: z = 1.22 - 0.18 * ease_out(t / 0.3)                      # frame 0: snap pull-back, already moving
         if 0 <= u < 0.35: z = max(z, 1.04 + 0.10 * math.exp(-u * 9))
+        if R8 and t < COLD_END: cy = 860                                    # R8: keep the board clear of the hook + chips
         if BIGO and t < COLD_END:
             k_ = ease_io(clamp((t - 0.55) / 0.35))
             z, cx, cy = lerp(1.55, 1.04, k_), lerp(800, 540, k_), lerp(1080, 1000, k_)
@@ -812,7 +860,7 @@ def camera(t):
 def draw_frame(i):
     t = i / FPS
     name, a, b = shot(t)
-    if name == 'jar': img = scene_jar(t, i)
+    if name == 'jar': img = scene_jar_r8(t, i) if (R8 and t < COLD_END) else scene_jar(t, i)
     elif name == 'rewind':
         u = (t - a) / (b - a)
         img = scene_march(lerp(C(1) - 0.2, T0 + 0.3, ease_in(u)), i)
