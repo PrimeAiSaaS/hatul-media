@@ -42,6 +42,10 @@ EP_LABEL = 'פרק 30'
 OUTNAME = os.environ.get('OUTNAME', 'ep30_grant')
 LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
 NOCTA = os.environ.get('NOCTA', '0') == '1'    # control: no counter sign
+L2TWO = os.environ.get('L2TWO', '0') == '1'    # 6א probe: L02 as a two-shot (his face reacting) instead of Sharit alone
+WALKZ = float(os.environ.get('WALKZ', '0'))    # 6א probe: storm-in shot tighter on his face
+RANTZ = float(os.environ.get('RANTZ', '0'))    # 6א probe: cold open tighter
+WINZ = float(os.environ.get('WINZ', '0'))      # 6א probe: clerk-POV window shots tighter on his face
 SPEAKER = {0: 'cat', 1: 'cat', 27: 'cat', 2: 'sh', 4: 'sh', 5: 'cat', 8: 'sh', 9: 'cat', 6: 'sh', 7: 'cat', 10: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -120,7 +124,7 @@ for i0, s0 in OCC:
         SUB_TIMES.append((a, b, c, i0))
 
 C = lambda i: L[i] - 0.08
-SHOTS = [('rant', 0.0, COLD_END), ('rewind', COLD_END, T0), ('walk', T0, C(27)), ('two', C(27), C(2)), ('sh', C(2), C(0)),
+SHOTS = [('rant', 0.0, COLD_END), ('rewind', COLD_END, T0), ('walk', T0, C(27)), ('two', C(27), C(2)), ('two' if L2TWO else 'sh', C(2), C(0)),
          ('win', C(0), C(4)), ('sh', C(4), C(5)), ('two', C(5), C(8)), ('sh', C(8), C(9)), ('win', C(9), C(6)),
          ('two', C(6), C(7)), ('peak', C(7), L[10] - 0.05), ('sh', L[10] - 0.05, REVEAL), ('reveal', REVEAL, DUR + 1)]
 
@@ -468,8 +472,10 @@ def scene_two(t, i):
     img = SH_BG.copy()
     st_s = SH.base(); st_s.update(hand_l=(170, 760), hand_r=(530, 760), lid=0.55, red=0.8, look=(18, 6))
     st_s['mouth'] = 'talk' if sh_v(t) > 0.12 else 'grin'
-    phase = 'gam' if t < L[2] else ('sign' if t < L[6] - 0.1 else 'stamp')
-    if phase == 'gam': st_s.update(snack=True, mouth='munch', lid=0.6, look=(18, 2))
+    phase = 'gam' if t < L[0] - 0.1 else ('sign' if t < L[6] - 0.1 else 'stamp')
+    if phase == 'gam':
+        st_s.update(snack=True, lid=0.6, look=(18, 2))
+        if sh_v(t) <= 0.12: st_s['mouth'] = 'munch'
     if phase == 'stamp': st_s.update(blush=0.8, lid=0.45)
     Ls = SH.draw(st_s, i)
     Ls = Ls.resize((int(Ls.width * TS), int(Ls.height * TS)), Image.BICUBIC)
@@ -481,6 +487,10 @@ def scene_two(t, i):
         u = t - L[27]
         st.update(lid=0.0, pupil='tiny', brow='up', ear_dy=-24, mouth=cat_mouth(t, rest='w', loud='w'), sweat=1.0, look=(-16, 0))
         rot = 6 * math.sin(u * 10) * math.exp(-u * 2)
+        if t >= L[2] - 0.05:   # "אין טופס, מותק. זה אוטומטי." — the outrage builds
+            u2 = t - L[2]
+            st.update(pupil='tiny', brow='annoyed', mouth='w' if u2 > CS[2][1] else 'flat', ear_dy=-10 - 14 * clamp(u2 / 1.5), look=(-18, 2))
+            rot = -3 * clamp(u2 / 0.5) + (4 * math.sin(u2 * 30) if u2 > CS[2][1] + 0.2 else 0)
     elif phase == 'sign':  # signing with the paw, faster each time
         k = sum(1 for s in SIGNS if t >= s)
         st.update(lid=0.0, pupil='big', brow='up', ear_dy=-12 - 4 * k, mouth=cat_mouth(t, rest='smile', loud='smile'), look=(-18, 8), blush=0.4 + 0.2 * k)
@@ -598,13 +608,15 @@ def camera(t):
     z, cx, cy = 1.0, 540.0, 960.0
     pu = t - a
     if name == 'rant':
-        cy = 960; z = 1.06 + 0.04 * pu
-        if t < 0.3: z = 1.26 - 0.20 * ease_out(t / 0.3)                      # frame 0: snap pull-back, already moving
+        cy = 960; z = (RANTZ or 1.06) + 0.04 * pu
+        if RANTZ: cy = 920
+        if t < 0.3: z = (RANTZ or 1.06) + 0.20 - 0.20 * ease_out(t / 0.3)                      # frame 0: snap pull-back, already moving
         if t >= CS[0][1]: z = max(z, 1.10 + 0.06 * math.exp(-(t - CS[0][1]) * 8))
     elif name == 'rewind':
         z, cx = 1.06, 540.0 + 30 * math.sin(t * 90)
     elif name == 'walk':
         cy = 940; z = 1.05 + 0.03 * pu
+        if WALKZ: z, cy = WALKZ + 0.03 * pu, 900
     elif name == 'sh':
         z = 1.16 + 0.03 * pu; cy = 880
         if L[4] <= t < L[5] and t >= CHK1 - 0.35: z, cy = 1.06, 1000                    # show the form landing
@@ -612,6 +624,7 @@ def camera(t):
         if L[10] - 0.1 <= t: z, cy = 1.24 + 0.04 * pu, 880                              # the flat break line, tighter
     elif name == 'win':
         z = 1.12 + 0.04 * pu; cy = 960
+        if WINZ: z, cy = WINZ + 0.04 * pu, 900
     elif name == 'two':
         z = 1.0 + 0.03 * pu
     elif name == 'peak':
