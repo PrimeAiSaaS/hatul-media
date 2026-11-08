@@ -1,0 +1,159 @@
+<title>בדיקת הגייה · חתול בהמתנה</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Heebo:wght@400;500;700&display=swap">
+<style>
+/* layout: one phone-first column; sticky episode tabs; one row per voice line with its takes side by side */
+:root{
+  --bg:#f6f2ee; --surface:#ffffff; --ink:#1f1a1c; --muted:#6d6266; --line:#e5dcd7;
+  --accent:#c63c40; --accent-ink:#ffffff; --ticket:#ffcc40;
+  --ok:#23885a; --bad:#c2413b; --ok-soft:#e1f2e8; --bad-soft:#f8e2e0;
+  --cat:#3b6fa8; --sharit:#b0397a;
+  --display:"Rubik","Heebo",system-ui,sans-serif; --body:"Heebo","Rubik",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#161214; --surface:#211c1f; --ink:#f2ebee; --muted:#b2a6ab; --line:#3a3135;
+  --accent:#e85a5c; --accent-ink:#ffffff; --ticket:#ffcc40;
+  --ok:#5cc28a; --bad:#ec6b63; --ok-soft:#163525; --bad-soft:#3d1c1b;
+  --cat:#7fb0e6; --sharit:#e88ac0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161214; --surface:#211c1f; --ink:#f2ebee; --muted:#b2a6ab; --line:#3a3135;
+  --accent:#e85a5c; --accent-ink:#ffffff; --ticket:#ffcc40;
+  --ok:#5cc28a; --bad:#ec6b63; --ok-soft:#163525; --bad-soft:#3d1c1b;
+  --cat:#7fb0e6; --sharit:#e88ac0; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);direction:rtl;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 64px;display:flex;flex-direction:column;gap:16px}
+h1{font:800 clamp(1.5rem,5vw,2rem)/1.15 var(--display);margin:0;text-wrap:balance}
+.lead{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding-block:8px;border-bottom:1px solid var(--line)}
+.tab{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;font:600 14px var(--display);cursor:pointer;display:flex;gap:8px;align-items:center}
+.tab[aria-pressed="true"]{background:var(--accent);border-color:transparent;color:var(--accent-ink)}
+.tab .c{font:500 12px var(--body);opacity:.85;font-variant-numeric:tabular-nums}
+.status{font-size:14px;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:12px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.item.v-ok{border-color:var(--ok)}
+.item.v-bad{border-color:var(--bad);background:var(--bad-soft)}
+.head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.who{font:700 13px var(--display);border-radius:6px;padding:1px 8px;color:var(--accent-ink)}
+.who.cat{background:var(--cat)}.who.sharit{background:var(--sharit)}
+.idx{font:500 12px var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.txt{font:600 17px/1.45 var(--display);min-width:0;overflow-wrap:anywhere}
+.takes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.take{border:1px solid var(--line);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.take.chosen{border-color:var(--ok);background:var(--ok-soft)}
+.take b{font:700 13px var(--display)}
+.take small{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.take audio{width:100%;height:36px}
+.pick{border:1px solid var(--ok);background:transparent;color:var(--ok);border-radius:999px;padding:5px 12px;font:600 13px var(--display);cursor:pointer;align-self:flex-start}
+.take.chosen .pick{background:var(--ok);color:var(--accent-ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badbtn{border:1px solid var(--bad);background:transparent;color:var(--bad);border-radius:999px;padding:5px 12px;font:600 13px var(--display);cursor:pointer}
+.item.v-bad .badbtn{background:var(--bad);color:var(--accent-ink)}
+.note{flex:1;min-width:180px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 10px;font:15px var(--body)}
+.saved{font-size:12px;color:var(--muted)}
+.empty{border:1.5px dashed var(--line);border-radius:14px;padding:18px;color:var(--muted);text-align:center}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>בדיקת הגייה</h1>
+    <p class="lead">כל שורת קול בפרקים 25, 27 ו-29–33. פרקים 27 ו-25 כבר אושרו ועולים ב-11 וב-12 בנובמבר, אז כדאי להתחיל בהם. לכל שורה: הקול שנמצא עכשיו בפרק, ולשורות עם מילים בעייתיות גם גרסה מנוקדת (ולפעמים גרסה נוספת). מסמנים איזו גרסה נשמעת נכון, או "אף אחת" עם הערה מה לא נכון. סוכן ההפקה בונה מחדש רק לפי מה שסימנת.</p>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="פרקים"></nav>
+  <p class="status" id="status">טוען את השורות…</p>
+  <section class="list" id="list" aria-live="polite"></section>
+</div>
+
+<script>
+const EPS=[["ep27","27 · יום הרווקים (עולה 11.11)"],["ep25","25 · סגירת חשבון (עולה 12.11)"],["ep29","29 · הקצבה בשבת"],["ep30","30 · מענק אוטומטי"],["ep31","31 · כרטיס המועדון"],["ep32","32 · הדואר"],["ep33","33 · הקצבה נכנסה"]];
+let cur=EPS[0][0], rows=[], db=null, busy={};
+try{const s=localStorage.getItem('vc-tab'); if(s) cur=s;}catch(e){}
+const $=id=>document.getElementById(id);
+
+function renderTabs(){
+  const t=$('tabs'); t.textContent='';
+  for(const [k,label] of EPS){
+    const mine=rows.filter(r=>(r.eps||[]).includes(k));
+    const done=mine.filter(r=>r.verdict).length;
+    const b=document.createElement('button'); b.className='tab'; b.type='button'; b.id='tab-'+k;
+    b.setAttribute('aria-pressed',String(k===cur));
+    const s=document.createElement('span'); s.textContent=label; b.append(s);
+    if(mine.length){const c=document.createElement('span'); c.className='c'; c.textContent=done+'/'+mine.length; b.append(c);}
+    b.onclick=()=>{cur=k; try{localStorage.setItem('vc-tab',k)}catch(e){} renderTabs(); renderList();};
+    t.append(b);
+  }
+}
+
+function takeEl(r,tk){
+  const d=document.createElement('div'); d.className='take'+(r.verdict===tk.key?' chosen':'');
+  const b=document.createElement('b'); b.textContent=tk.label; d.append(b);
+  if(tk.text && tk.text!==r.text){const sm=document.createElement('small'); sm.textContent=tk.text; d.append(sm);}
+  const a=document.createElement('audio'); a.controls=true; a.preload='none'; a.src=tk.url; d.append(a);
+  const p=document.createElement('button'); p.type='button'; p.className='pick'; p.id='pick-'+r._id+'-'+tk.key;
+  p.textContent=r.verdict===tk.key?'✓ נשמע נכון':'נשמע נכון';
+  p.onclick=()=>save(r,{verdict:tk.key});
+  d.append(p); return d;
+}
+
+function renderList(){
+  const L=$('list'); L.textContent='';
+  const mine=rows.filter(r=>(r.eps||[]).includes(cur)).sort((a,b)=>(a.ord?.[cur]??0)-(b.ord?.[cur]??0));
+  if(!mine.length){const e=document.createElement('div'); e.className='empty'; e.textContent='אין עדיין שורות לפרק הזה.'; L.append(e); return;}
+  for(const r of mine){
+    const it=document.createElement('article'); it.className='item'+(r.verdict==='bad'?' v-bad':r.verdict?' v-ok':'');
+    const h=document.createElement('div'); h.className='head';
+    const w=document.createElement('span'); w.className='who '+(r.speaker==='cat'?'cat':'sharit'); w.textContent=r.speaker==='cat'?'החתול':'שרית';
+    const i=document.createElement('span'); i.className='idx'; i.textContent='#'+r.index+((r.eps||[]).length>1?' · משותפת לכמה פרקים':'');
+    h.append(w,i); it.append(h);
+    const tx=document.createElement('div'); tx.className='txt'; tx.textContent=r.text; it.append(tx);
+    const tk=document.createElement('div'); tk.className='takes';
+    for(const t of (r.takes||[])) tk.append(takeEl(r,t));
+    it.append(tk);
+    const row=document.createElement('div'); row.className='row';
+    const bad=document.createElement('button'); bad.type='button'; bad.className='badbtn'; bad.id='bad-'+r._id;
+    bad.textContent=r.verdict==='bad'?'✗ אף אחת לא נכונה':'אף אחת לא נכונה';
+    bad.onclick=()=>save(r,{verdict:'bad'});
+    const n=document.createElement('input'); n.className='note'; n.id='note-'+r._id; n.type='text';
+    n.placeholder='מה לא נכון? (למשל: "אושר" נשמע אוֹשֶר)'; n.value=r.note||'';
+    n.addEventListener('change',()=>{ if((r.note||'')!==n.value) save(r,{note:n.value}); });
+    const sv=document.createElement('span'); sv.className='saved'; sv.id='saved-'+r._id;
+    if(r.at) sv.textContent='נשמר';
+    row.append(bad,n,sv); it.append(row);
+    L.append(it);
+  }
+}
+
+async function save(r,patch){
+  if(!db){$('status').textContent='אין חיבור לנתונים, הסימון לא נשמר.'; return;}
+  if(busy[r._id]) return; busy[r._id]=true;
+  try{
+    await db.collection('voice_review').doc(r._id).update({...patch, at:new Date().toISOString()});
+  }catch(e){
+    $('status').textContent=(e&&e.code==='permission_denied')?'אין לך הרשאה לשמור בדף הזה.':'השמירה נכשלה. נסה שוב.';
+  }finally{busy[r._id]=false;}
+}
+
+function boot(){
+  renderTabs();
+  const timer=setTimeout(()=>{ if(!rows.length) $('status').textContent='הנתונים לא נטענו. רענן את הדף.'; },10000);
+  claude.use('db').then(d=>{
+    db=d;
+    if(!db){clearTimeout(timer); $('status').textContent='צריך להיות מחובר ל-Claude כדי לסמן.'; return;}
+    db.collection('voice_review').onSnapshot(snap=>{
+      clearTimeout(timer);
+      rows=snap.docs.map(x=>({...x.data(), _id:x.id}));
+      const all=rows.length, done=rows.filter(r=>r.verdict).length, bad=rows.filter(r=>r.verdict==='bad').length;
+      $('status').textContent=all? `סומנו ${done} מתוך ${all} שורות${bad?` · ${bad} עם בעיה`:''}.` : 'אין עדיין שורות לבדיקה.';
+      renderTabs(); renderList();
+    },()=>{clearTimeout(timer); $('status').textContent='הנתונים לא נטענו. רענן את הדף.';});
+  });
+}
+boot();
+</script>
