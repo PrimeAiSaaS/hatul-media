@@ -68,7 +68,9 @@
    "job_id": "60c22c95-e63d-4da9-900c-55dc47e3b13c",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_60c22c95-e63d-4da9-900c-55dc47e3b13c.mp3",
    "file": "voice/ep24/line03.mp3",
-   "dur_file": 3.08
+   "dur_file": 3.08,
+   "pron_ok": true,
+   "pron_take": "old"
   },
   {
    "index": 2404,
@@ -78,11 +80,13 @@
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
    "text": "שלושה אחוז סוללה... תחזיקי מעמד.",
-   "tts_text": "שְׁלוֹשָׁה אָחוּז סוֹלְלָה... תַּחְזִיקִי מַעֲמָד.",
+   "tts_text": "שלושה אחוז סוללה... תחזיקי מעמד.",
    "job_id": "5db0dbb2-3fbb-4522-98f3-4419c13f62e4",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_5db0dbb2-3fbb-4522-98f3-4419c13f62e4.mp3",
    "file": "voice/ep24/line04.mp3",
-   "dur_file": 2.59
+   "dur_file": 2.77,
+   "pron_ok": true,
+   "pron_take": "B"
   },
   {
    "index": 2405,
@@ -106,11 +110,13 @@
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
    "text": "שלום, מדברת שרית... במה אפשר לעזר, מותק?",
-   "tts_text": "שָׁלוֹם, מְדַבֶּרֶת שָׂרִית... בַּמֶּה אֶפְשָׁר לַעֲזֹר, מוֹתֶק?",
+   "tts_text": "שלום, מדברת שרית... במה אפשר לעזר, מותק?",
    "job_id": "75153691-200b-4be3-9481-ab3b961d60e0",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_75153691-200b-4be3-9481-ab3b961d60e0.mp3",
    "file": "voice/ep24/line06.mp3",
-   "dur_file": 4.36
+   "dur_file": 3.55,
+   "pron_ok": true,
+   "pron_take": "B"
   },
   {
    "index": 2408,
@@ -120,11 +126,13 @@
    "voice": "Vera",
    "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
    "text": "חזרת לתפריט הראשי.",
-   "tts_text": "חָזַרְתָּ לַתַּפְרִיט הָרָאשִׁי.",
+   "tts_text": "חזרת לתפריט הראשי.",
    "job_id": "f15e88fd-d84b-4d80-b002-5164effd6b53",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_f15e88fd-d84b-4d80-b002-5164effd6b53.mp3",
    "file": "voice/ep24/line08.mp3",
-   "dur_file": 2.12
+   "dur_file": 1.96,
+   "pron_ok": true,
+   "pron_take": "B"
   }
  ],
  "credits_spent_note": "1.8 for these 12 lines (0.15 each); balance 50.36 on 8.11 23:31 before the ep29 re-takes"
