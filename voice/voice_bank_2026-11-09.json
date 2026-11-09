@@ -21,12 +21,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-   "text": "תשע... תשע... אפס... סלמית!",
-   "tts_text": "תֵּשַׁע... תֵּשַׁע... אֶפֶס... סֻלָּמִית!",
+   "text": "תשע, תשע, אפס, סולמית!",
+   "tts_text": "תשע, תשע, אפס, סולמית!",
    "job_id": "37b509ad-1df5-4f4f-82b9-d2bc0dde9080",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_37b509ad-1df5-4f4f-82b9-d2bc0dde9080.mp3",
    "file": "voice/ep24/line00.mp3",
-   "dur_file": 3.24
+   "dur_file": 3.08,
+   "pron_ok": true,
+   "pron_take": "C"
   },
   {
    "index": 2401,
@@ -50,11 +52,13 @@
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
    "text": "הטריק עובד! בן אדם אמיתי, אני בא.",
-   "tts_text": "הַטְּרִיק עוֹבֵד! בֶּן אָדָם אֲמִיתִּי, אֲנִי בָּא.",
+   "tts_text": "הטריק עובד! בן אדם אמיתי, אני בא.",
    "job_id": "c4760482-6e74-45cc-a611-bc3c3ea65efb",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_c4760482-6e74-45cc-a611-bc3c3ea65efb.mp3",
    "file": "voice/ep24/line02.mp3",
-   "dur_file": 3.4
+   "dur_file": 2.85,
+   "pron_ok": true,
+   "pron_take": "C"
   },
   {
    "index": 2403,
@@ -63,7 +67,7 @@
    "speaker": "ivr",
    "voice": "Vera",
    "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
-   "text": "מקומך בתור: ארבעים ושבע.",
+   "text": "מיקומך בתור: ארבעים ושבע.",
    "tts_text": "מִקּוּמְךָ בַּתּוֹר: אַרְבָּעִים וְשֶׁבַע.",
    "job_id": "60c22c95-e63d-4da9-900c-55dc47e3b13c",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_60c22c95-e63d-4da9-900c-55dc47e3b13c.mp3",
@@ -95,12 +99,14 @@
    "speaker": "ivr",
    "voice": "Vera",
    "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
-   "text": "מקומך בתור: אחת.",
-   "tts_text": "מִקּוּמְךָ בַּתּוֹר: אַחַת.",
+   "text": "מיקומך בתור: אחת.",
+   "tts_text": "מיקומך בתור: אחת.",
    "job_id": "3e4ea73b-7e25-479e-9aee-5c6e55b787fa",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_3e4ea73b-7e25-479e-9aee-5c6e55b787fa.mp3",
    "file": "voice/ep24/line05.mp3",
-   "dur_file": 2.51
+   "dur_file": 2.59,
+   "pron_ok": true,
+   "pron_take": "C"
   },
   {
    "index": 2406,
@@ -109,8 +115,8 @@
    "speaker": "sharit",
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
-   "text": "שלום, מדברת שרית... במה אפשר לעזר, מותק?",
-   "tts_text": "שלום, מדברת שרית... במה אפשר לעזר, מותק?",
+   "text": "שלום, מדברת שרית... במה אפשר לעזור, מותק?",
+   "tts_text": "שלום, מדברת שרית... במה אפשר לעזור, מותק?",
    "job_id": "75153691-200b-4be3-9481-ab3b961d60e0",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_75153691-200b-4be3-9481-ab3b961d60e0.mp3",
    "file": "voice/ep24/line06.mp3",

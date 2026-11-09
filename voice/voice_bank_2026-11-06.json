@@ -29,7 +29,10 @@
    "job_id": "fe18c462-9555-499a-bd2d-83b9d4f53861",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182808_fe18c462-9555-499a-bd2d-83b9d4f53861.mp3",
    "file": "voice/ep29/line00.mp3",
-   "dur_file": 3.0
+   "dur_file": 3.0,
+   "tts_text": "הַקִּצְבָּה נוֹפֶלֶת בְּשַׁבָּת, וְהַשַּׂקִּית כְּבָר רֵיקָה.",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 2901,
@@ -68,7 +71,10 @@
    "job_id": "77947c89-73f8-4868-bde4-9277234e6b55",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182827_77947c89-73f8-4868-bde4-9277234e6b55.mp3",
    "file": "voice/ep29/line03.mp3",
-   "dur_file": 2.59
+   "dur_file": 3.16,
+   "tts_text": "הקדמת קיצבה? בבקשה, מותק.",
+   "pron_ok": true,
+   "pron_take": "B"
   },
   {
    "index": 2904,
@@ -77,11 +83,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-   "text": "חותם עם הכפה. רשמי.",
+   "text": "אני מאשר בטביעת כף.",
    "job_id": "c1d0d41e-c88c-457a-96ac-27217726a006",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182828_c1d0d41e-c88c-457a-96ac-27217726a006.mp3",
    "file": "voice/ep29/line04.mp3",
-   "dur_file": 2.77
+   "dur_file": 1.65,
+   "tts_text": "אני מאשר בטביעת כף.",
+   "pron_ok": true,
+   "pron_take": "D"
   },
   {
    "index": 2905,
@@ -90,11 +99,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
-   "text": "אושר! רק תאשר באפליקציה, מותק.",
+   "text": "מאושר! רק ללחוץ אישור באפליקציה, מותק.",
    "job_id": "acdfc058-bd6c-453e-b073-171c7c5db7f7",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182827_acdfc058-bd6c-453e-b073-171c7c5db7f7.mp3",
    "file": "voice/ep29/line05.mp3",
-   "dur_file": 3.55
+   "dur_file": 3.71,
+   "tts_text": "מאושר! רק ללחוץ אישור באפליקציה, מותק.",
+   "pron_ok": true,
+   "pron_take": "D"
   },
   {
    "index": 2906,
@@ -103,11 +115,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-   "text": "סוף סוף... אשר.",
+   "text": "סוף סוף... מאושר.",
    "job_id": "17ee83ad-2016-48a4-874b-c5791fb5d073",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182828_17ee83ad-2016-48a4-874b-c5791fb5d073.mp3",
    "file": "voice/ep29/line06.mp3",
-   "dur_file": 1.41
+   "dur_file": 2.04,
+   "tts_text": "סוֹף סוֹף... מְאֻשָּׁר.",
+   "pron_ok": true,
+   "pron_take": "C"
   },
   {
    "index": 2907,
@@ -194,11 +209,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
-   "text": "המענק... אושר!",
+   "text": "המענק... מאושר!",
    "job_id": "72a28626-2e69-45a6-bac8-8168b7a78e0a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182847_72a28626-2e69-45a6-bac8-8168b7a78e0a.mp3",
    "file": "voice/ep30/line06.mp3",
-   "dur_file": 2.35
+   "dur_file": 2.43,
+   "tts_text": "המענק... מאושר!",
+   "pron_ok": true,
+   "pron_take": "D"
   },
   {
    "index": 3007,
@@ -298,11 +316,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
-   "text": "וארנונה... הועבר!",
+   "text": "וארנונה... עברה!",
    "job_id": "09b94f64-6da9-479f-b446-d5013b52a310",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182901_09b94f64-6da9-479f-b446-d5013b52a310.mp3",
    "file": "voice/ep31/line03.mp3",
-   "dur_file": 2.12
+   "dur_file": 1.88,
+   "tts_text": "וארנונה... עברה!",
+   "pron_ok": true,
+   "pron_take": "D"
   },
   {
    "index": 3104,
@@ -341,7 +362,10 @@
    "job_id": "65d26a9f-f5b7-4e06-9ad6-999fb220dcdd",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182904_65d26a9f-f5b7-4e06-9ad6-999fb220dcdd.mp3",
    "file": "voice/ep31/line06.mp3",
-   "dur_file": 2.35
+   "dur_file": 2.19,
+   "tts_text": "חִיּוּב נִדְחָה?! עַל שֶׁקֶל אֶחָד?!",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 3200,
@@ -376,11 +400,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-   "text": "התורים נפתחים ב-10:30. עוד... רגע...",
+   "text": "התורים נפתחים בעשר וחצי. עוד... רגע...",
    "job_id": "6e12cce3-41f3-4db4-8b3c-71f864787119",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182901_6e12cce3-41f3-4db4-8b3c-71f864787119.mp3",
    "file": "voice/ep32/line02.mp3",
-   "dur_file": 4.21
+   "dur_file": 3.87,
+   "tts_text": "הַתּוֹרִים נִפְתָּחִים בְּעֶשֶׂר וָחֵצִי. עוֹד... רֶגַע...",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 3203,
@@ -428,11 +455,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-   "text": "רגע! אני אחת!",
+   "text": "רגע! אני מספר אחת!",
    "job_id": "9c8feacd-3c28-48ff-bf9f-dd7643571ba8",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182913_9c8feacd-3c28-48ff-bf9f-dd7643571ba8.mp3",
    "file": "voice/ep32/line06.mp3",
-   "dur_file": 1.72
+   "dur_file": 2.04,
+   "tts_text": "רֶגַע! אֲנִי מִסְפָּר אַחַת!",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 3300,
@@ -458,7 +488,10 @@
    "job_id": "bc614bea-ba23-43eb-93cf-2a162cb48117",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182913_bc614bea-ba23-43eb-93cf-2a162cb48117.mp3",
    "file": "voice/ep33/line01.mp3",
-   "dur_file": 2.12
+   "dur_file": 2.12,
+   "tts_text": "הַקִּצְבָּה נִכְנְסָה. מֻקְדָּם!",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 3302,
@@ -510,7 +543,10 @@
    "job_id": "bf586ff9-bee8-4fd2-aabf-a705005b5150",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182913_bf586ff9-bee8-4fd2-aabf-a705005b5150.mp3",
    "file": "voice/ep33/line05.mp3",
-   "dur_file": 3.63
+   "dur_file": 3.24,
+   "tts_text": "רֶגַע... עַמְלַת הַקְדָּמַת תַּשְׁלוּם, חָמוּד.",
+   "pron_ok": true,
+   "pron_take": "A"
   },
   {
    "index": 3306,
@@ -523,7 +559,10 @@
    "job_id": "7b2810ff-269f-42a1-be18-7ebb227785eb",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182913_7b2810ff-269f-42a1-be18-7ebb227785eb.mp3",
    "file": "voice/ep33/line06.mp3",
-   "dur_file": 2.19
+   "dur_file": 2.35,
+   "tts_text": "עַמְלָה?! עַל הַקִּצְבָּה שֶׁלִּי?!",
+   "pron_ok": true,
+   "pron_take": "A"
   }
  ]
 }
