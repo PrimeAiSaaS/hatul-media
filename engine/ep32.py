@@ -43,6 +43,9 @@ OUTNAME = os.environ.get('OUTNAME', 'ep32_post')
 LIMIT = float(os.environ.get('LIMIT', '0'))     # render only the first LIMIT seconds (predictor cuts)
 PHZ = float(os.environ.get('PHZ', '0'))         # 6א probe: phone shot tighter on his face
 COLDZ = float(os.environ.get('COLDZ', '0'))     # 6א probe: cold open tighter
+CLOSE1 = os.environ.get('CLOSE1', '1') == '1'   # 6א probe: the want line as a face close-up (slip by his cheek) instead of the wide street
+EXPR = os.environ.get('EXPR', '1') == '1'      # 6א probe: expression change inside the cold open + the crowd keeps reacting
+COLDPH = os.environ.get('COLDPH', '1') == '1'   # 6א probe: cold-open phone lower, his whole face clear
 SPEAKER = {0: 'cat', 1: 'cat', 2: 'cat', 3: 'cat', 27: 'cat', 4: 'sh', 5: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -119,7 +122,7 @@ for i0, s0 in OCC:
         SUB_TIMES.append((a, b, c, i0))
 
 C = lambda i: L[i] - 0.08
-SHOTS = [('street', 0.0, COLD_END), ('rewind', COLD_END, T0), ('street', T0, C(2)), ('phone', C(2), C(0)),
+SHOTS = [('street', 0.0, COLD_END), ('rewind', COLD_END, T0), ('phone' if CLOSE1 else 'street', T0, C(2)), ('phone', C(2), C(0)),
          ('street', C(0), RUNW[0]), ('run', RUNW[0], RUNW[1]), ('two', RUNW[1], BREAK), ('reveal', BREAK, FREEZE - 0.02),
          ('frozen', FREEZE - 0.02, DUR + 1)]
 
@@ -304,7 +307,9 @@ STREET_CROWD = [('c0', 110, 800, 0.50, 0.0, '214'), ('h0', 290, 840, 0.40, 1.1, 
 HX, HY, F = 540, 1060, 1.38
 
 def street_mood(t):
-    if C(0) <= t < RUNW[0] or t < COLD_END: return 1 if t - (C(0) if t >= C(0) else 0) < 0.5 else 0   # shocked, then annoyed
+    if C(0) <= t < RUNW[0] or t < COLD_END:
+        if EXPR: return 1 if int((t - (C(0) if t >= C(0) else 0)) / 0.7) % 2 == 0 else 0   # shocked / annoyed, alternating
+        return 1 if t - (C(0) if t >= C(0) else 0) < 0.5 else 0   # shocked, then annoyed
     return 2                                                                                          # bored, staring at phones
 
 def cat_street(t, i, mode):
@@ -315,6 +320,10 @@ def cat_street(t, i, mode):
     if li == 0 or t < COLD_END:   # "מספר אחת! אני ראשון!" — wide-eyed disbelief, sweat, shouting (R5: never calm)
         st.update(lid=0.0, pupil='tiny', brow='up', mouth=cat_mouth(t, rest='w', loud='w'), ear_dy=-24, sweat=1.0, blush=0.6, look=(0, -4))
         dy = -16 * v - 12 * abs(math.sin(t * 8)); rot = 5 * math.sin(t * 9)
+        tc = t if t < COLD_END else t - L[0]
+        if EXPR and tc >= CS[0][1] - 0.1:   # "אני ראשון!" — disbelief turns into a huge grin, ears up, head thrown back
+            st.update(pupil='big', brow='up', mouth=cat_mouth(t, rest='smile', loud='smile'), ear_dy=-30, blush=1.0, look=(0, -12))
+            rot = -8 + 4 * math.sin(t * 12); dy -= 20
     elif mode == 'run':
         st.update(lid=0.0, pupil='big', brow='up', mouth='w', ear_dy=-20, sweat=0.6, look=(-14, 0))
         u = (t - RUNW[0]) / (RUNW[1] - RUNW[0])
@@ -348,7 +357,7 @@ def scene_street(t, i, mode=None):
     replay = (li_ := speaking(t)) == 0 or t < COLD_END or (C(0) <= t < RUNW[0])
     if replay or mode == 'run':
         # right paw (viewer's left): the phone with ticket "1" thrust up
-        pc = (290, 1060 + 0.4 * dy + 10 * math.sin(t * 14))
+        pc = (250, 1180 + 0.4 * dy + 10 * math.sin(t * 14)) if COLDPH else (290, 1060 + 0.4 * dy + 10 * math.sin(t * 14))
         capsule(d, (hx - 230, 1490 + 0.5 * dy), (pc[0] + 20, pc[1] + 250), 110, FUR, OUT, 4)
         E12.paste_head(img, st, i, hx, HY + dy, F, rot)
         paste_rot(img, phone_layer('ticket'), pc, -8 + 3 * math.sin(t * 10), 0.78)
@@ -390,7 +399,10 @@ def scene_phone(t, i):
     v = cat_v(t)
     st = E3.base_state(); st.update(red=0.9, cobweb=1.0, blush=0.3)
     rot, dy = 0.0, 0.0
-    if t < TAP - 0.12:   # "התורים נפתחים ב-10:30. עוד... רגע..." — tense, sweating, eyes on the phone
+    if t < L[2] - 0.08:  # (CLOSE1) "מכתב מביטוח לאומי מחכה לי בדואר." — annoyed, sweating, the slip shaken by his cheek
+        st.update(lid=0.0, pupil='big', brow='annoyed', mouth=cat_mouth(t, rest='flat', loud='w'), ear_dy=-12, sweat=0.9, look=(-12, 0))
+        rot = 4 * math.sin(t * 6); dy = -10 * v
+    elif t < TAP - 0.12:   # "התורים נפתחים ב-10:30. עוד... רגע..." — tense, sweating, eyes on the phone
         st.update(lid=0.0, pupil='big' if t < at(2, 1) else 'tiny', brow='annoyed', mouth=cat_mouth(t, rest='flat', loud='w'),
                   ear_dy=-8 - 10 * clamp((t - L[2]) / 3), sweat=1.0, look=(-22, 10), blush=0.0)
         rot = -4 + (3 * math.sin(t * 40) if t >= at(2, 2) else 0)
@@ -409,7 +421,8 @@ def scene_phone(t, i):
     capsule(d, (HXP - 240, 1560), (pc[0] + 40, pc[1] + 290), 110, FUR, OUT, 4)
     E12.paste_head(img, st, i, HXP, HYP + dy - 8 * v, FP, rot)
     sc = 1.04 if t < CHK2 else 1.04 + 0.1 * math.exp(-(t - CHK2) * 8)
-    paste_rot(img, phone_layer(phone_state(t)), pc, -6, sc)
+    if t < L[2] - 0.08: paste_rot(img, SLIP, (pc[0] + 10, pc[1] - 20 + 10 * math.sin(t * 11)), -10 + 5 * math.sin(t * 9), 1.2)
+    else: paste_rot(img, phone_layer(phone_state(t)), pc, -6, sc)
     d = ImageDraw.Draw(img)
     E12.big_paw(d, (pc[0] + 40, pc[1] + 290), 8, 0.95)
     # the tapping paw (the other one) comes in on "עכשיו!"
