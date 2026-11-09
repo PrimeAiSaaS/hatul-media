@@ -1,0 +1,131 @@
+{
+ "created": "2026-11-09T15:20+02:00",
+ "by": "claude (chat with Gabi)",
+ "approved_by_gabi": "9.11: \"אמרנו שנעשה את כולם עם קול\" → \"להחליף ימים ולדבב\": ep24 gets voices, airs 11.11",
+ "model": "text2speech_v2 / variant elevenlabs / preset (Benji = cat, Delia = Sharit, Vera = IVR)",
+ "credits_spent": 1.8,
+ "balance_after": 38.11,
+ "download": "9.11 via the built-in browser pane on Gabi's computer (sha256-matched), copy in Videos\\hatul_voices\\bank20261109",
+ "reuse": {
+  "9102": "voice/stock/cat_9102.mp3 \"יאללה!\" (the lobby cheers at 1)",
+  "2703": "voice/ep27/line03.mp3 \"שרית?! גם פה?\" (peak: the human agent is Sharit)"
+ },
+ "notes": {
+  "ep24": "voiced version of the built silent one-take ep24 (same story, same single camera move, re-timed onto the lines). Order: 2400 cold open (paw taps 9-9-0#, the plant) · 2401 IVR · 2402 want · 2403 IVR 47 · 2404 battery stake · 2405 IVR 1 · 9102 · 2406 Sharit answers (peak) · 2703 · break: paw taps 9 by habit → BEEP → 2408 IVR \"חזרת לתפריט הראשי\" in the last 2.5 s. Plain takes (no niqqud) for 2403/2404/2406/2408 are candidates in voice/review/20261109/<index>_B.mp3 on the pronunciation page."
+ },
+ "lines": [
+  {
+   "index": 2400,
+   "ep": "ep24",
+   "line": 0,
+   "speaker": "cat",
+   "voice": "Benji",
+   "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
+   "text": "תשע... תשע... אפס... סלמית!",
+   "tts_text": "תֵּשַׁע... תֵּשַׁע... אֶפֶס... סֻלָּמִית!",
+   "job_id": "37b509ad-1df5-4f4f-82b9-d2bc0dde9080",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_37b509ad-1df5-4f4f-82b9-d2bc0dde9080.mp3",
+   "file": "voice/ep24/line00.mp3",
+   "dur_file": 3.24
+  },
+  {
+   "index": 2401,
+   "ep": "ep24",
+   "line": 1,
+   "speaker": "ivr",
+   "voice": "Vera",
+   "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
+   "text": "מעביר לנציג.",
+   "tts_text": "מַעֲבִיר לַנְּצִיג.",
+   "job_id": "532eed44-742a-422e-aaa6-41993d5000f2",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_532eed44-742a-422e-aaa6-41993d5000f2.mp3",
+   "file": "voice/ep24/line01.mp3",
+   "dur_file": 1.96
+  },
+  {
+   "index": 2402,
+   "ep": "ep24",
+   "line": 2,
+   "speaker": "cat",
+   "voice": "Benji",
+   "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
+   "text": "הטריק עובד! בן אדם אמיתי, אני בא.",
+   "tts_text": "הַטְּרִיק עוֹבֵד! בֶּן אָדָם אֲמִיתִּי, אֲנִי בָּא.",
+   "job_id": "c4760482-6e74-45cc-a611-bc3c3ea65efb",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_c4760482-6e74-45cc-a611-bc3c3ea65efb.mp3",
+   "file": "voice/ep24/line02.mp3",
+   "dur_file": 3.4
+  },
+  {
+   "index": 2403,
+   "ep": "ep24",
+   "line": 3,
+   "speaker": "ivr",
+   "voice": "Vera",
+   "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
+   "text": "מקומך בתור: ארבעים ושבע.",
+   "tts_text": "מִקּוּמְךָ בַּתּוֹר: אַרְבָּעִים וְשֶׁבַע.",
+   "job_id": "60c22c95-e63d-4da9-900c-55dc47e3b13c",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_60c22c95-e63d-4da9-900c-55dc47e3b13c.mp3",
+   "file": "voice/ep24/line03.mp3",
+   "dur_file": 3.08
+  },
+  {
+   "index": 2404,
+   "ep": "ep24",
+   "line": 4,
+   "speaker": "cat",
+   "voice": "Benji",
+   "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
+   "text": "שלושה אחוז סוללה... תחזיקי מעמד.",
+   "tts_text": "שְׁלוֹשָׁה אָחוּז סוֹלְלָה... תַּחְזִיקִי מַעֲמָד.",
+   "job_id": "5db0dbb2-3fbb-4522-98f3-4419c13f62e4",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_5db0dbb2-3fbb-4522-98f3-4419c13f62e4.mp3",
+   "file": "voice/ep24/line04.mp3",
+   "dur_file": 2.59
+  },
+  {
+   "index": 2405,
+   "ep": "ep24",
+   "line": 5,
+   "speaker": "ivr",
+   "voice": "Vera",
+   "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
+   "text": "מקומך בתור: אחת.",
+   "tts_text": "מִקּוּמְךָ בַּתּוֹר: אַחַת.",
+   "job_id": "3e4ea73b-7e25-479e-9aee-5c6e55b787fa",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_3e4ea73b-7e25-479e-9aee-5c6e55b787fa.mp3",
+   "file": "voice/ep24/line05.mp3",
+   "dur_file": 2.51
+  },
+  {
+   "index": 2406,
+   "ep": "ep24",
+   "line": 6,
+   "speaker": "sharit",
+   "voice": "Delia",
+   "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
+   "text": "שלום, מדברת שרית... במה אפשר לעזר, מותק?",
+   "tts_text": "שָׁלוֹם, מְדַבֶּרֶת שָׂרִית... בַּמֶּה אֶפְשָׁר לַעֲזֹר, מוֹתֶק?",
+   "job_id": "75153691-200b-4be3-9481-ab3b961d60e0",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131630_75153691-200b-4be3-9481-ab3b961d60e0.mp3",
+   "file": "voice/ep24/line06.mp3",
+   "dur_file": 4.36
+  },
+  {
+   "index": 2408,
+   "ep": "ep24",
+   "line": 8,
+   "speaker": "ivr",
+   "voice": "Vera",
+   "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
+   "text": "חזרת לתפריט הראשי.",
+   "tts_text": "חָזַרְתָּ לַתַּפְרִיט הָרָאשִׁי.",
+   "job_id": "f15e88fd-d84b-4d80-b002-5164effd6b53",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_f15e88fd-d84b-4d80-b002-5164effd6b53.mp3",
+   "file": "voice/ep24/line08.mp3",
+   "dur_file": 2.12
+  }
+ ],
+ "credits_spent_note": "1.8 for these 12 lines (0.15 each); balance 50.36 on 8.11 23:31 before the ep29 re-takes"
+}
