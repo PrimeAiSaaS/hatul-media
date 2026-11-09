@@ -37,12 +37,14 @@
    "speaker": "ivr",
    "voice": "Vera",
    "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
-   "text": "מעביר לנציג.",
-   "tts_text": "מַעֲבִיר לַנְּצִיג.",
+   "text": "מעבירה לנציג.",
+   "tts_text": "מעבירה לנציג.",
    "job_id": "532eed44-742a-422e-aaa6-41993d5000f2",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261109_131629_532eed44-742a-422e-aaa6-41993d5000f2.mp3",
    "file": "voice/ep24/line01.mp3",
-   "dur_file": 1.96
+   "dur_file": 1.49,
+   "pron_ok": true,
+   "pron_take": "I"
   },
   {
    "index": 2402,
