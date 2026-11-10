@@ -33,7 +33,7 @@ VDIR = os.path.join(HERE, 'voice', 'ep29', 'proc')
 META = {int(k): v for k, v in json.load(open(os.path.join(VDIR, 'meta.json'))).items()}
 D = {i: META[i]['dur'] for i in META}
 PINKSUB = (255, 182, 210)
-OUTNAME = os.environ.get('OUTNAME', 'ep29_kitsba_v2')
+OUTNAME = os.environ.get('OUTNAME', 'ep29_kitsba_v3')
 LIMIT = float(os.environ.get('LIMIT', '0'))
 SPEAKER = {0: 'cat', 1: 'cat', 2: 'cat', 3: 'sh', 4: 'cat', 5: 'sh', 6: 'cat', 27: 'cat', 900: 'sh', 104: 'cat'}
 LOUD = {2: 'smile', 6: 'smile', 4: 'smile'}
@@ -163,9 +163,9 @@ SUBS = {
     27: [['שרית?! גם פה?']],
     900: [['שנייה, מותק.']],
     3: [['הקדמת קצבה?'], ['בבקשה, מותק.']],
-    4: [['חותם עם הכפה.'], ['רשמי.']],
-    5: [['אושר!'], ['רק תאשר באפליקציה, מותק.']],
-    6: [['סוף סוף...'], ['אשר.']],
+    4: [['אני מאשר'], ['בטביעת כף.']],                          # 9.11 Gabi's pick D (voice_text_changed 2904)
+    5: [['מאושר!'], ['רק ללחוץ אישור באפליקציה, מותק.']],        # 9.11 pick D (2905)
+    6: [['סוף סוף...'], ['מאושר.']],                             # 9.11 pick C (2906)
     104: [['רגע... מה?!']],
 }
 def chunk_starts(i):
