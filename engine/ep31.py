@@ -32,7 +32,7 @@ VDIR = os.path.join(HERE, 'voice', 'ep31', 'proc')
 META = {int(k): v for k, v in json.load(open(os.path.join(VDIR, 'meta.json'))).items()}
 D = {i: META[i]['dur'] for i in META}
 PINKSUB = (255, 182, 210)
-OUTNAME = os.environ.get('OUTNAME', 'ep31_club_v3')
+OUTNAME = os.environ.get('OUTNAME', 'ep31_club_v4')
 LIMIT = float(os.environ.get('LIMIT', '0'))
 SPEAKER = {0: 'cat', 1: 'cat', 2: 'sh', 3: 'sh', 4: 'sh', 5: 'cat', 6: 'cat', 27: 'cat', 103: 'cat'}
 LOUD = {0: 'smile', 103: 'smile', 5: 'smile'}
@@ -162,7 +162,7 @@ SUBS = {
     103: [['יש!!!']],
     27: [['שרית?! גם פה?']],
     2: [['הוראות קבע?'], ['בבקשה, מותק.']],
-    3: [['וארנונה...'], ['הועבר!']],
+    3: [['וארנונה...'], ['עברה!']],                     # 9.11 Gabi's pick D (voice_text_changed 3103)
     4: [['עכשיו לגזור את הישן, מותק.']],
     5: [['ביי, כרטיס.']],
     6: [['חיוב נדחה?!'], ['על שקל אחד?!']],

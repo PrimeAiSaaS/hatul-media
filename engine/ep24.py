@@ -89,7 +89,7 @@ L[8] = TB + 0.14
 P += [(L[8] - 0.02, B.FREEZE[0])]
 DUR = round(L[8] + D[8] + 0.42, 2)                             # freeze ≤ 0.5 s after the break line
 P += [(DUR, B.DUR - 0.01)]
-NF = int(round(DUR * FPS))
+NF = int(round((float(os.environ.get('LIMIT', '0')) or DUR) * FPS))
 OCC = [(k, L[k]) for k in (0, 1, 2, 3, 4, 5, 102, 6, 27, 8)]
 
 def ts_of(t):
@@ -116,6 +116,11 @@ def v_of(t, who):
 
 # ------------------------------------------------------------------ mouth + speech nods on the v1 cat, Sharit's mouth on the call screen
 CUR = {'t': 0.0}
+EXPR = os.environ.get('EXPR', '0') == '1'
+POSES = [dict(lid=0.0, pupil='tiny', brow='up', ear_dy=-26, look=(-22, 4), blush=0.0, sweat=1.0),
+         dict(lid=0.0, pupil='big', brow='annoyed', ear_dy=-14, look=(-26, -6), blush=0.0),
+         dict(lid=0.0, pupil='big', brow='up', ear_dy=-22, look=(-8, -10), blush=0.6),
+         dict(lid=0.1, pupil='big', brow='sad', ear_droop=0.6, look=(18, 18), blush=0.0)]
 LOUD = {0: 'w', 2: 'smile', 4: 'w', 102: 'smile', 27: 'w'}
 _cat_state = B.cat_state
 def cat_state(ts, i):
@@ -128,6 +133,12 @@ def cat_state(ts, i):
         else: st['mouth'] = 'flat' if li in (0, 4) else st.get('mouth', 'flat')
         dy += -10 * v; rot += 2.5 * v * math.sin(t * 7)
         if li == 4: st.update(brow='sad', pupil='big', sweat=1.0, look=(-28, 10))          # eyes on the battery
+        if EXPR and li in (0, 2, 3, 4):                                                    # gate probe: a new big pose on every voiced phrase
+            segs = [a for a, _ in SEG[li]]; s0 = dict(OCC)[li]
+            k = sum(1 for a in segs if t - s0 >= a - 0.05)
+            u = t - s0 - (segs[k - 1] if k else 0)
+            st.update(POSES[(k + li) % len(POSES)])
+            rot += 7 * math.exp(-u * 5) * math.sin(u * 20); dy += -18 * math.exp(-u * 7) * math.cos(u * 22)
         if li == 27: st.update(pupil='tiny', brow='up', ear_dy=-30, blush=0.0)            # "שרית?! גם פה?"
     if li is None and speaking(t) and SPEAKER[speaking(t)[0]] == 'ivr' and ts >= B.BEEP:
         pass                                                                               # frozen through the IVR line
