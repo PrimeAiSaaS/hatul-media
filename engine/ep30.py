@@ -39,10 +39,10 @@ D = {k: v['dur'] for k, v in META.items()}
 YELLOW = (255, 221, 51); PINKSUB = (255, 182, 210); GOLD = (255, 196, 40); GREEN = (40, 170, 80)
 QUEUE = int(os.environ.get('QUEUE', '462'))
 EP_LABEL = 'פרק 30'
-OUTNAME = os.environ.get('OUTNAME', 'ep30_grant')
+OUTNAME = os.environ.get('OUTNAME', 'ep30_grant_v3')
 LIMIT = float(os.environ.get('LIMIT', '0'))    # render only the first LIMIT seconds (predictor cuts)
 NOCTA = os.environ.get('NOCTA', '0') == '1'    # control: no counter sign
-L2TWO = os.environ.get('L2TWO', '0') == '1'    # 6א probe: L02 as a two-shot (his face reacting) instead of Sharit alone
+L2TWO = os.environ.get('L2TWO', '1') == '1'    # default since v2 (shipped); 6א probe: L02 as a two-shot (his face reacting) instead of Sharit alone
 WALKZ = float(os.environ.get('WALKZ', '0'))    # 6א probe: storm-in shot tighter on his face
 RANTZ = float(os.environ.get('RANTZ', '0'))    # 6א probe: cold open tighter
 WINZ = float(os.environ.get('WINZ', '0'))      # 6א probe: clerk-POV window shots tighter on his face
@@ -88,7 +88,7 @@ SUBS = {
     5: [['חתמתי!'], ['גם פה, גם פה,'], ['וגם פה.']],
     8: [['רגע, מותק...'], ['איזה כתובת?']],
     9: [['הכתובת הרשומה.'], ['אילת.']],
-    6: [['המענק...'], ['אושר!']],
+    6: [['המענק...'], ['מאושר!']],                     # 9.11 Gabi's pick (voice_text_changed 3006)
     7: [['סוף סוף...'], ['משהו אוטומטי שעובד.']],
     10: [['מזל טוב לסבתא, מותק.']],
 }

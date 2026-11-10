@@ -33,16 +33,21 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
     ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 (R8 5.11): new frame 0, same story
     ('ep23_sms_v3_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # v3 (R8 5.11): new frame 0, same story
-    ('ep24_human_v2_norm.mp4', 11.2, 24, 'נציג אנושי'),   # v2 (R8 6.11): new frame 0, same story
+    # ('ep24_human_v2_norm.mp4', 11.2, 24, 'נציג אנושי'),  # v2 silent, replaced 10.11 by the voiced v3
+    ('ep24_v3_norm.mp4', 24.0, 24, 'נציג אנושי'),   # v3 VOICED (10.11): the peak, he inhales, Sharit on the call screen (no subtitle 23.73–24.37)
     ('ep26_norm.mp4', 28.45, 26, 'דרכון תוך 3 ימים'),
     ('ep28_norm.mp4', 17.9, 28, 'ארנונה 2027'),
     ('ep27_singles_v2_norm.mp4', 18.25, 27, 'יום הרווקים'),   # v2 (R8 6.11): new frame 0, same story
     # ('ep29_norm.mp4', 6.8, 29, 'הקצבה נופלת בשבת'),  # v1 silent, replaced 7.11 by the voiced v2
-    ('ep29_v2_norm.mp4', 22.8, 29, 'הקצבה נופלת בשבת'),   # v2 VOICED (7.11): the peak, paw over "אשר" (no subtitle 22.57–23.38)   # §P: two-shot, the orange paw print on the form, the stamp in the air (no caption 5.55–7.0)
+    ('ep29_v3_norm.mp4', 23.5, 29, 'הקצבה נופלת בשבת'),   # v3 VOICED (10.11, Gabi's 9.11 picks 2904-2906): the peak (no subtitle 23.37–24.18)
+    # ('ep29_v2_norm.mp4', 22.8, 29, 'הקצבה נופלת בשבת'),   # v2 VOICED (7.11): the peak, paw over "אשר" (no subtitle 22.57–23.38)   # §P: two-shot, the orange paw print on the form, the stamp in the air (no caption 5.55–7.0)
     # ('ep31_club_v2_norm.mp4', 9.1, 31, 'הוראות קבע'),  # v2 silent, replaced 7.11 by the voiced v3
-    ('ep31_club_v3_norm.mp4', 21.3, 31, 'הוראות קבע'),   # v3 VOICED (7.11): the peak, scissors open around the old card (no subtitle 20.2–21.9)   # §P: the old card held up, scissors coming in (no caption 8.65–9.9)
-    ('ep30_norm.mp4', 27.1, 30, 'מענק "אוטומטי"'),   # §P voiced peak: eyes closed, the approval letter raised, the hush (no subtitle 26.96–27.26)
-    ('ep32_v5_norm.mp4', 17.0, 32, 'מספר אחת בדואר'),   # §P voiced peak: eyes closed, ticket "1" by his cheek, clock 10:30:59 (no subtitle 16.85–17.2)
+    ('ep31_v4_norm.mp4', 21.3, 31, 'הוראות קבע'),   # v4 VOICED (10.11, Gabi's 9.11 pick 3103 'וארנונה... עברה!')
+    # ('ep31_club_v3_norm.mp4', 21.3, 31, 'הוראות קבע'),   # v3 VOICED (7.11): the peak, scissors open around the old card (no subtitle 20.2–21.9)   # §P: the old card held up, scissors coming in (no caption 8.65–9.9)
+    ('ep30_v3_norm.mp4', 27.0, 30, 'מענק "אוטומטי"'),   # v3 VOICED (10.11, Gabi's pick 3006): the peak hush (no subtitle 26.78–27.28)
+    # ('ep30_norm.mp4', 27.1, 30, 'מענק "אוטומטי"'),   # §P voiced peak: eyes closed, the approval letter raised, the hush (no subtitle 26.96–27.26)
+    ('ep32_v6_norm.mp4', 16.8, 32, 'מספר אחת בדואר'),   # v6 VOICED (10.11, Gabi's pick 3202): the peak hold (no subtitle 16.51–17.06)
+    # ('ep32_v5_norm.mp4', 17.0, 32, 'מספר אחת בדואר'),   # §P voiced peak: eyes closed, ticket "1" by his cheek, clock 10:30:59 (no subtitle 16.85–17.2)
     ('ep25_norm.mp4', 29.1, 25, 'סגירת חשבון'),   # §P voiced peak: at the door, eyes closed, sunlight (no subtitle 28.96–29.26)   # §P voiced peak: flaps open, golden light, the hush (frame drawn without the subtitle: ep27.draw_frame with SUB_TIMES=[])   # §P voiced peak: the stamp raised, clock 12:59, the last chip pulsing (no subtitle 17.87–17.95)   # §P voiced peak: eyes closed, passport + pass raised, the hush (no subtitle 28.37–28.67)   # §P peak: Sharit on the call screen, he inhales (no caption 9.6–)   # §P peak: paw over "כניסה", 23:59:57 (no caption 11.05–)   # §P peak: eyes closed, the bag with the code on the counter (no caption 11.15–12.0)   # two-shot before "וואלה." (no caption 7.8–8.15)   # Eilat, the new notice just slapped on (no caption 10.3–11.2)
 ]
 

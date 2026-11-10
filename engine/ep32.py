@@ -39,7 +39,7 @@ YELLOW = (255, 221, 51); PINKSUB = (255, 182, 210); GOLD = (255, 196, 40); GREEN
 BLUE = (28, 104, 226); POSTRED = (206, 38, 44)
 QUEUE = int(os.environ.get('QUEUE', '458'))
 EP_LABEL = 'פרק 32'
-OUTNAME = os.environ.get('OUTNAME', 'ep32_post')
+OUTNAME = os.environ.get('OUTNAME', 'ep32_post_v6')
 LIMIT = float(os.environ.get('LIMIT', '0'))     # render only the first LIMIT seconds (predictor cuts)
 PHZ = float(os.environ.get('PHZ', '0'))         # 6א probe: phone shot tighter on his face
 COLDZ = float(os.environ.get('COLDZ', '0'))     # 6א probe: cold open tighter
@@ -85,7 +85,7 @@ def segments(i, gap_frames=4, thr=0.08):
 SUBS = {
     0: [['מספר אחת!'], ['אני ראשון!']],
     1: [['מכתב מביטוח לאומי'], ['מחכה לי בדואר.']],
-    2: [['התורים נפתחים ב-10:30.'], ['עוד...'], ['רגע...']],
+    2: [['התורים נפתחים בעשר וחצי.'], ['עוד...'], ['רגע...']],   # 9.11 Gabi's pick (voice_text_changed 3202; subtitle = manifest text)
     3: [['עכשיו!'], ['ראשון בכל הרחוב!']],
     27: [['שרית?!'], ['גם פה?']],
     4: [['מספר אחת?'], ['כל הכבוד, מותק.']],
