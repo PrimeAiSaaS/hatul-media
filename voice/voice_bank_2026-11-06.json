@@ -530,7 +530,11 @@
    "job_id": "3af4c53f-8724-484e-a675-c0044b55f341",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261106_182913_3af4c53f-8724-484e-a675-c0044b55f341.mp3",
    "file": "voice/ep33/line04.mp3",
-   "dur_file": 1.07
+   "dur_file": 1.07,
+   "pron_take": "C",
+   "tts_text": "אוּשַּׁר, מותק.",
+   "pron_ok": true,
+   "applied_note": "11.11 production: Gabi's 9.11 verdict C (voice_review L3304) copied from voice/review/20261109/3304_C.mp3"
   },
   {
    "index": 3305,
