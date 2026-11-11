@@ -59,5 +59,25 @@
     "note": "not yet bound to Gabi computer: Gabi turns on \"Require this computer\" in the desktop app",
     "updated_at": "2026-11-09T18:10:00+02:00",
     "review_page": "https://claude.ai/artifact/7n77X86jYyLmTfA5kAAt1u"
+  },
+  "crowd": {
+    "trigger_id": "trig_01RrTUrhaEfvnjFpUCtya1bk",
+    "name": "חתול בהמתנה: בדיחות מהתגובות (סשן חדש)",
+    "cron": "CRON_TZ=Asia/Jerusalem 41 8 * * *",
+    "prompt": "crowd_v2.md",
+    "script": "tools/crowd_humor_scan.js",
+    "scout": "crowd_scout_v1.md",
+    "enabled": false,
+    "note": "11.11: replaces send_later chain trig_019PhYd72vKyZKmSbgb7FMsk (disabled; it reloaded a long session every run). Needs Gabi to turn on 'Require this computer' in the desktop app, then enabled:true. Old cloud cron trig_01R5McxA6qcHEsi7E63muteG stays disabled.",
+    "updated_at": "2026-11-11T23:00:00+02:00"
+  },
+  "outliers": {
+    "trigger_id": "trig_01JJwE8Pe1LganfF9sZ76ND5",
+    "name": "חתול בהמתנה: סוכן חריגים (סשן חדש)",
+    "cron": "CRON_TZ=Asia/Jerusalem 17 10 * * 2",
+    "prompt": "outliers_v2.md",
+    "enabled": false,
+    "note": "11.11: replaces send_later chain trig_01NWm5oMo2Y3hFiH7pHbZdv9 (disabled). Needs 'Require this computer', then enabled:true.",
+    "updated_at": "2026-11-11T23:00:00+02:00"
   }
 }
