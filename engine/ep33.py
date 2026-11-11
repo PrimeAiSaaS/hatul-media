@@ -47,6 +47,9 @@ EP_LABEL = 'פרק 33'
 OUTNAME = os.environ.get('OUTNAME', 'ep33_kitsba')
 LIMIT = float(os.environ.get('LIMIT', '0'))     # render only the first LIMIT seconds (predictor cuts)
 TWOZ = float(os.environ.get('TWOZ', '0'))       # 6א probe: two-shot tighter
+COLDPH = os.environ.get('COLDPH', '1') == '1'
+COLDZ = float(os.environ.get('COLDZ', '0'))     # 6א probe: cold open tighter on his face
+PHSM = os.environ.get('PHSM', '1') == '1'       # 6א probe: want close-up with a smaller phone, bigger face   # 6א probe: cold-open phone lower, his whole face clear
 SPEAKER = {0: 'cat', 1: 'cat', 3: 'cat', 27: 'cat', 2: 'sh', 4: 'sh', 5: 'sh'}
 
 # ------------------------------------------------------------------ timeline (from the real line lengths)
@@ -322,7 +325,7 @@ def scene_kiosk(t, i):
     E(d, KX, 1650 + 0.5 * dy, 430, 450, fill=FUR, outline=OUT, width=7)
     E(d, KX, 1710 + 0.5 * dy, 200, 300, fill=CREAM)
     # right paw (viewer's left): the phone with the SMS thrust up (the plant line under it)
-    pc = (250, 1150 + 0.4 * dy + 10 * math.sin(t * 14))
+    pc = ((230, 1310) if COLDPH else (250, 1150)); pc = (pc[0], pc[1] + 0.4 * dy + 10 * math.sin(t * 14))
     capsule(d, (KX - 230, 1460 + 0.5 * dy), (pc[0] + 20, pc[1] + 250), 110, FUR, OUT, 4)
     E12.paste_head(img, st, i, KX, KY + dy, KF, rot)
     paste_rot(img, phone_layer('sms'), pc, -8 + 3 * math.sin(t * 10), 0.80)
@@ -371,8 +374,9 @@ def scene_phone(t, i):
     E(d, HXP, 1810, 180, 290, fill=CREAM)
     pc = (300, 960 + 6 * math.sin(t * 9))
     capsule(d, (HXP - 240, 1560), (pc[0] + 40, pc[1] + 290), 110, FUR, OUT, 4)
-    E12.paste_head(img, st, i, HXP, HYP + dy - 8 * v, FP, rot)
+    E12.paste_head(img, st, i, HXP - (20 if PHSM else 0), HYP + dy - 8 * v - (30 if PHSM else 0), FP * (1.22 if PHSM else 1.0), rot)
     sc = 1.04 + (0.1 * math.exp(-(t - CHK1) * 8) if t >= CHK1 else 0.18 * math.exp(-u * 9))
+    if PHSM: sc *= 0.78; pc = (250, pc[1] + 60)
     paste_rot(img, phone_layer('sms'), pc, -6, sc)
     d = ImageDraw.Draw(img)
     E12.big_paw(d, (pc[0] + 40, pc[1] + 290), 8, 0.95)
@@ -607,8 +611,8 @@ def camera(t):
     z, cx, cy = 1.0, 540.0, 960.0
     pu = t - a
     if name == 'kiosk':
-        z = 1.06 + 0.04 * pu; cy = 980
-        if t < 0.3: z = 1.28 - 0.22 * ease_out(t / 0.3)          # frame 0: snap pull-back, already moving
+        z = (COLDZ or 1.06) + 0.04 * pu; cy = 980 if not COLDZ else 900
+        if t < 0.3: z = (COLDZ or 1.06) + 0.22 - 0.22 * ease_out(t / 0.3)          # frame 0: snap pull-back, already moving
     elif name == 'rewind':
         z, cx = 1.06, 540.0 + 30 * math.sin(t * 90)
     elif name == 'phone':
