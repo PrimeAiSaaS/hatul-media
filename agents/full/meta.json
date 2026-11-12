@@ -1,40 +1,47 @@
 {
-  "_note": "Live scheduled tasks (cloud, auto-approve). Change an agent: edit agents/full/<agent>_vN.md, then update_trigger with the full text. Never delete and recreate.",
+  "_note": "Live scheduled tasks. From 12.11 each trigger prompt is a short stub (role, permissions, hard limits) that tells the agent to read its full instructions from the HQ artifact file agents/<agent>.md (https://claude.ai/artifact/LTd1as8v4rzTnxCN6bj6sJ). To change an agent: edit agents/full/<agent>_vN+1.md here, publish it to HQ as agents/<agent>.md (publish_files patch), and update 'prompt' below. update_trigger is needed only when the stub itself (permissions/limits) changes. Never delete and recreate a task.",
   "production": {
     "trigger_id": "trig_01K8PoHKFoWtvxxmeHUeChKY",
     "name": "חתול בהמתנה: הפקת פרק",
     "cron": "CRON_TZ=Asia/Jerusalem 53 9 * * *",
-    "prompt": "production_v12.md",
-    "updated_at": "2026-11-06T11:35:00+02:00"
+    "prompt": "production_v13.md",
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "live_file": "HQ agents/production.md"
   },
   "sync": {
     "trigger_id": "trig_01EiuozAjMDScB9wKzowH1X6",
     "name": "חתול בהמתנה: סנכרון תור הפרסום",
     "cron": "CRON_TZ=Asia/Jerusalem 52 18 * * *",
-    "prompt": "sync_v10.md",
-    "updated_at": "2026-11-05T12:47:00+02:00"
+    "prompt": "sync_v11.md",
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "live_file": "HQ agents/sync.md"
   },
   "data": {
-    "trigger_id": "trig_0185MKRJiubwpf47eBuh6JAY",
-    "name": "חתול בהמתנה: סוכן נתונים",
+    "trigger_id": "trig_01P42S6m1GPprkCaAqPvuzrT",
+    "name": "חתול בהמתנה: סוכן נתונים (ענן)",
     "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
-    "prompt": "data_v11.md",
-    "updated_at": "2026-11-06T14:15:00+02:00"
+    "prompt": "data_v12.md",
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "live_file": "HQ agents/data.md",
+    "old_trigger_disabled": "trig_0185MKRJiubwpf47eBuh6JAY (bound to Gabi computer; disabled 12.11)"
   },
   "ops": {
-    "trigger_id": "trig_01HzqZ5KVJ2DiwFrnH6KyStA",
-    "name": "חתול בהמתנה: בקר תפעול",
+    "trigger_id": "trig_01HvKHEiwWL5DTJjHcMp3dAV",
+    "name": "חתול בהמתנה: בקר תפעול (ענן)",
     "cron": "CRON_TZ=Asia/Jerusalem 47 21 * * *",
-    "prompt": "ops_v6.md",
+    "prompt": "ops_v7.md",
     "created_at": "2026-10-12T19:14:53Z",
-    "updated_at": "2026-10-31T23:40:00+02:00"
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "live_file": "HQ agents/ops.md",
+    "old_trigger_disabled": "trig_01HzqZ5KVJ2DiwFrnH6KyStA (bound to Gabi computer, suspended device_absent 11.11; disabled 12.11)"
   },
   "weekly": {
     "trigger_id": "trig_01HFxZSy1EJW5T8mzHeVsJud",
     "name": "חתול בהמתנה: סיכום שבועי ושיפור",
     "cron": "CRON_TZ=Asia/Jerusalem 57 18 * * 6",
-    "prompt": "weekly_v6.md",
-    "updated_at": "2026-10-31T23:40:00+02:00"
+    "prompt": "weekly_v7.md",
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "live_file": "HQ agents/weekly.md"
   },
   "telegram": {
     "_note": "Approval loop (17.10, Gabi: 'אני רוצה לעשות את זה'). Production pushes a record to the Make data store and runs scenario A; Gabi taps in Telegram; scenario B writes TG| lines to the Google Doc; production/sync apply them (only exception to 'only Gabi sets approved'). Dashboard switch: meta/telegram.enabled + send_scenario_id.",
@@ -48,17 +55,19 @@
     "setup": "make/TELEGRAM_SETUP.md",
     "send_scenario_id": 8017816,
     "replies_scenario_id": 8017868,
-    "enabled": false
+    "enabled": true
   },
   "voices": {
     "trigger": "trig_01Qd9hKGPHxRCfWEfUr8aNr3",
-    "prompt": "voices_v3.md",
+    "prompt": "voices_v4.md",
     "when": "daily 22:23 Asia/Jerusalem",
     "requires_local_device": true,
     "created_at": "2026-11-06T21:58:00+02:00",
     "note": "not yet bound to Gabi computer: Gabi turns on \"Require this computer\" in the desktop app",
-    "updated_at": "2026-11-09T18:10:00+02:00",
-    "review_page": "https://claude.ai/artifact/7n77X86jYyLmTfA5kAAt1u"
+    "updated_at": "2026-11-12T00:05:00+02:00",
+    "review_page": "https://claude.ai/artifact/7n77X86jYyLmTfA5kAAt1u",
+    "live_file": "HQ agents/voices.md",
+    "prompt_pending": "voices_v4.md (live at HQ agents/voices.md) — the stub update needs Gabi approval on his computer; until then the task runs voices_v3 text"
   },
   "crowd": {
     "trigger_id": "trig_01RrTUrhaEfvnjFpUCtya1bk",
@@ -69,7 +78,8 @@
     "scout": "crowd_scout_v1.md",
     "enabled": false,
     "note": "11.11: replaces send_later chain trig_019PhYd72vKyZKmSbgb7FMsk (disabled; it reloaded a long session every run). Needs Gabi to turn on 'Require this computer' in the desktop app, then enabled:true. Old cloud cron trig_01R5McxA6qcHEsi7E63muteG stays disabled.",
-    "updated_at": "2026-11-11T23:00:00+02:00"
+    "updated_at": "2026-11-11T23:00:00+02:00",
+    "live_file": "HQ agents/crowd.md"
   },
   "outliers": {
     "trigger_id": "trig_01JJwE8Pe1LganfF9sZ76ND5",
@@ -78,6 +88,41 @@
     "prompt": "outliers_v2.md",
     "enabled": false,
     "note": "11.11: replaces send_later chain trig_01NWm5oMo2Y3hFiH7pHbZdv9 (disabled). Needs 'Require this computer', then enabled:true.",
-    "updated_at": "2026-11-11T23:00:00+02:00"
+    "updated_at": "2026-11-11T23:00:00+02:00",
+    "live_file": "HQ agents/outliers.md"
+  },
+  "autoapprove": {
+    "trigger_id": "trig_01QRRLDkSMNSvws8uPdPjvWb",
+    "name": "חתול בהמתנה: אישור אוטומטי (שבוע מילואים)",
+    "cron": "CRON_TZ=Asia/Jerusalem 41 17 * * *",
+    "prompt": "autoapprove_v2.md",
+    "live_file": "HQ agents/autoapprove.md",
+    "updated_at": "2026-11-12T00:05:00+02:00"
+  },
+  "hot": {
+    "trigger_id": "trig_01ECb9s5wAR56FpSJbGn1d9s",
+    "name": "חתול בהמתנה: חדשות חמות",
+    "cron": "CRON_TZ=Asia/Jerusalem 13 7 * * *",
+    "prompt": "hot_v2.md",
+    "live_file": "HQ agents/hot.md",
+    "updated_at": "2026-11-12T00:05:00+02:00"
+  },
+  "inbox": {
+    "collection": "inbox",
+    "switch": "meta/inbox.enabled",
+    "since": "2026-11-11",
+    "note": "agents write inbox/<YYYYMMDD-HHMM>-<agent> instead of SendUserMessage; dashboard v26 card 'הודעות אליך'"
+  },
+  "brief": {
+    "doc": "meta/brief",
+    "writer": "ops (section 5א)",
+    "readers": [
+      "production",
+      "sync",
+      "autoapprove",
+      "hot",
+      "voices"
+    ],
+    "stale_after_hours": 30
   }
 }
