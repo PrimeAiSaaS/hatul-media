@@ -4,9 +4,10 @@
     "trigger_id": "trig_01K8PoHKFoWtvxxmeHUeChKY",
     "name": "חתול בהמתנה: הפקת פרק",
     "cron": "CRON_TZ=Asia/Jerusalem 53 9 * * *",
-    "prompt": "production_v13.md",
+    "prompt": "production_v14.md",
     "updated_at": "2026-11-12T00:05:00+02:00",
-    "live_file": "HQ agents/production.md"
+    "live_file": "HQ agents/production.md",
+    "v14_note": "13.11: no silent fallback (Gabi: all voiced); ep22 rebuild_voiced via swap_pending"
   },
   "sync": {
     "trigger_id": "trig_01EiuozAjMDScB9wKzowH1X6",
