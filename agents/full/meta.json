@@ -4,7 +4,7 @@
     "trigger_id": "trig_01K8PoHKFoWtvxxmeHUeChKY",
     "name": "חתול בהמתנה: הפקת פרק",
     "cron": "CRON_TZ=Asia/Jerusalem 53 9 * * *",
-    "prompt": "production_v14.md",
+    "prompt": "production_v15.md",
     "updated_at": "2026-11-12T00:05:00+02:00",
     "live_file": "HQ agents/production.md",
     "v14_note": "13.11: no silent fallback (Gabi: all voiced); ep22 rebuild_voiced via swap_pending"
@@ -13,7 +13,7 @@
     "trigger_id": "trig_01EiuozAjMDScB9wKzowH1X6",
     "name": "חתול בהמתנה: סנכרון תור הפרסום",
     "cron": "CRON_TZ=Asia/Jerusalem 52 18 * * *",
-    "prompt": "sync_v11.md",
+    "prompt": "sync_v12.md",
     "updated_at": "2026-11-12T00:05:00+02:00",
     "live_file": "HQ agents/sync.md"
   },
@@ -21,7 +21,7 @@
     "trigger_id": "trig_01P42S6m1GPprkCaAqPvuzrT",
     "name": "חתול בהמתנה: סוכן נתונים (ענן)",
     "cron": "CRON_TZ=Asia/Jerusalem 12 21 * * *",
-    "prompt": "data_v12.md",
+    "prompt": "data_v13.md",
     "updated_at": "2026-11-12T00:05:00+02:00",
     "live_file": "HQ agents/data.md",
     "old_trigger_disabled": "trig_0185MKRJiubwpf47eBuh6JAY (bound to Gabi computer; disabled 12.11)"
@@ -30,7 +30,7 @@
     "trigger_id": "trig_01HvKHEiwWL5DTJjHcMp3dAV",
     "name": "חתול בהמתנה: בקר תפעול (ענן)",
     "cron": "CRON_TZ=Asia/Jerusalem 47 21 * * *",
-    "prompt": "ops_v7.md",
+    "prompt": "ops_v8.md",
     "created_at": "2026-10-12T19:14:53Z",
     "updated_at": "2026-11-12T00:05:00+02:00",
     "live_file": "HQ agents/ops.md",
@@ -40,7 +40,7 @@
     "trigger_id": "trig_01HFxZSy1EJW5T8mzHeVsJud",
     "name": "חתול בהמתנה: סיכום שבועי ושיפור",
     "cron": "CRON_TZ=Asia/Jerusalem 57 18 * * 6",
-    "prompt": "weekly_v7.md",
+    "prompt": "weekly_v8.md",
     "updated_at": "2026-11-12T00:05:00+02:00",
     "live_file": "HQ agents/weekly.md"
   },
@@ -60,7 +60,7 @@
   },
   "voices": {
     "trigger": "trig_01Qd9hKGPHxRCfWEfUr8aNr3",
-    "prompt": "voices_v4.md",
+    "prompt": "voices_v5.md",
     "when": "daily 22:23 Asia/Jerusalem",
     "requires_local_device": true,
     "created_at": "2026-11-06T21:58:00+02:00",
@@ -74,7 +74,7 @@
     "trigger_id": "trig_01RrTUrhaEfvnjFpUCtya1bk",
     "name": "חתול בהמתנה: בדיחות מהתגובות (סשן חדש)",
     "cron": "CRON_TZ=Asia/Jerusalem 41 8 * * *",
-    "prompt": "crowd_v2.md",
+    "prompt": "crowd_v3.md",
     "script": "tools/crowd_humor_scan.js",
     "scout": "crowd_scout_v1.md",
     "enabled": false,
@@ -86,7 +86,7 @@
     "trigger_id": "trig_01JJwE8Pe1LganfF9sZ76ND5",
     "name": "חתול בהמתנה: סוכן חריגים (סשן חדש)",
     "cron": "CRON_TZ=Asia/Jerusalem 17 10 * * 2",
-    "prompt": "outliers_v2.md",
+    "prompt": "outliers_v3.md",
     "enabled": false,
     "note": "11.11: replaces send_later chain trig_01NWm5oMo2Y3hFiH7pHbZdv9 (disabled). Needs 'Require this computer', then enabled:true.",
     "updated_at": "2026-11-11T23:00:00+02:00",
@@ -96,7 +96,7 @@
     "trigger_id": "trig_01QRRLDkSMNSvws8uPdPjvWb",
     "name": "חתול בהמתנה: אישור אוטומטי (שבוע מילואים)",
     "cron": "CRON_TZ=Asia/Jerusalem 41 17 * * *",
-    "prompt": "autoapprove_v2.md",
+    "prompt": "autoapprove_v3.md",
     "live_file": "HQ agents/autoapprove.md",
     "updated_at": "2026-11-12T00:05:00+02:00"
   },
@@ -104,7 +104,7 @@
     "trigger_id": "trig_01ECb9s5wAR56FpSJbGn1d9s",
     "name": "חתול בהמתנה: חדשות חמות",
     "cron": "CRON_TZ=Asia/Jerusalem 13 7 * * *",
-    "prompt": "hot_v2.md",
+    "prompt": "hot_v3.md",
     "live_file": "HQ agents/hot.md",
     "updated_at": "2026-11-12T00:05:00+02:00"
   },
@@ -125,5 +125,11 @@
       "voices"
     ],
     "stale_after_hours": 30
+  },
+  "lessons": {
+    "collection": "lessons (dashboard 378c7612)",
+    "since": "2026-11-13",
+    "rule": "every agent reads active lessons for itself at start and writes/merges lessons at end; data writes lessons/ep<N>-data per episode at 72h; weekly merges, promotes to meta/brief.lessons.rules (max 12) and retires",
+    "mirror": "claude.ai Project doc claude/LESSONS.md (updated from chat sessions)"
   }
 }
