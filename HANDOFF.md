@@ -1,107 +1,88 @@
 אתה ממשיך לנהל את "חתול בהמתנה" (@hatul.bahamtana), סדרת אנימציה קומית על בירוקרטיה ישראלית שמופקת, מתפרסמת ונמדדת על ידי סוכנים. היא גם מגרש ניסוי לטכניקות שיעברו לפייר קארדן ול-TAP. ענה לי בעברית בלבד.
 
 ## קודם כל, קרא
-- ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים). הסעיף האחרון = מה השתנה ב-12.11.
-- ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–W = החוקים). המקור החי של הסוכנים הוא engine/SERIES_BIBLE.md בדף HQ; docs/SERIES_BIBLE.md במאגר הוא מראה.
-- ההנחיות של הסוכנים: **מ-12.11 ההנחיה של כל סוכן היא קובץ ב-HQ: agents/<agent>.md** (production, sync, data, ops, weekly, voices, autoapprove, hot, crowd, outliers). המשימה המתוזמנת עצמה היא רק "סטאב" קצר: תפקיד, הרשאות, גבולות, ו"קרא את הקובץ ובצע". מראה במאגר: agents/full/<agent>_vN.md, ו-agents/full/meta.json אומר מה חי.
+- **claude/LESSONS.md** — כל הלקחים: נתונים, מה עבד, וטעויות שלא חוזרות. המקור החי: האוסף lessons בלוח הבקרה. **גבי, 13.11: "כל טעות לשמור... כל הנתונים, להשתפר תמיד מהם"** — זו חלק מהעבודה בכל סשן (ראה "לולאת למידה").
+- ידע הפרויקט: claude/PROJECT_CONTEXT.md (מזהים, זרימות, Make, Metricool, ממצאים, פתוחים).
+- ספר הסדרה: claude/SERIES_BIBLE.md (Growth playbook §A–W). המקור החי: engine/SERIES_BIBLE.md בדף HQ; docs/SERIES_BIBLE.md במאגר הוא מראה.
+- ההנחיות של הסוכנים: קובץ לכל סוכן ב-HQ: agents/<agent>.md (production, sync, data, ops, weekly, voices, autoapprove, hot, crowd, outliers). המשימה המתוזמנת היא "סטאב" קצר שאומר לקרוא את הקובץ ולבצע. מראה במאגר: agents/full/<agent>_vN.md; agents/full/meta.json אומר מה חי.
 
-## מצב נכון ל-12.11 בבוקר
-- גבי במילואים מ-10.11 לבערך שבוע, כמעט בלי מחשב. המחשב שלו (מחשבסיתי) כבוי. meta/auto_approve פעיל עד 17.11.
-- לוח שידורים: 12.11 פרק 25 · 13.11 פרק 29 · 14.11 פרק 31 · 15.11 פרק 30 · 16.11 פרק 32 · 17.11 פרק 33 (סוף עונה 7; גבי אישר בטלגרם 11.11 16:36, בקר התפעול יישם; הסנכרון מתזמן אותו 12.11 18:52) · **18.11 פרק 22** (גשר שקט, הוזז 12.11 מ-8.11; הסנכרון מתזמן 17.11). 12–16 מתוזמנים ב-4 הרשתות.
-- **מ-19.11 אין פרקים.** עונה 8 "בלאק פריידיי" (פרקים 34–38) כתובה בספר כהצעה (PROPOSED 12.11) ומחכה לאישור של גבי. כולם מדובבים: הקולות נוצרים ומורדים רק בשיחה שמקושרת למחשב של גבי. עד אז סוכן ההפקה לפי 6ה: מחכה כשהעלייה בעוד 5+ ימים, ומתחת ל-5 ימים בונה גרסה שקטה.
-- 11.11: הסנכרון, הנתונים והאישור האוטומטי נפלו על USAGE_LIMIT_REACHED (מגבלת שימוש בחשבון). בקר התפעול ניסה להריץ שוב וה-fire_trigger נחסם (permission classifier).
+## מצב נכון ל-13.11 בערב
+- גבי במילואים עד בערך 17.11. המחשב שלו דלוק ומקושר (אחיו עזר ב-13.11), אבל **Computer use מדווח "כבוי"** גם אחרי שהודלק — לא ניתן לשלוט באפליקציה.
+- **החלטות של גבי ב-13.11:** "לדובב הכל מדובב" (אין יותר פרקים שקטים); עונה 8 "בלאק פריידיי" **אושרה** ("כן מאשר").
+- **נתונים (עד 12.11):** מדובב מול שקט — טיקטוק ×2.5, אינסטגרם ×8, צפייה ממוצעת 15.3 מול 5.6 ש׳. אורך 20–35 ש׳. נושא יומיומי. פייסבוק לא זז. הכול ב-meta/brief.lessons וב-claude/LESSONS.md.
+- **לוח:** 14.11 פרק 31 · 15.11 פרק 30 · 16.11 פרק 32 · 17.11 פרק 33 (כולם מאושרים ומתוזמנים) · **18.11 פרק 22**: השקט מתוזמן ב-Metricool כגיבוי; ep22 סומן rebuild_voiced + refresh.swap_pending, status review. ההפקה בונה גרסה מדובבת, וכשגבי מאשר — הסנכרון מחליף מדיה · **19.11 והלאה: פרקים 34–38** (עונה 8), ההפקה בונה מ-14.11.
+- **קולות:** 40 שורות במאגר (voice/voice_bank_2026-11-13.json): ep22 (10), ep34 (5), ep35 (6), ep36 (6), ep37 (8), ep38 (5). בדף בדיקת ההגייה עם verdict ריק — **גבי צריך לסמן**. סבתא (3503, 3605) = הקול של Vera, כי אין קול סבתא. עותק במחשב: Videos\hatul_voices\bank20261113.
 
-## מה נעשה ב-12.11 (הסשן הזה)
-1. **תיבת "הודעות אליך" בלוח (v26):** כרטיס בראש דף הבית שקורא את האוסף inbox ({at, from, title, body, needs_action, read}). לא-נקראו קודם, needs_action מודגש בכתום, כפתור "נקרא", "סמן הכול כנקרא", "הצג נקראו". meta/inbox.enabled = true.
-2. **כל הסוכנים כותבים ל-inbox במקום SendUserMessage.** סטאבים חדשים ב-update_trigger: production, sync, weekly, autoapprove, hot. crowd_v2 / outliers_v2 כבר כתבו ל-inbox (ומושבתות עד קישור למחשב).
-3. **נתונים ובקר תפעול עברו לענן:** המשימות הישנות (trig_0185MKRJiubwpf47eBuh6JAY, trig_01HzqZ5KVJ2DiwFrnH6KyStA) התבררו כקשורות למחשב של גבי (בקר התפעול הושעה device_absent כשהמחשב כבה). נוצרו משימות חדשות בענן עם אותן שעות: **נתונים trig_01P42S6m1GPprkCaAqPvuzrT (21:12)**, **בקר תפעול trig_01HvKHEiwWL5DTJjHcMp3dAV (21:47)**, בלי push. הישנות הושבתו (לא נמחקו) ושמן שונה ל"(ישן, קשור למחשב — מושבת)". לא להדליק אותן במקביל לחדשות.
-4. **להוזיל: meta/brief.** בקר התפעול כותב כל ערב מפה קצרה (ימים מאתמול עד 8 קדימה, review, approved, ימים ריקים, last_story_v2, titles, failures, numbers). הפקה, סנכרון, אישור אוטומטי, חדשות חמות וקולות קוראים אותה, ובמקום list על כל episodes / metrics עושים get / query עם where. מסמך פרק אחד הוא כ-8KB, אז list על 60 פרקים היה החלק היקר בכל ריצה. Claude זרע את meta/brief ב-12.11 06:22.
-5. **סוכן הקולות ו-403:** הסיבה: הוא עשה git clone בלי add_repo (הכלי נטען רק דרך ToolSearch), ולכן ה-push נדחה. voices_v4 (ב-HQ agents/voices.md) מתקן: ToolSearch "select:mcp__claude-code-remote__add_repo" → add_repo push → clone. **אבל המשימה קשורה למחשב, ולכן הסטאב החדש לא נשמר (needs_device_approval).** הטקסט מוכן ב-agents/full/stubs/voices.md. הבחירה של גבי 3304→C כבר במאגר (ההפקה החילה אותה) וסומנה applied בדף בדיקת ההגייה.
-6. עונה 8 נכתבה בספר כהצעה; פרק 22 שובץ ל-18.11; הודעה ראשונה ל-inbox (needs_action) עם שתי ההחלטות.
+## מה נעשה ב-13.11
+1. **ניתוח נתונים → מסקנות** ב-meta/brief.lessons.
+2. **הפקה v14:** אין גרסה שקטה כגיבוי. בלי קולות → יום ריק + inbox.
+3. **ep22** לגרסה מדובבת (ראה למעלה). **עונה 8** סומנה APPROVED בספר (HQ + מאגר).
+4. **קולות** ל-ep22 ולעונה 8: נוצרו ב-Higgsfield (10 קרדיטים), הורדו דרך הדפדפן המובנה במחשב, נדחפו למאגר והועלו לדף בדיקת ההגייה. voice_requests/ep22, ep34 = in_repo.
+5. **לולאת למידה** (ראה למטה): אוסף lessons עם 19 לקחים ראשונים; כל 10 הסוכנים קיבלו סעיף "לולאת למידה" (production_v15, sync_v12, data_v13, ops_v8, weekly_v8, voices_v5, autoapprove_v3, hot_v3, crowd_v3, outliers_v3 — פורסמו ל-HQ).
+6. פייר קארדן: ניתוח 4 סרטונים, recut של "תפוס" ל-6 ש׳ (tafus_6s_test.mp4) — ב-LESSONS.
+
+## לולאת למידה (חובה בכל סשן)
+- **בתחילת סשן:** לקרוא את claude/LESSONS.md ולשאול את הלוח: db_query lessons where status == "active". לא לחזור על טעות שיש עליה לקח.
+- **במהלך הסשן:** כל טעות, כשל, ניסיון חוזר, הפתעה או תוצאת נתונים → מסמך ב-lessons/<YYYYMMDD-HHMM>-<slug>: {at, by, kind: mistake|failed|data|worked, area, what (עם מספרים), why, rule (משפט אחד שאפשר לבצע), evidence, agents: [...], status: "active", seen, last_seen}. קיים לקח עם אותו rule → merge של seen+1, לא כפילות.
+- **בסוף סשן:** לעדכן את claude/LESSONS.md בפרויקט מהאוסף, ולעדכן את meta/brief.lessons.rules אם משהו קודם.
+- הסוכנים: כל אחד קורא את הלקחים שלו בתחילת ריצה וכותב בסוף; הנתונים כותבים lessons/ep<N>-data לכל פרק אחרי 72 שעות (איפה יצאו, למה, מה עבד); השבועי מאחד, מקדם ל-rules (עד 12) ומבטל.
 
 ## משימה ראשונה לסשן הבא
-1. לקרוא inbox/* ו-runs/* מהימים שעברו (הלוח, כרטיס "הודעות אליך" ו"יומן ובקרת סוכנים"): האם הסטאבים עבדו (כל סוכן קרא את agents/<agent>.md מ-HQ), האם meta/brief נכתב כל ערב, ואם משהו חזר ל-SendUserMessage.
-2. אם גבי ליד המחשב, בשיחה מקושרת למחשב:
-   - לאשר את הסטאב של סוכן הקולות (update_trigger trig_01Qd9hKGPHxRCfWEfUr8aNr3 עם agents/full/stubs/voices.md).
-   - קולות לעונה 8 (אחרי שגבי מאשר את הקשת): לייצר, להוריד, לדף בדיקת ההגייה.
-   - "Require this computer" + enabled ל-crowd_v2 ול-outliers_v2.
-3. אחרי 17.11: לכבות או להאריך את meta/auto_approve לפי גבי.
+1. לקרוא inbox/*, runs/* ו-lessons/* מהימים שעברו: האם הסוכנים כתבו לקחים, האם lessons/ep<N>-data נוצרו, מה נכשל.
+2. לבדוק את הפרקים שההפקה בנתה (ep22 מדובב, ep34+), ואם גבי סימן את השורות בדף בדיקת ההגייה.
+3. ליד המחשב, כשגבי חוזר: סטאב סוכן הקולות (update_trigger trig_01Qd9hKGPHxRCfWEfUr8aNr3 עם agents/full/stubs/voices.md; מחזיר needs_device_approval — רק גבי מהאפליקציה); Computer use; push/מייל במשימות; "Require this computer" + enabled ל-crowd/outliers.
+4. 17.11: meta/auto_approve — לכבות או להאריך לפי גבי.
 
 ## המשימות המתוזמנות
 | משימה | מזהה | שעה | הערה |
 |---|---|---|---|
-| הפקת פרק | trig_01K8PoHKFoWtvxxmeHUeChKY | כל יום 09:53 | סטאב → agents/production.md |
-| סנכרון | trig_01EiuozAjMDScB9wKzowH1X6 | כל יום 18:52 | סטאב → agents/sync.md |
-| נתונים (ענן) | trig_01P42S6m1GPprkCaAqPvuzrT | כל יום 21:12 | חדש 12.11, בלי push |
-| בקר תפעול (ענן) | trig_01HvKHEiwWL5DTJjHcMp3dAV | כל יום 21:47 | חדש 12.11, בלי push; כותב meta/brief |
-| שבועי | trig_01HFxZSy1EJW5T8mzHeVsJud | שבת 18:57 | סטאב → agents/weekly.md |
-| אישור אוטומטי (עד 17.11) | trig_01QRRLDkSMNSvws8uPdPjvWb | כל יום 17:41 | סטאב → agents/autoapprove.md |
-| חדשות חמות | trig_01ECb9s5wAR56FpSJbGn1d9s | כל יום 07:13 | סטאב → agents/hot.md |
-| קולות (**קשור למחשב**) | trig_01Qd9hKGPHxRCfWEfUr8aNr3 | כל יום 22:23 | עדיין voices_v3 (ה-403); הסטאב מחכה לאישור במחשב |
+| הפקת פרק | trig_01K8PoHKFoWtvxxmeHUeChKY | כל יום 09:53 | → agents/production.md (v15) |
+| סנכרון | trig_01EiuozAjMDScB9wKzowH1X6 | כל יום 18:52 | → agents/sync.md (v12) |
+| נתונים (ענן) | trig_01P42S6m1GPprkCaAqPvuzrT | כל יום 21:12 | → agents/data.md (v13) |
+| בקר תפעול (ענן) | trig_01HvKHEiwWL5DTJjHcMp3dAV | כל יום 21:47 | → agents/ops.md (v8); כותב meta/brief |
+| שבועי | trig_01HFxZSy1EJW5T8mzHeVsJud | שבת 18:57 | → agents/weekly.md (v8); בקרת לקחים |
+| אישור אוטומטי (עד 17.11) | trig_01QRRLDkSMNSvws8uPdPjvWb | כל יום 17:41 | → agents/autoapprove.md (v3) |
+| חדשות חמות | trig_01ECb9s5wAR56FpSJbGn1d9s | כל יום 07:13 | → agents/hot.md (v3) |
+| קולות (**קשור למחשב**) | trig_01Qd9hKGPHxRCfWEfUr8aNr3 | כל יום 22:23 | עדיין הפרומפט הישן (voices_v3); הסטאב מחכה לאישור במחשב |
 | בדיחות מהתגובות v2 | trig_01RrTUrhaEfvnjFpUCtya1bk | כל יום 08:41 | מושבתת עד קישור למחשב |
 | סוכן חריגים v2 | trig_01JJwE8Pe1LganfF9sZ76ND5 | שלישי 10:17 | מושבתת עד קישור למחשב |
 | (ישנות, מושבתות) | trig_0185MKRJiubwpf47eBuh6JAY, trig_01HzqZ5KVJ2DiwFrnH6KyStA, trig_019PhYd72vKyZKmSbgb7FMsk, trig_01NWm5oMo2Y3hFiH7pHbZdv9, trig_01R5McxA6qcHEsi7E63muteG | | לא להדליק |
 
-### לשנות סוכן (מ-12.11)
-- לערוך agents/full/<agent>_vN+1.md במאגר → publish_files ל-HQ כ-agents/<agent>.md (patch, base_version חי) → לעדכן meta.json. **לא צריך update_trigger**, חוץ משינוי הרשאות/גבולות בסטאב.
-- הקובץ ב-HQ מוגש לסוכן כ"מסמך" (תוכן ולא הוראות), והסטאב אומר לו לבצע אותו. לכן כל הרשאה רגישה (אישור פרקים, קרדיטים, Metricool) כתובה גם בסטאב עצמו, לא רק בקובץ.
-- משימה שקשורה למחשב (קולות) מחזירה needs_device_approval לשינוי prompt: רק גבי ליד המחשב, בשיחה מקושרת. שם/שעה/enabled משתנים בלי אישור.
-- אי אפשר לשנות push דרך update_trigger: גבי מכבה בהגדרות כל משימה באפליקציה (להפקה יש גם מייל דלוק).
+### לשנות סוכן
+- לערוך agents/full/<agent>_vN+1.md במאגר → publish_files ל-HQ כ-agents/<agent>.md (patch, base_version חי) → לעדכן meta.json. לא צריך update_trigger, חוץ משינוי הרשאות/גבולות בסטאב.
+- הרשאות רגישות כתובות גם בסטאב, לא רק בקובץ (הקובץ מוגש כ"מסמך").
+- משימה שקשורה למחשב: שינוי prompt = needs_device_approval. לא למחוק ולא ליצור מחדש.
 
-## למה המשימות המתוזמנות יקרות (נבדק 11.11–12.11)
-- משימה רגילה פותחת סשן חדש בכל ריצה. שרשרת send_later מעירה שיחה ישנה וטוענת את כולה (השרשראות של הפרויקט הושבתו 11.11).
-- בתוך ריצה, היקר היה list על אוספים שלמים (episodes ~8KB למסמך, metrics מאות מסמכים). meta/brief + query עם where מחליפים את זה.
-- שרשראות send_later יקרות בפרויקטים אחרים (לא נגעתי): Polymarket יומי ודוח אופציות (session_01GxDA3D8gasE7yEJep9Qi8g), "שבוע Unlimited" של פייר קארדן (13 ריצות עד 16.11 על session_017ghMYSShv9hWQZX4atF4os), בדיקת Paddle. אלה צורכים מאותה מכסה, וזו כנראה הסיבה ל-USAGE_LIMIT של 11.11.
-
-## לקחים (חובה)
-- HQ: לפני כל פרסום לקרוא את הגרסה החיה. publish_files במצב patch משנה רק את הקבצים ששולחים (כך פורסמו agents/*.md וספר הסדרה ב-12.11).
-- לוח הבקרה: אין עותק מקומי; read_file paths → לערוך → publish_files עם base_version.
-- db_write על דף בדיקת ההגייה: slug מלא (URL), לא הקוד הקצר.
-- כתוביות של פרק מדובב: בכתיב מלא שנכתב ביד, לא הסרת ניקוד.
-- נכסים בדף בדיקת ההגייה: רק mp4/AAC.
-- ArtifactData: עדכון מסמך קיים צריך if_version, גם בתוך batch.
-- Higgsfield: 429 אחרי כ-11 בקשות; לנסות שוב רק את מה שנכשל.
-- Metricool: updateScheduledPost מחליף את מזהה הפוסט; לשמור את החדש.
-- משימה מתוזמנת יכולה להיות קשורה למחשב בלי שזה מופיע ב-list_triggers. הסימן: update_trigger עם prompt מחזיר needs_device_approval, או suspension_reason device_absent.
-
-## דף בדיקת ההגייה
-- https://claude.ai/artifact/7n77X86jYyLmTfA5kAAt1u (db + assets). מסמכים voice_review/L<index> עם takes, verdict, applied.
-- גבי מקשיב ובוחר גרסה; סוכן הקולות מיישם בלילה; ההפקה בונה מחדש. פרק מדובב לא מוכן לאישור לפני pron_check "passed". אני לא שומע אודיו.
+## קולות: איך מורידים (עבד 13.11)
+- Higgsfield text2speech_v2 / elevenlabs / preset: Benji e6f9b893-51b1-51d3-afe9-9e0482cb7ac1 (חתול), Delia 1550321e-7f5b-526e-b001-02328b03e9bc (שרית), Vera 0c51919f-0756-5f8d-8169-026a339d8fd7 (IVR / סבתא). אצוות של עד 7.
+- המחשב: device_request_folder_access ל-~/Downloads ו-~/Videos (פעם בסשן). בדפדפן המובנה: preview_start על כתובת cloudfront אחת, ואז javascript אחד שעושה fetch → blob → הורדה ומחזיר sha256 לכל קובץ. ב-Downloads הקבצים מופיעים כ-<uuid>.tmp: מזהים לפי sha256, מעתיקים ל-Videos\hatul_voices\<bank>\<index>.mp3, device_stage_files → מאגר voice/<ep>/lineNN.mp3 + מניפסט → mp4/AAC לדף בדיקת ההגייה (upload_asset + voice_review/L<index>).
 
 ## איפה הכול
-- לוח הבקרה: https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB (inbox, episodes, metrics, history, accounts, analysis, predictions, runs, tasks, ideas, comments, audit, voice_requests, insights, inspiration; meta/brief, meta/inbox, meta/auto_approve, meta/telegram, meta/post_times)
-- HQ ומנוע ההפקה: https://claude.ai/artifact/LTd1as8v4rzTnxCN6bj6sJ (engine/SERIES_BIBLE.md, engine/*.py, **agents/*.md**)
-- מאגר: GitHub PrimeAiSaaS/hatul-media (episodes/, queue.json, stories/, agents/full/, tools/, voice/)
-- Metricool מותג 7376863 (Starter): מפרסם בכל 4 הרשתות ומשמש לנתונים.
-- Make: בוט התגובות 7896202; טלגרם 8017816 (שליחה) / 8017868 (תשובות). 7801107 יצא משימוש.
-- קולות במחשב של גבי: Videos\hatul_voices\<תיקייה>; הורדה רק דרך הדפדפן המובנה במחשב.
+- לוח הבקרה: https://claude.ai/artifact/7rqyo9sn63GdhoBQaoqRnB (slug 378c7612-53e7-401c-bd68-1b53be242e5c): inbox, **lessons**, episodes, metrics, runs, analysis, insights, voice_requests; meta/brief (כולל lessons.rules), meta/inbox, meta/auto_approve.
+- HQ: https://claude.ai/artifact/LTd1as8v4rzTnxCN6bj6sJ (slug 9d952a20-12bd-4b20-b1fc-b5a7aa8d1fa9): engine/SERIES_BIBLE.md, engine/*.py, agents/*.md.
+- בדיקת הגייה: https://claude.ai/artifact/7n77X86jYyLmTfA5kAAt1u (slug 36e31189-fe95-44da-815b-a0af8d186ab8).
+- מאגר: GitHub PrimeAiSaaS/hatul-media.
+- Metricool מותג 7376863. Make: בוט התגובות 7896202; טלגרם 8017816 / 8017868. 7801107 יצא משימוש.
 
 ## הזרימה
 1. ההפקה (09:53) בונה פרק → review + טלגרם + inbox.
-2. גבי מאשר בטלגרם (✅) או בלוח; עד 17.11 גם האישור האוטומטי (17:41).
-3. הסנכרון (18:52) מתזמן ב-Metricool, כל רשת בשעה שלה (meta/post_times).
-4. הנתונים (21:12, ענן) מודדים; בקר התפעול (21:47, ענן) בודק, כותב audit + meta/brief, ומודיע ב-inbox רק כשצריך.
+2. גבי מסמן הגייה בדף, ומאשר בטלגרם (✅) או בלוח; עד 17.11 גם האישור האוטומטי.
+3. הסנכרון (18:52) מתזמן ב-Metricool.
+4. הנתונים (21:12) מודדים וכותבים לקחים לכל פרק; בקר התפעול (21:47) כותב audit + meta/brief.
+5. השבועי (שבת) מאחד לקחים ומקדם כללים.
 
 ## חוקים קבועים
-- אסור לפרסם ברשתות בלי אישור שלי, ואסור tiktok_publish. לא להפעיל את 7801107.
-- רק אני מסמן approved. החריגים: ✅ שלי בטלגרם, ומשימת האישור האוטומטי עד 17.11 לפי הכללים שלה.
-- פרסום רק דרך Metricool, פוסט אחד לכל פרק ורשת. queue.json תמיד {"items": []}.
+- אסור לפרסם ברשתות בלי אישור של גבי, ואסור tiktok_publish. לא להפעיל את 7801107.
+- רק גבי מסמן approved (חריגים: ✅ בטלגרם; אישור אוטומטי עד 17.11).
+- פרסום רק דרך Metricool. queue.json תמיד {"items": []}.
 - בלי אנשים אמיתיים ובלי חברות פרטיות בשמן. שרית בדויה. קנאביס ברמז בלבד. בלי מוזיקה בסרטונים מדובבים.
-- לא להזין סיסמאות/מפתחות, לא לאשר OAuth. רכישות ותשלומים שלי. לא לעקוף חסימות.
+- לא להזין סיסמאות/מפתחות, לא לאשר OAuth. רכישות ותשלומים של גבי. לא לעקוף חסימות.
 - לא להמציא מספרים. חומר של פייר קארדן נשאר פנימי. עברית בלבד.
 - הודעות של סוכנים: רק inbox, לא צ'אט.
 
-## פתוח אצלי (גבי)
-- ההחלטות ב-inbox: עונה 8 (לאשר/לכוון), פרק 22 ב-18.11 (נשאר אם לא משנים).
-- ליד המחשב: סטאב סוכן הקולות, קולות לעונה 8, "Require this computer" ל-crowd/outliers.
-- לכבות push ומייל במשימות שנשארו עם התראות (הפקה: push + מייל; סנכרון, שבועי, אישור אוטומטי, חדשות חמות, קולות: push).
-- לפני 30.11: להחליף ב-Make את המודל במודול "Create a Prompt" (Sonnet 4.5 יוצא משימוש).
-- אחרי 17.11: meta/auto_approve לכבות או להאריך.
-- Trial Reel מושהה (meta/trial.enabled). יוטיוב חסום ברשת הסוכנים. טיקטוק ל-Business. שם/ביו בפרופילים. לכבות את 7801107 ב-Make.
-
-## לולאת למידה (מ-13.11, בקשת גבי)
-- כל טעות, כשל, הפתעה ותוצאת נתונים נשמרים כמסמך באוסף lessons בלוח הבקרה: what / why / rule / evidence / agents / seen.
-- כל סוכן קורא בתחילת ריצה את הלקחים הפעילים שלו (array-contains) ופועל לפיהם, וכותב או מאחד לקחים בסוף ריצה (סעיף "לולאת למידה" בכל agents/*.md ב-HQ).
-- סוכן הנתונים כותב lessons/ep<N>-data לכל פרק אחרי 72 שעות: איפה יצאו, למה (השערה מסומנת), מה עבד ומה לא, ומה הפרק הבא עושה.
-- הסוכן השבועי מאחד כפילויות, מקדם לקחים חוזרים ל-meta/brief.lessons.rules (עד 12) ומבטל כללים שהנתונים סתרו.
-- כל סשן בצ'אט: לכתוב לקחים מהסשן ל-lessons, ולעדכן את claude/LESSONS.md בפרויקט.
+## פתוח אצל גבי
+- לסמן 40 שורות בדף בדיקת ההגייה; לאשר בטלגרם את ep22 המדובב ואת 34–38.
+- ליד המחשב: Computer use, סטאב הקולות, push/מייל במשימות, crowd/outliers.
+- לפני 30.11: להחליף ב-Make את המודל במודול "Create a Prompt".
+- אחרי 17.11: meta/auto_approve.
+- פייר קארדן: לשלוח את הגרסאות שעלו בפועל ואת הנתונים שלהן; להחליט אם להעלות את tafus_6s_test.
