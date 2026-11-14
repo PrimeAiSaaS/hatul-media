@@ -110,7 +110,8 @@ for k_, (li, s0) in enumerate(OCC):
         SUB_TIMES.append((a, b, c, li))
 
 C = lambda t: t - 0.08
-SHOTS = [('stair', 0.0, COLD_END), ('rewind', COLD_END, T0), ('close', T0, C(L[3])), ('stair', C(L[3]), C(L[4])),
+WANTWIDE = os.environ.get('WANTWIDE', '0') == '1'   # 6א probe 14.11 → 45 (v1 46): the want + the $89 beat in the wide stairwell shot (frame 0 scored highest)
+SHOTS = [('stair', 0.0, COLD_END), ('rewind', COLD_END, T0)] + ([('stair', T0, C(L[2])), ('close', C(L[2]), C(L[3]))] if WANTWIDE else [('close', T0, C(L[3]))]) + [ ('stair', C(L[3]), C(L[4])),
          ('close', C(L[4]), FREEZE - 0.02), ('frozen', FREEZE - 0.02, DUR + 1)]
 TOPCAPS = [(0.0, COLD_END, ['פטור עד 75 דולר?']), (T0, OVER + 0.3, ['פטור עד 75 דולר?'])]   # hook F1/F16, keyword פטור / 75 דולר
 
@@ -249,6 +250,9 @@ def scene_stair(t, i):
     if replay or t >= DANCE[0]:     # "פטור!" / "יש!!!" — dancing, huge grin
         st.update(lid=0.0, pupil='big', brow='up', mouth=cat_mouth(t, rest='smile', loud='w'), ear_dy=-28, blush=1.0, look=(-6, -10))
         rot = 9 * math.sin(t * 11); dy = -26 * abs(math.sin(t * 9)) - 14 * v
+    elif t < L[2]:                   # (WANTWIDE) the want: dreamy, then the $89 shock
+        if t < OVER: st.update(lid=0.0, pupil='big', brow='up', mouth=cat_mouth(t, rest='smile', loud='w'), ear_dy=-22, blush=0.8, look=(-22, 8)); rot = 4 * math.sin(t * 5); dy = -10 * v
+        else: u = t - OVER; st.update(lid=0.0, pupil='tiny', brow='up', mouth='w', sweat=1.0, ear_dy=-26 * math.exp(-u * 4), look=(-24, 8)); rot = 6 * math.sin(u * 30) * math.exp(-u * 5); dy = -20 * math.exp(-u * 8)
     else:                            # "מוריד שקית אחת." — concentrating, tongue-out squint, then the numbers
         u = t - L[3]
         st.update(lid=0.35, pupil='normal', brow='annoyed', mouth=cat_mouth(t, rest='flat', loud='w'), ear_dy=-8, look=(-24, 10))
@@ -286,7 +290,8 @@ def scene_stair(t, i):
     return img
 
 # ------------------------------------------------------------------ close-up: his face + the cart beside it (want, coupon, peak, break)
-HXP, HYP, FP = 720, 960, 1.70
+BIGF = os.environ.get('BIGF', '0') == '1'      # 6א probe 14.11 → 45 (v1 46): bigger face, smaller phone in the close-ups
+HXP, HYP, FP = (750, 930, 1.95) if BIGF else (720, 960, 1.70)
 def scene_close(t, i):
     img = STAIR_BLUR.copy(); d = ImageDraw.Draw(img)
     v = cat_v(t)
@@ -325,6 +330,7 @@ def scene_close(t, i):
     E(d, HXP, 1810, 180, 290, fill=CREAM)
     pc = (300, 1000 + 5 * math.sin(t * 8))
     sc = 1.06
+    if BIGF: pc = (255, 1080 + 5 * math.sin(t * 8)); sc = 0.92
     if t < L[1] + 0.4: sc += 0.16 * math.exp(-(t - T0) * 9)
     if t >= BREAK: sc = 1.12 + 0.12 * math.exp(-(t - BREAK) * 9); pc = (300 + 6 * math.sin(t * 50) * math.exp(-(t - BREAK) * 6), 1000)
     grip = (pc[0] - 200, pc[1] + 140)
