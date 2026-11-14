@@ -31,7 +31,9 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     # ('ep20_v2_norm.mp4', 11.0, 20, 'הגרר'),  # replaced 1.11 by v8   # v2 (§P, 29.10): peak in the car, eyes closed, the clock at 15:59 (no caption 9.8–)
     ('ep20_v8_norm.mp4', 11.0, 20, 'הגרר'),   # v8 (6ג, 1.11): CROWDCAR probe, same story
     ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
-    ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 (R8 5.11): new frame 0, same story
+    # ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 silent, replaced 14.11 by the voiced v3
+    ('ep22_leak_v3_norm.mp4', 20.75, 22, 'הפרטים דלפו'),   # v3 VOICED (14.11): the peak hold, eyes closed, bag on the counter (no subtitle 20.52–21.17)
+    ('ep34_ptor_norm.mp4', 17.1, 34, 'הפטור של 75 דולר'),   # §P voiced peak: eyes closed, paw over לתשלום, $74.99 (no subtitle)   # v2 (R8 5.11): new frame 0, same story
     ('ep23_sms_v3_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # v3 (R8 5.11): new frame 0, same story
     # ('ep24_human_v2_norm.mp4', 11.2, 24, 'נציג אנושי'),  # v2 silent, replaced 10.11 by the voiced v3
     ('ep24_v3_norm.mp4', 24.0, 24, 'נציג אנושי'),   # v3 VOICED (10.11): the peak, he inhales, Sharit on the call screen (no subtitle 23.73–24.37)
