@@ -120,6 +120,11 @@ def v_of(t, who):
 
 # ------------------------------------------------------------------ mouths on the v1 characters
 CUR = {'t': 0.0}
+EXPR = os.environ.get('EXPR', '0') == '1'   # 6א probe 14.11 (a new pose per phrase + a shouting cold open): 45, same as without
+POSES = [dict(lid=0.0, pupil='tiny', brow='up', ear_dy=-26, look=(-22, 4), sweat=1.0),
+         dict(lid=0.45, pupil='normal', brow='annoyed', ear_dy=-6, look=(-24, 2)),
+         dict(lid=0.0, pupil='big', brow='up', ear_dy=-22, look=(-8, -10), blush=0.6),
+         dict(lid=0.2, pupil='big', brow='annoyed', ear_dy=-14, look=(-12, 6))]
 LOUD = {0: 'w', 1: 'w', 2: 'w', 5: 'w', 7: 'smile', 8: 'smile'}
 def _cat_wrap(fn):
     def wrapped(ts, i):
@@ -129,6 +134,16 @@ def _cat_wrap(fn):
             if v > 0.32: st['mouth'] = LOUD.get(li, 'w')
             elif v > 0.12: st['mouth'] = 'smile_small' if li in (7, 8) else 'w'
             dy += -10 * v; rot += 2.5 * v * math.sin(CUR['t'] * 7)
+        t = CUR['t']
+        if EXPR and t < COLD_END:                                   # 6א: the cold open shouts — eyes huge, ears up, head shake
+            st.update(lid=0.0, pupil='big', brow='annoyed', ear_dy=-28, blush=0.0, look=(-6, 0))
+            rot += 7 * math.sin(t * 16); dy += -14 * abs(math.sin(t * 9))
+        elif EXPR and li in (0, 1, 2):                               # 6א: a new big pose on every voiced phrase of the want
+            s0 = L[li]; segs = [x for x, _ in SEG[li]]
+            k = sum(1 for x in segs if t - s0 >= x - 0.05)
+            u = t - s0 - (segs[k - 1] if k else 0)
+            st.update(POSES[(k + li) % len(POSES)])
+            rot += 7 * math.exp(-u * 5) * math.sin(u * 20); dy += -18 * math.exp(-u * 7) * math.cos(u * 22)
         return st, rot, dy
     return wrapped
 B.cat_state_close = _cat_wrap(B.cat_state_close)
