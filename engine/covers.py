@@ -51,6 +51,7 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep32_v6_norm.mp4', 16.8, 32, 'מספר אחת בדואר'),   # v6 VOICED (10.11, Gabi's pick 3202): the peak hold (no subtitle 16.51–17.06)
     # ('ep32_v5_norm.mp4', 17.0, 32, 'מספר אחת בדואר'),   # §P voiced peak: eyes closed, ticket "1" by his cheek, clock 10:30:59 (no subtitle 16.85–17.2)
     ('ep33_kitsba_v2_norm.mp4', 13.2, 33, 'הקצבה נכנסה'),   # §P voiced peak: hugging the basket, eyes closed (no subtitle 13.05–13.4)
+    ('ep38_hachzara_norm.mp4', 17.65, 38, 'החזרה'),   # §P voiced peak: leaning back, eyes closed, the stamped form (no subtitle 17.46–17.89)
     ('ep37_isuf_norm.mp4', 18.8, 37, 'נקודת איסוף'),   # §P voiced peak: the box hugged, eyes closed (no subtitle 18.56–19.03)
     ('ep36_mishloach_norm.mp4', 18.2, 36, 'המשלוח בדרך'),   # §P voiced peak: paw on the door handle, eyes closed, the hush (no subtitle 17.9–18.4)
     ('ep35_hatzot_norm.mp4', 20.95, 35, 'חצות של בלאק פריידיי'),   # §P voiced peak: eyes closed, paw over לתשלום, the LED clock 23:59:59 (no subtitle 20.76–21.29)
