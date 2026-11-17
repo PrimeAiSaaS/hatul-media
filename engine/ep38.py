@@ -273,7 +273,7 @@ def cat_state(t):
     rot, dy = 0.0, 0.0
     v = voice_v(t, 'cat')
     s_t = story_t(t)
-    if L['3b'] <= s_t < L[103]:             # "הוחזר!" — the stamp: eyes huge, joy rising
+    if L['3b'] <= s_t < L[103] or t < COLD_END:   # "הוחזר!" — the stamp: eyes huge, joy rising
         u = s_t - STAMP
         st.update(lid=0.0, pupil='big', brow='up', mouth='w', ear_dy=-30, blush=1.0, look=(-26, 14))
         rot = 5 * math.sin(max(0, u) * 14) * math.exp(-max(0, u) * 2); dy = -26 * math.exp(-max(0, u) * 4) if u >= 0 else 0
@@ -481,8 +481,8 @@ def camera(t):
     if name == 'two':
         z, cx, cy = 1.05 + 0.01 * pu, 540, 1000
         if a == 0.0:                                   # cold open: tight on his face + the stamp slam
-            z, cx, cy = 1.38 + 0.03 * t, 680, 1100
-            if t < 0.3: z = 1.55 - 0.17 * ease_out(t / 0.3)
+            z, cx, cy = 1.30 + 0.03 * t, 620, 1230         # low Dutch angle: the stamp + form big in front, his face above (ep37 was a level face close-up)
+            if t < 0.3: z = 1.45 - 0.15 * ease_out(t / 0.3)
         elif t < FF[0]: z, cx, cy = 1.22, 720, 1000   # the want: close on him and the tiny bag
         elif t < ARRIVE: z, cx, cy = 1.0, 540, 960     # x64 wide: the board races
         elif L[27] <= t < L[27] + 0.8: z, cx, cy = 1.12, 520, 980
@@ -516,6 +516,10 @@ def draw_frame(i):
         left = clamp(S(ccx) - cw / 2, 0, W * K - cw); top = clamp(S(ccy) - ch / 2, 0, H * K - ch)
         img = img.crop((int(left), int(top), int(left + cw), int(top + ch)))
     frame = img.resize((W, H), Image.LANCZOS)
+    if t < COLD_END:                                   # Dutch tilt for the cold open only
+        frame = frame.rotate(-8, resample=Image.BICUBIC)
+        cw2, ch2 = int(W / 1.16), int(H / 1.16)
+        frame = frame.crop(((W - cw2) // 2, (H - ch2) // 2, (W - cw2) // 2 + cw2, (H - ch2) // 2 + ch2)).resize((W, H), Image.LANCZOS)
     frame.alpha_composite(m.VIG)
     if HOLD[0] <= t < BREAK:
         k = clamp((t - HOLD[0]) / 0.15)
