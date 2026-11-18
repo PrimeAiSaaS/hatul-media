@@ -33,7 +33,8 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep21_v2_norm.mp4', 10.95, 21, 'החשבון הוקפא'),   # v2 (§P, 30.10): peak, card over the terminal (no caption 10.65–)
     # ('ep22_leak_v2_norm.mp4', 11.4, 22, 'הפרטים דלפו'),   # v2 silent, replaced 14.11 by the voiced v3
     ('ep22_leak_v3_norm.mp4', 20.75, 22, 'הפרטים דלפו'),   # v3 VOICED (14.11): the peak hold, eyes closed, bag on the counter (no subtitle 20.52–21.17)
-    ('ep34_ptor_norm.mp4', 17.1, 34, 'הפטור של 75 דולר'),   # §P voiced peak: eyes closed, paw over לתשלום, $74.99 (no subtitle)   # v2 (R8 5.11): new frame 0, same story
+    ('ep34_ptor_v2_norm.mp4', 17.55, 34, 'הפטור של 75 דולר'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
+    # ('ep34_ptor_norm.mp4', ...)   # §P voiced peak: eyes closed, paw over לתשלום, $74.99 (no subtitle)   # v2 (R8 5.11): new frame 0, same story
     ('ep23_sms_v3_norm.mp4', 11.5, 23, 'קוד ה-SMS'),   # v3 (R8 5.11): new frame 0, same story
     # ('ep24_human_v2_norm.mp4', 11.2, 24, 'נציג אנושי'),  # v2 silent, replaced 10.11 by the voiced v3
     ('ep24_v3_norm.mp4', 24.0, 24, 'נציג אנושי'),   # v3 VOICED (10.11): the peak, he inhales, Sharit on the call screen (no subtitle 23.73–24.37)
@@ -51,10 +52,14 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep32_v6_norm.mp4', 16.8, 32, 'מספר אחת בדואר'),   # v6 VOICED (10.11, Gabi's pick 3202): the peak hold (no subtitle 16.51–17.06)
     # ('ep32_v5_norm.mp4', 17.0, 32, 'מספר אחת בדואר'),   # §P voiced peak: eyes closed, ticket "1" by his cheek, clock 10:30:59 (no subtitle 16.85–17.2)
     ('ep33_kitsba_v2_norm.mp4', 13.2, 33, 'הקצבה נכנסה'),   # §P voiced peak: hugging the basket, eyes closed (no subtitle 13.05–13.4)
-    ('ep38_hachzara_norm.mp4', 17.65, 38, 'החזרה'),   # §P voiced peak: leaning back, eyes closed, the stamped form (no subtitle 17.46–17.89)
-    ('ep37_isuf_norm.mp4', 18.8, 37, 'נקודת איסוף'),   # §P voiced peak: the box hugged, eyes closed (no subtitle 18.56–19.03)
-    ('ep36_mishloach_norm.mp4', 18.2, 36, 'המשלוח בדרך'),   # §P voiced peak: paw on the door handle, eyes closed, the hush (no subtitle 17.9–18.4)
-    ('ep35_hatzot_norm.mp4', 20.95, 35, 'חצות של בלאק פריידיי'),   # §P voiced peak: eyes closed, paw over לתשלום, the LED clock 23:59:59 (no subtitle 20.76–21.29)
+    ('ep38_hachzara_v2_norm.mp4', 17.28, 38, 'החזרה'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
+    # ('ep38_hachzara_norm.mp4', ...)   # §P voiced peak: leaning back, eyes closed, the stamped form (no subtitle 17.46–17.89)
+    ('ep37_isuf_v2_norm.mp4', 18.22, 37, 'נקודת איסוף'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
+    # ('ep37_isuf_norm.mp4', ...)   # §P voiced peak: the box hugged, eyes closed (no subtitle 18.56–19.03)
+    ('ep36_mishloach_v2_norm.mp4', 18.2, 36, 'המשלוח בדרך'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
+    # ('ep36_mishloach_norm.mp4', ...)   # §P voiced peak: paw on the door handle, eyes closed, the hush (no subtitle 17.9–18.4)
+    ('ep35_hatzot_v2_norm.mp4', 20.25, 35, 'חצות של בלאק פריידיי'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
+    # ('ep35_hatzot_norm.mp4', ...)   # §P voiced peak: eyes closed, paw over לתשלום, the LED clock 23:59:59 (no subtitle 20.76–21.29)
     ('ep25_norm.mp4', 29.1, 25, 'סגירת חשבון'),   # §P voiced peak: at the door, eyes closed, sunlight (no subtitle 28.96–29.26)   # §P voiced peak: flaps open, golden light, the hush (frame drawn without the subtitle: ep27.draw_frame with SUB_TIMES=[])   # §P voiced peak: the stamp raised, clock 12:59, the last chip pulsing (no subtitle 17.87–17.95)   # §P voiced peak: eyes closed, passport + pass raised, the hush (no subtitle 28.37–28.67)   # §P peak: Sharit on the call screen, he inhales (no caption 9.6–)   # §P peak: paw over "כניסה", 23:59:57 (no caption 11.05–)   # §P peak: eyes closed, the bag with the code on the counter (no caption 11.15–12.0)   # two-shot before "וואלה." (no caption 7.8–8.15)   # Eilat, the new notice just slapped on (no caption 10.3–11.2)
 ]
 
