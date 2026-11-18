@@ -339,12 +339,16 @@
       "speaker": "cat",
       "voice": "Benji",
       "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
-      "text": "המארז של בלאק פריידיי. מחכה ליד הדלת.",
-      "tts_text": "הַמַּאֲרָז שֶׁל בְּלֶאק פְרַיְידֵי. מְחַכֶּה לְיַד הַדֶּלֶת.",
+      "text": "המארז של בלאק פריידי. מחכה ליד הדלת.",
+      "tts_text": "המארז של בלאק פריידי. מחכה ליד הדלת.",
       "job_id": "5b2a5732-1985-4a81-a2f7-a2fa4783ce23",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261113_154124_5b2a5732-1985-4a81-a2f7-a2fa4783ce23.mp3",
       "file": "voice/ep36/line01.mp3",
-      "dur_file": 3.16
+      "dur_file": 2.93,
+      "pron_ok": true,
+      "pron_take": "D",
+      "pron_src": "voice/review/20261118/3601_D.mp3",
+      "pron_applied_at": "2026-11-18"
     },
     {
       "index": 3602,
@@ -396,11 +400,15 @@
       "voice": "Vera",
       "voice_id": "0c51919f-0756-5f8d-8169-026a339d8fd7",
       "text": "חמוד! הגיע לך משהו!",
-      "tts_text": "חָמוּד! הִגִּיעַ לְךָ מַשֶּׁהוּ!",
+      "tts_text": "חמוד! הגיע לך משהו!",
       "job_id": "8620e162-ca26-4563-ba7a-5267f6b0e614",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261113_154124_8620e162-ca26-4563-ba7a-5267f6b0e614.mp3",
       "file": "voice/ep36/line05.mp3",
-      "dur_file": 2.43
+      "dur_file": 2.19,
+      "pron_ok": true,
+      "pron_take": "C",
+      "pron_src": "voice/review/20261118/3605_C.mp3",
+      "pron_applied_at": "2026-11-18"
     },
     {
       "index": 3700,
@@ -410,11 +418,15 @@
       "voice": "Benji",
       "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
       "text": "באתי לאסוף. בעצמי. בלי שליחים.",
-      "tts_text": "בָּאתִי לֶאֱסֹף. בְּעַצְמִי. בְּלִי שְׁלִיחִים.",
+      "tts_text": "באתי לאסוף. בעצמי. בלי שליחים.",
       "job_id": "aff77b2c-959b-487d-9367-016c58287f16",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261113_154125_aff77b2c-959b-487d-9367-016c58287f16.mp3",
       "file": "voice/ep37/line00.mp3",
-      "dur_file": 3.24
+      "dur_file": 3.0,
+      "pron_ok": true,
+      "pron_take": "C",
+      "pron_src": "voice/review/20261118/3700_C.mp3",
+      "pron_applied_at": "2026-11-18"
     },
     {
       "index": 3701,
@@ -452,11 +464,15 @@
       "voice": "Delia",
       "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
       "text": "תעודת זהות. בתוקף?",
-      "tts_text": "תְּעוּדַת זֶהוּת. בְּתֹקֶף?",
+      "tts_text": "תעודת זהות. בתוקף?",
       "job_id": "6f3f0286-564f-4a1f-8b6e-9a11f8741852",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261113_154142_6f3f0286-564f-4a1f-8b6e-9a11f8741852.mp3",
       "file": "voice/ep37/line03.mp3",
-      "dur_file": 2.27
+      "dur_file": 2.19,
+      "pron_ok": true,
+      "pron_take": "C",
+      "pron_src": "voice/review/20261118/3703_C.mp3",
+      "pron_applied_at": "2026-11-18"
     },
     {
       "index": 3704,
