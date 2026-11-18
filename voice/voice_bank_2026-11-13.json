@@ -182,11 +182,15 @@
       "voice": "Benji",
       "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
       "text": "בלאק פריידיי. מארז חטיפים מחו״ל. בלי מע״מ.",
-      "tts_text": "בְּלֶאק פְרַיְידֵי. מַאֲרָז חֲטִיפִים מֵחוּ״ל. בְּלִי מַעַ״ם.",
+      "tts_text": "spliced: D[0-1.29] + F[1.27-2.94] + D[2.86-]",
       "job_id": "e538ae3d-1a94-4e4c-bab4-e3a8d2fa8792",
       "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261113_153112_e538ae3d-1a94-4e4c-bab4-e3a8d2fa8792.mp3",
       "file": "voice/ep34/line01.mp3",
-      "dur_file": 3.97
+      "dur_file": 3.89,
+      "pron_ok": true,
+      "pron_take": "H",
+      "pron_src": "voice/review/20261118/3401_H.mp3",
+      "pron_applied_at": "2026-11-18"
     },
     {
       "index": 3402,
