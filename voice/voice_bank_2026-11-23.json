@@ -2,23 +2,10 @@
  "created": "2026-11-23T20:45Z",
  "by": "claude (chat, linked to Gabi's computer)",
  "approved_by_gabi": "23.11 22:19: \"אני מאשר\" (series 2 שוקו והג׳ינג׳י) + 6.11/13.11 voice permission",
- "model": "text2speech_v2 / variant elevenlabs / preset (Benji = ginger, Delia = Sharit; Shoko pending Gabi pick from Onyx/Knox/Marcus/Gideon/Bram)",
+ "model": "text2speech_v2 / variant elevenlabs / preset (Benji = ginger, Delia = Sharit, Knox = Shoko — Gabi picked \"2 knox\" 23.11 23:19)",
  "download": "23.11 via the built-in browser pane on Gabi's computer (sha256-matched 39/39), copy in Videos\\hatul_voices\\bank20261123",
  "niqqud_policy": "as 19.11: niqqud only on מוֹתֶק / חָמוּד; those lines also have take B without niqqud (voice/review/20261123/<index>_B.mp3)",
- "file_naming": "voice/epNN/lineXX.mp3 where XX = index % 100 (Shoko lines 4402 4406 4408 4500 4503 4601 4606 4704 4802 4805 4808 still missing)",
- "shoko_missing": [
-  4402,
-  4406,
-  4408,
-  4500,
-  4503,
-  4601,
-  4606,
-  4704,
-  4802,
-  4805,
-  4808
- ],
+ "file_naming": "voice/epNN/lineXX.mp3 where XX = index % 100",
  "lines": [
   {
    "index": 4400,
@@ -46,6 +33,21 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_47adf2f0-775c-4c50-89ea-db7c1a2c1296.mp3",
    "file": "voice/ep44/line01.mp3",
    "dur_file": 2.93,
+   "pron_ok": null
+  },
+  {
+   "index": 4402,
+   "ep": "ep44",
+   "line": 2,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "רגוע. אין פקקים.",
+   "tts_text": "רגוע. אין פקקים.",
+   "job_id": "2de52fec-fc16-4c01-8b5d-f29455f747bb",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_2de52fec-fc16-4c01-8b5d-f29455f747bb.mp3",
+   "file": "voice/ep44/line02.mp3",
+   "dur_file": 2.35,
    "pron_ok": null
   },
   {
@@ -91,6 +93,21 @@
    "pron_ok": null
   },
   {
+   "index": 4406,
+   "ep": "ep44",
+   "line": 6,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "מחזיק.",
+   "tts_text": "מחזיק.",
+   "job_id": "8cb685f2-0077-413b-b000-c5efe79ac3bd",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_8cb685f2-0077-413b-b000-c5efe79ac3bd.mp3",
+   "file": "voice/ep44/line06.mp3",
+   "dur_file": 0.91,
+   "pron_ok": null
+  },
+  {
    "index": 4407,
    "ep": "ep44",
    "line": 7,
@@ -105,6 +122,21 @@
    "pron_ok": null
   },
   {
+   "index": 4408,
+   "ep": "ep44",
+   "line": 8,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "תודה, תודה.",
+   "tts_text": "תודה, תודה.",
+   "job_id": "c69bbb28-c9f5-49b1-baff-9c885bf01d93",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_c69bbb28-c9f5-49b1-baff-9c885bf01d93.mp3",
+   "file": "voice/ep44/line08.mp3",
+   "dur_file": 1.31,
+   "pron_ok": null
+  },
+  {
    "index": 4409,
    "ep": "ep44",
    "line": 9,
@@ -116,6 +148,21 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_13c53f6b-d363-4692-a88e-e091df23361b.mp3",
    "file": "voice/ep44/line09.mp3",
    "dur_file": 1.31,
+   "pron_ok": null
+  },
+  {
+   "index": 4500,
+   "ep": "ep45",
+   "line": 0,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "חניה. בשנייה. תלמד.",
+   "tts_text": "חניה. בשנייה. תלמד.",
+   "job_id": "db08d362-c8af-4282-ae56-8d1f241a0b99",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_db08d362-c8af-4282-ae56-8d1f241a0b99.mp3",
+   "file": "voice/ep45/line00.mp3",
+   "dur_file": 3.08,
    "pron_ok": null
   },
   {
@@ -144,6 +191,21 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204410_930ad916-1308-403a-a8ae-904e6737d83c.mp3",
    "file": "voice/ep45/line02.mp3",
    "dur_file": 1.72,
+   "pron_ok": null
+  },
+  {
+   "index": 4503,
+   "ep": "ep45",
+   "line": 3,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "אני פורק. אותך.",
+   "tts_text": "אני פורק. אותך.",
+   "job_id": "1b15845c-71cf-4613-985d-456f77fb61b8",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_1b15845c-71cf-4613-985d-456f77fb61b8.mp3",
+   "file": "voice/ep45/line03.mp3",
+   "dur_file": 2.69,
    "pron_ok": null
   },
   {
@@ -203,6 +265,21 @@
    "pron_ok": null
   },
   {
+   "index": 4601,
+   "ep": "ep46",
+   "line": 1,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "חמישים שקל שצופרים לך לפני הירוק.",
+   "tts_text": "חמישים שקל שצופרים לך לפני הירוק.",
+   "job_id": "477a0b82-6f0d-4bb6-b0b8-c59b17693913",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_477a0b82-6f0d-4bb6-b0b8-c59b17693913.mp3",
+   "file": "voice/ep46/line01.mp3",
+   "dur_file": 3.87,
+   "pron_ok": null
+  },
+  {
    "index": 4602,
    "ep": "ep46",
    "line": 2,
@@ -259,6 +336,21 @@
    "pron_ok": null
   },
   {
+   "index": 4606,
+   "ep": "ep46",
+   "line": 6,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "חמישים.",
+   "tts_text": "חמישים.",
+   "job_id": "eb9c9b8b-3ddb-475e-8b01-8e247ae0942e",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_eb9c9b8b-3ddb-475e-8b01-8e247ae0942e.mp3",
+   "file": "voice/ep46/line06.mp3",
+   "dur_file": 0.68,
+   "pron_ok": null
+  },
+  {
    "index": 4700,
    "ep": "ep47",
    "line": 0,
@@ -312,6 +404,21 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_06418403-21d6-4130-9ee8-d538cccbb21e.mp3",
    "file": "voice/ep47/line03.mp3",
    "dur_file": 2.35,
+   "pron_ok": null
+  },
+  {
+   "index": 4704,
+   "ep": "ep47",
+   "line": 4,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "אחי, תנשום.",
+   "tts_text": "אחי, תנשום.",
+   "job_id": "53f0efcf-c2fe-4e45-a1cd-d8325881dcca",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_53f0efcf-c2fe-4e45-a1cd-d8325881dcca.mp3",
+   "file": "voice/ep47/line04.mp3",
+   "dur_file": 2.19,
    "pron_ok": null
   },
   {
@@ -385,6 +492,21 @@
    "pron_ok": null
   },
   {
+   "index": 4802,
+   "ep": "ep48",
+   "line": 2,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "יש עוד חמישים על הנורה. רגוע.",
+   "tts_text": "יש עוד חמישים על הנורה. רגוע.",
+   "job_id": "8dbedc7a-3f5d-477d-9a80-d03e1dd1e068",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212011_8dbedc7a-3f5d-477d-9a80-d03e1dd1e068.mp3",
+   "file": "voice/ep48/line02.mp3",
+   "dur_file": 2.85,
+   "pron_ok": null
+  },
+  {
    "index": 4803,
    "ep": "ep48",
    "line": 3,
@@ -413,6 +535,21 @@
    "pron_ok": null
   },
   {
+   "index": 4805,
+   "ep": "ep48",
+   "line": 5,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "עוד אחת. אני מרגיש אותה.",
+   "tts_text": "עוד אחת. אני מרגיש אותה.",
+   "job_id": "2b8308b3-73fd-4a11-b6e3-12ed04a3f463",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212007_2b8308b3-73fd-4a11-b6e3-12ed04a3f463.mp3",
+   "file": "voice/ep48/line05.mp3",
+   "dur_file": 2.19,
+   "pron_ok": null
+  },
+  {
    "index": 4806,
    "ep": "ep48",
    "line": 6,
@@ -438,6 +575,21 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204534_05f935ea-0b37-461c-a8b0-22678f4ef236.mp3",
    "file": "voice/ep48/line07.mp3",
    "dur_file": 1.96,
+   "pron_ok": null
+  },
+  {
+   "index": 4808,
+   "ep": "ep48",
+   "line": 8,
+   "speaker": "shoko",
+   "voice": "Knox",
+   "voice_id": "195e386a-cb61-5c1b-a53b-0e2f0669c408",
+   "text": "מישהו דוחף?",
+   "tts_text": "מישהו דוחף?",
+   "job_id": "4dc0e0e2-218a-46bb-ae67-14fa8a5eea1f",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212007_4dc0e0e2-218a-46bb-ae67-14fa8a5eea1f.mp3",
+   "file": "voice/ep48/line08.mp3",
+   "dur_file": 2.27,
    "pron_ok": null
   }
  ],
