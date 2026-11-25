@@ -210,13 +210,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "text": "זה 'פריקה וטעינה'!",
-   "tts_text": "זה 'פריקה וטעינה'!",
-   "job_id": "930ad916-1308-403a-a8ae-904e6737d83c",
+   "tts_text": "זֶה פְּרִיקָה וּטְעִינָה!",
+   "job_id": "4e57229e-63be-4ab1-a7dd-b74363ad778a",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204410_930ad916-1308-403a-a8ae-904e6737d83c.mp3",
    "file": "voice/ep45/line02.mp3",
-   "dur_file": 1.72,
-   "pron_ok": false,
-   "pron_note": "גבי 25.11: פּריקה תתקן — טייקים חדשים בדף ההגייה"
+   "dur_file": 1.41,
+   "pron_ok": true,
+   "pron_note": "גבי 25.11 13:38: D",
+   "pron_take": "D"
   },
   {
    "index": 4503,
@@ -404,13 +405,14 @@
    "speaker": "cat",
    "voice": "Benji",
    "text": "מראה. איתות. מראה. מושלם.",
-   "tts_text": "מראה. איתות. מראה. מושלם.",
-   "job_id": "cba6b0aa-bbbc-4a3b-b0e4-9d8fd945fc77",
+   "tts_text": "מַרְאָה. אִיתּוּת. מַרְאָה. מֻשְׁלָם.",
+   "job_id": "ac426e1e-466d-4042-87a0-f83b464520e0",
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_cba6b0aa-bbbc-4a3b-b0e4-9d8fd945fc77.mp3",
    "file": "voice/ep47/line00.mp3",
-   "dur_file": 3.4,
-   "pron_ok": false,
-   "pron_note": "גבי 25.11: מראַה תתקן — טייקים חדשים בדף ההגייה"
+   "dur_file": 3.79,
+   "pron_ok": true,
+   "pron_note": "גבי 25.11 13:38: D",
+   "pron_take": "D"
   },
   {
    "index": 4701,

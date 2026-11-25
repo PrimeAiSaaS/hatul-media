@@ -270,13 +270,14 @@
    "voice": "Benji",
    "voice_id": "e6f9b893-51b1-51d3-afe9-9e0482cb7ac1",
    "text": "טופס. מולא.",
-   "tts_text": "טוֹפֶס. מֻלָּא.",
-   "job_id": "ec871eba-79f2-45cd-8fb2-fde1b393d5f7",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261119_082258_ec871eba-79f2-45cd-8fb2-fde1b393d5f7.mp3",
+   "tts_text": "טוֹפֶס. מולא.",
+   "job_id": "cfc19a23-c272-40c6-b26e-4269af63a4cb",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261119_123447_cfc19a23-c272-40c6-b26e-4269af63a4cb.mp3",
    "file": "voice/ep41/line02.mp3",
-   "dur_file": 2.12,
-   "pron_ok": false,
-   "pron_note": "גבי 19.11: \"בלי ניקוד טוס עם ניקוד מלא\""
+   "dur_file": 1.8,
+   "pron_ok": true,
+   "pron_note": "גבי 25.11 13:38: C",
+   "pron_take": "C"
   },
   {
    "index": 4103,
@@ -302,13 +303,14 @@
    "voice": "Delia",
    "voice_id": "1550321e-7f5b-526e-b001-02328b03e9bc",
    "text": "הבקשה אושרה, מותק. בדוק את המייל.",
-   "tts_text": "הבקשה אֻשְּׁרָה, מוֹתֶק. בדוק את המייל.",
-   "job_id": "77afed0b-6ad4-484c-8666-5e10d4be63cf",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261119_082258_77afed0b-6ad4-484c-8666-5e10d4be63cf.mp3",
+   "tts_text": "הבקשה אושרה, מותק. בְּדוֹק את המייל.",
+   "job_id": "ae80edea-f9f6-47dd-bbac-43e05dbf1972",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261119_123448_ae80edea-f9f6-47dd-bbac-43e05dbf1972.mp3",
    "file": "voice/ep41/line04.mp3",
-   "dur_file": 3.0,
-   "pron_ok": false,
-   "pron_note": "גבי 19.11: \"בדוֹק\""
+   "dur_file": 2.85,
+   "pron_ok": true,
+   "pron_note": "גבי 25.11 13:38: D",
+   "pron_take": "D"
   },
   {
    "index": 4105,
