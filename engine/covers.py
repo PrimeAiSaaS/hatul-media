@@ -60,6 +60,7 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     # ('ep36_mishloach_norm.mp4', ...)   # §P voiced peak: paw on the door handle, eyes closed, the hush (no subtitle 17.9–18.4)
     ('ep35_hatzot_v2_norm.mp4', 20.25, 35, 'חצות של בלאק פריידיי'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
     # ('ep35_hatzot_norm.mp4', ...)   # §P voiced peak: eyes closed, paw over לתשלום, the LED clock 23:59:59 (no subtitle 20.76–21.29)
+    ('ep41_mail_norm.mp4', 18.2, 41, 'המייל נפל'),   # §P voiced peak: the mail app spinner, breath held (no subtitle 17.94–18.52)
     ('ep43_april_v3_norm.mp4', 19.0, 43, 'תור אונליין: אפריל'),   # v3 (23.11, rebuild_polish): blurred top band under the hook, chips clear of the board; same peak
     # ('ep43_april_v2_norm.mp4', 19.0, 43, 'תור אונליין: אפריל'),   # v2 (22.11, rebuild_clock): + the real-seconds clock, same peak
     # ('ep43_april_norm.mp4', 19.0, 43, 'תור אונליין: אפריל'),   # §P voiced peak: booked, the phone hugged to his cheek, eyes closed (no subtitle 18.75–19.25)
