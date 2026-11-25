@@ -19,7 +19,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_2286463f-c086-4761-9a8f-f39cb8b17099.mp3",
    "file": "voice/ep44/line00.mp3",
    "dur_file": 2.04,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4401,
@@ -33,7 +35,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_47adf2f0-775c-4c50-89ea-db7c1a2c1296.mp3",
    "file": "voice/ep44/line01.mp3",
    "dur_file": 2.93,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4402,
@@ -48,7 +52,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_2de52fec-fc16-4c01-8b5d-f29455f747bb.mp3",
    "file": "voice/ep44/line02.mp3",
    "dur_file": 2.35,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4403,
@@ -62,7 +68,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204410_845196d9-cbc5-4fa4-83dc-23967ab35597.mp3",
    "file": "voice/ep44/line03.mp3",
    "dur_file": 1.72,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4404,
@@ -76,7 +84,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204411_ade2d7fb-a20e-4924-91d3-d07b08dccb25.mp3",
    "file": "voice/ep44/line04.mp3",
    "dur_file": 1.96,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4405,
@@ -85,12 +95,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "בעוד מאה מטר, פנה שמאלה, מותק.",
-   "tts_text": "בעוד מאה מטר, פנה שמאלה, מוֹתֶק.",
-   "job_id": "1352ec82-2ec5-425f-8055-2a22fd207af3",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_1352ec82-2ec5-425f-8055-2a22fd207af3.mp3",
+   "tts_text": "בעוד מאה מטר, פנה שמאלה, מותק.",
+   "job_id": "48b4db4a-de0e-483e-a798-a7ebda864f50",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204435_48b4db4a-de0e-483e-a798-a7ebda864f50.mp3",
    "file": "voice/ep44/line05.mp3",
-   "dur_file": 3.4,
-   "pron_ok": null
+   "dur_file": 2.59,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4406,
@@ -105,7 +117,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_8cb685f2-0077-413b-b000-c5efe79ac3bd.mp3",
    "file": "voice/ep44/line06.mp3",
    "dur_file": 0.91,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4407,
@@ -119,7 +133,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_e63c500b-a9aa-4966-98bb-b4ea27c9e807.mp3",
    "file": "voice/ep44/line07.mp3",
    "dur_file": 0.52,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4408,
@@ -134,7 +150,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_c69bbb28-c9f5-49b1-baff-9c885bf01d93.mp3",
    "file": "voice/ep44/line08.mp3",
    "dur_file": 1.31,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4409,
@@ -143,12 +161,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "יפה, מותק.",
-   "tts_text": "יפה, מוֹתֶק.",
-   "job_id": "13c53f6b-d363-4692-a88e-e091df23361b",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_13c53f6b-d363-4692-a88e-e091df23361b.mp3",
+   "tts_text": "יפה, מותק.",
+   "job_id": "289a2437-e21e-4be9-a062-297400ecb101",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_289a2437-e21e-4be9-a062-297400ecb101.mp3",
    "file": "voice/ep44/line09.mp3",
-   "dur_file": 1.31,
-   "pron_ok": null
+   "dur_file": 1.15,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4500,
@@ -163,7 +183,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_db08d362-c8af-4282-ae56-8d1f241a0b99.mp3",
    "file": "voice/ep45/line00.mp3",
    "dur_file": 3.08,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4501,
@@ -177,7 +199,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204410_9f606ae6-e602-4834-9650-674bab7a462e.mp3",
    "file": "voice/ep45/line01.mp3",
    "dur_file": 2.93,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4502,
@@ -191,7 +215,8 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204410_930ad916-1308-403a-a8ae-904e6737d83c.mp3",
    "file": "voice/ep45/line02.mp3",
    "dur_file": 1.72,
-   "pron_ok": null
+   "pron_ok": false,
+   "pron_note": "גבי 25.11: פּריקה תתקן — טייקים חדשים בדף ההגייה"
   },
   {
    "index": 4503,
@@ -206,7 +231,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211952_1b15845c-71cf-4613-985d-456f77fb61b8.mp3",
    "file": "voice/ep45/line03.mp3",
    "dur_file": 2.69,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4504,
@@ -220,7 +247,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204409_6ec7acb7-fce2-425d-b1fb-8494723f7b17.mp3",
    "file": "voice/ep45/line04.mp3",
    "dur_file": 1.72,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4505,
@@ -229,12 +258,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "גררתי, מותק.",
-   "tts_text": "גררתי, מוֹתֶק.",
-   "job_id": "e258e914-e8d2-45e8-aea7-7565625bd374",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204434_e258e914-e8d2-45e8-aea7-7565625bd374.mp3",
+   "tts_text": "גררתי, מותק.",
+   "job_id": "8151debc-e899-4bd6-bea5-daac83e46345",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204435_8151debc-e899-4bd6-bea5-daac83e46345.mp3",
    "file": "voice/ep45/line05.mp3",
-   "dur_file": 1.72,
-   "pron_ok": null
+   "dur_file": 1.31,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4506,
@@ -248,7 +279,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204434_526d9851-e386-4f12-943a-02ac474c618f.mp3",
    "file": "voice/ep45/line06.mp3",
    "dur_file": 0.76,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4600,
@@ -262,7 +295,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204436_7f8b2dc4-9661-483e-be1d-29056088de87.mp3",
    "file": "voice/ep46/line00.mp3",
    "dur_file": 3.71,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4601,
@@ -277,7 +312,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_477a0b82-6f0d-4bb6-b0b8-c59b17693913.mp3",
    "file": "voice/ep46/line01.mp3",
    "dur_file": 3.87,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4602,
@@ -291,7 +328,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204435_0946afea-989f-4b67-b2b1-9f34d014c37f.mp3",
    "file": "voice/ep46/line02.mp3",
    "dur_file": 1.96,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4603,
@@ -305,7 +344,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204434_985079b4-e103-491a-946a-d9d86196cfb8.mp3",
    "file": "voice/ep46/line03.mp3",
    "dur_file": 3.87,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4604,
@@ -319,7 +360,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204435_3453b468-ce7e-4187-9e93-d418bbe785b0.mp3",
    "file": "voice/ep46/line04.mp3",
    "dur_file": 1.88,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4605,
@@ -333,7 +376,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_c123edc9-56c5-495a-bbc6-85b4d44ca5ad.mp3",
    "file": "voice/ep46/line05.mp3",
    "dur_file": 1.49,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4606,
@@ -348,7 +393,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_eb9c9b8b-3ddb-475e-8b01-8e247ae0942e.mp3",
    "file": "voice/ep46/line06.mp3",
    "dur_file": 0.68,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4700,
@@ -362,7 +409,8 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_cba6b0aa-bbbc-4a3b-b0e4-9d8fd945fc77.mp3",
    "file": "voice/ep47/line00.mp3",
    "dur_file": 3.4,
-   "pron_ok": null
+   "pron_ok": false,
+   "pron_note": "גבי 25.11: מראַה תתקן — טייקים חדשים בדף ההגייה"
   },
   {
    "index": 4701,
@@ -376,7 +424,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_fc59ba11-0d4d-45d9-8cf6-7087e01ad8c2.mp3",
    "file": "voice/ep47/line01.mp3",
    "dur_file": 2.27,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4702,
@@ -390,7 +440,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_a9e7097e-01f0-4cce-b87f-b40e11c36e5b.mp3",
    "file": "voice/ep47/line02.mp3",
    "dur_file": 0.68,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4703,
@@ -399,12 +451,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "חניה במקביל, חמוד.",
-   "tts_text": "חניה במקביל, חָמוּד.",
-   "job_id": "06418403-21d6-4130-9ee8-d538cccbb21e",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204456_06418403-21d6-4130-9ee8-d538cccbb21e.mp3",
+   "tts_text": "חניה במקביל, חמוד.",
+   "job_id": "f01b34c9-b43f-4695-8127-e36c27fb2e96",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204455_f01b34c9-b43f-4695-8127-e36c27fb2e96.mp3",
    "file": "voice/ep47/line03.mp3",
-   "dur_file": 2.35,
-   "pron_ok": null
+   "dur_file": 1.8,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4704,
@@ -419,7 +473,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_211953_53f0efcf-c2fe-4e45-a1cd-d8325881dcca.mp3",
    "file": "voice/ep47/line04.mp3",
    "dur_file": 2.19,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4705,
@@ -433,7 +489,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204519_25c95e85-2d36-428c-a20b-5a26da155201.mp3",
    "file": "voice/ep47/line05.mp3",
    "dur_file": 1.65,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4706,
@@ -442,12 +500,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "לא חגרת. נכשל, מותק.",
-   "tts_text": "לא חגרת. נכשל, מוֹתֶק.",
-   "job_id": "4db55c3c-a9f8-4af0-95a5-1089ddd0d116",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204517_4db55c3c-a9f8-4af0-95a5-1089ddd0d116.mp3",
+   "tts_text": "לא חגרת. נכשל, מותק.",
+   "job_id": "bec1173c-4143-4a09-baee-e2dc4a05f823",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204517_bec1173c-4143-4a09-baee-e2dc4a05f823.mp3",
    "file": "voice/ep47/line06.mp3",
-   "dur_file": 2.93,
-   "pron_ok": null
+   "dur_file": 1.96,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4707,
@@ -456,12 +516,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "עברת, חמוד.",
-   "tts_text": "עברת, חָמוּד.",
-   "job_id": "38348846-e063-4c4c-8cad-4f4d139d8eff",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204516_38348846-e063-4c4c-8cad-4f4d139d8eff.mp3",
+   "tts_text": "עברת, חמוד.",
+   "job_id": "307efa5f-a3b1-4a6f-8e12-f6a6eebe0f61",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204516_307efa5f-a3b1-4a6f-8e12-f6a6eebe0f61.mp3",
    "file": "voice/ep47/line07.mp3",
-   "dur_file": 1.15,
-   "pron_ok": null
+   "dur_file": 1.23,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4800,
@@ -475,7 +537,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204516_2a162789-d848-4b2d-845c-d5984b02b836.mp3",
    "file": "voice/ep48/line00.mp3",
    "dur_file": 1.65,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4801,
@@ -489,7 +553,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204516_00c03d34-870a-47aa-8197-5fb474e34796.mp3",
    "file": "voice/ep48/line01.mp3",
    "dur_file": 3.32,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4802,
@@ -504,7 +570,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212011_8dbedc7a-3f5d-477d-9a80-d03e1dd1e068.mp3",
    "file": "voice/ep48/line02.mp3",
    "dur_file": 2.85,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4803,
@@ -518,7 +586,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204516_041ebf89-b94a-42ac-ba56-4416314e6554.mp3",
    "file": "voice/ep48/line03.mp3",
    "dur_file": 1.72,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4804,
@@ -532,7 +602,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204533_6224086f-5cce-48bb-9569-a236fef2445c.mp3",
    "file": "voice/ep48/line04.mp3",
    "dur_file": 2.59,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4805,
@@ -547,7 +619,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212007_2b8308b3-73fd-4a11-b6e3-12ed04a3f463.mp3",
    "file": "voice/ep48/line05.mp3",
    "dur_file": 2.19,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4806,
@@ -561,7 +635,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204534_75b216b8-dd24-4911-aea0-11a40ffb7d80.mp3",
    "file": "voice/ep48/line06.mp3",
    "dur_file": 2.93,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   },
   {
    "index": 4807,
@@ -570,12 +646,14 @@
    "speaker": "sharit",
    "voice": "Delia",
    "text": "שירות עצמי, מותק.",
-   "tts_text": "שירות עצמי, מוֹתֶק.",
-   "job_id": "05f935ea-0b37-461c-a8b0-22678f4ef236",
-   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204534_05f935ea-0b37-461c-a8b0-22678f4ef236.mp3",
+   "tts_text": "שירות עצמי, מותק.",
+   "job_id": "1fefbfa5-c1eb-4523-922a-750516a59285",
+   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204533_1fefbfa5-c1eb-4523-922a-750516a59285.mp3",
    "file": "voice/ep48/line07.mp3",
-   "dur_file": 1.96,
-   "pron_ok": null
+   "dur_file": 1.49,
+   "pron_ok": true,
+   "pron_take": "B",
+   "pron_note": "גבי 25.11: B (בלי ניקוד)"
   },
   {
    "index": 4808,
@@ -590,7 +668,9 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_212007_4dc0e0e2-218a-46bb-ae67-14fa8a5eea1f.mp3",
    "file": "voice/ep48/line08.mp3",
    "dur_file": 2.27,
-   "pron_ok": null
+   "pron_ok": true,
+   "pron_take": "old",
+   "pron_note": "גבי 25.11"
   }
  ],
  "review_takes": [
@@ -683,6 +763,38 @@
    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ei78lFsofonGhFuVbT8LEWNxTa/hf_20261123_204533_1fefbfa5-c1eb-4523-922a-750516a59285.mp3",
    "file": "voice/review/20261123/4807_B.mp3",
    "dur_file": 1.49
+  },
+  {
+   "index": 4502,
+   "take": "C",
+   "tts_text": "זה 'פְּרִיקָה וטעינה'!",
+   "job_id": "2878d22f-009a-43a9-8a0f-8aa3285eb468",
+   "file": "voice/review/20261125/4502_C.mp3",
+   "dur_file": 1.41
+  },
+  {
+   "index": 4502,
+   "take": "D",
+   "tts_text": "זֶה פְּרִיקָה וּטְעִינָה!",
+   "job_id": "4e57229e-63be-4ab1-a7dd-b74363ad778a",
+   "file": "voice/review/20261125/4502_D.mp3",
+   "dur_file": 1.41
+  },
+  {
+   "index": 4700,
+   "take": "C",
+   "tts_text": "מַרְאָה. איתות. מַרְאָה. מושלם.",
+   "job_id": "5b18375b-4f47-4664-9b72-3776a40a3c87",
+   "file": "voice/review/20261125/4700_C.mp3",
+   "dur_file": 4.52
+  },
+  {
+   "index": 4700,
+   "take": "D",
+   "tts_text": "מַרְאָה. אִיתּוּת. מַרְאָה. מֻשְׁלָם.",
+   "job_id": "ac426e1e-466d-4042-87a0-f83b464520e0",
+   "file": "voice/review/20261125/4700_D.mp3",
+   "dur_file": 3.79
   }
  ]
 }
