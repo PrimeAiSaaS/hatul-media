@@ -60,6 +60,7 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     # ('ep36_mishloach_norm.mp4', ...)   # §P voiced peak: paw on the door handle, eyes closed, the hush (no subtitle 17.9–18.4)
     ('ep35_hatzot_v2_norm.mp4', 20.25, 35, 'חצות של בלאק פריידיי'),   # v2 VOICED (18.11, Gabi's pronunciation picks): the peak hold
     # ('ep35_hatzot_norm.mp4', ...)   # §P voiced peak: eyes closed, paw over לתשלום, the LED clock 23:59:59 (no subtitle 20.76–21.29)
+    ('ep48_nura_norm.mp4', 17.6, 48, 'על הנורה'),   # Series 2 ep5 finale, §P voiced peak hold: under the canopy, both cheering, the fuel cluster on the dash (no subtitle 17.42–17.74)
     ('ep47_test_norm.mp4', 16.75, 47, 'טסט'),   # Series 2 ep4, §P voiced peak hold: Sharit's stamp up, the ginger's eyes sliding to the door (no subtitle 16.64–16.91)
     ('ep46_yarok_norm.mp4', 20.85, 46, 'ירוק'),   # Series 2 ep3, §P voiced peak: 00:02, the ginger rigid at the wheel, the truck behind in the rear window (no subtitle 20.69–21.09)
     ('ep45_prika_norm.mp4', 19.8, 45, 'פריקה וטעינה'),   # Series 2 ep2, §P voiced peak: the lights down, the ginger relaxed with the giant bucket, Shoko goofy (no subtitle 19.59–20.07)
