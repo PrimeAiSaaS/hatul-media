@@ -64,7 +64,8 @@ EPISODES = [  # file, frame time (no on-screen caption there), episode number, t
     ('ep47_test_norm.mp4', 16.75, 47, 'טסט'),   # Series 2 ep4, §P voiced peak hold: Sharit's stamp up, the ginger's eyes sliding to the door (no subtitle 16.64–16.91)
     ('ep46_yarok_norm.mp4', 20.85, 46, 'ירוק'),   # Series 2 ep3, §P voiced peak: 00:02, the ginger rigid at the wheel, the truck behind in the rear window (no subtitle 20.69–21.09)
     ('ep45_prika_norm.mp4', 19.8, 45, 'פריקה וטעינה'),   # Series 2 ep2, §P voiced peak: the lights down, the ginger relaxed with the giant bucket, Shoko goofy (no subtitle 19.59–20.07)
-    ('ep44_smola_v2_norm.mp4', 22.2, 44, 'שמאלה. עכשיו.'),   # v2 (27.11, Gabi's note: the drift): the peak hold, through (no subtitle 21.94–22.46)
+    ('ep44_smola_v3_norm.mp4', 22.2, 44, 'שמאלה. עכשיו.'),   # v3 (28.11, Gabi's note: all from inside, the nav between them): the peak hold, eyes closed, 'במסלול' (no subtitle 21.94–22.46)
+    # ('ep44_smola_v2_norm.mp4', 22.2, 44, 'שמאלה. עכשיו.'),   # v2 (27.11, Gabi's note: the drift): the peak hold, through (no subtitle 21.94–22.46)
     # ('ep44_smola_norm.mp4', 20.3, 44, 'שמאלה. עכשיו.'),   # Series 2 ep1, §P voiced peak: through, the ginger's eyes squeezed, Shoko smug (no subtitle 20.01–20.53)
     ('ep41_mail_norm.mp4', 18.2, 41, 'המייל נפל'),   # §P voiced peak: the mail app spinner, breath held (no subtitle 17.94–18.52)
     ('ep43_april_v3_norm.mp4', 19.0, 43, 'תור אונליין: אפריל'),   # v3 (23.11, rebuild_polish): blurred top band under the hook, chips clear of the board; same peak
